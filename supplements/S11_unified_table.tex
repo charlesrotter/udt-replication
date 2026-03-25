@@ -1,0 +1,318 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{S11.\arabic{equation}}
+
+\title{Supplement S11: The Complete $(2,3,5,7)$ Connection Table \\
+\large Supporting Manuscript \S15}
+\author{UDT Collaboration}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present the complete table showing how every derived quantity in UDT
+traces to the four multiplicities $(2,3,5,7)$ arising from the unique
+Diophantine triple $(j=1/2,\, l=1,\, |\kappa_\mathrm{max}|=3)$.
+From one metric and one Diophantine identity, four numbers generate:
+particle masses, coupling constants, mixing angles, cosmological
+parameters, and the CMB boundary condition. This supplement serves as the
+master index for the derivation chain: one metric $\to$ one Diophantine
+triple $\to$ four numbers $\to$ all physics.
+\end{abstract}
+
+\tableofcontents
+
+%----------------------------------------------------------------------
+\section{The four numbers}
+\label{sec:four_numbers}
+%----------------------------------------------------------------------
+
+The Diophantine identity (Supplement~S4)
+\begin{equation}
+  (2j+1)^2(2l+1)(2|\kappa_\mathrm{max}|+1) = \binom{2l+2|\kappa_\mathrm{max}|+1}{2l+1}
+\end{equation}
+selects $j = 1/2$, $l = 1$, $|\kappa_\mathrm{max}| = 3$ uniquely, producing
+four multiplicities:
+
+\begin{equation}
+\label{eq:four_numbers}
+\boxed{
+\begin{array}{cccc}
+  2j+1 & 2l+1 & 2|\kappa_\mathrm{max}|-1 & 2|\kappa_\mathrm{max}|+1 \\
+  \mathbf{2} & \mathbf{3} & \mathbf{5} & \mathbf{7}
+\end{array}
+}
+\end{equation}
+
+These are the first four primes. The base space dimension is
+$n = 2l + 2|\kappa_\mathrm{max}| + 1 = 9$.
+
+%----------------------------------------------------------------------
+\section{Derived combinations}
+\label{sec:combinations}
+%----------------------------------------------------------------------
+
+All physically relevant quantities are built from products, powers, and
+binomial coefficients of $(2, 3, 5, 7)$:
+
+\begin{center}
+\begin{tabular}{lcl}
+\toprule
+Expression & Value & Role \\
+\midrule
+$(2j+1)^2$ & 4 & Spin-squared factor \\
+$(2l+1)^2$ & 9 & Orbital-squared factor \\
+$(2j+1)(2l+1)$ & 6 & Proton coefficient \\
+$(2j+1)^2(2l+1)$ & 12 & --- \\
+$(2j+1)^2(2|\kappa_\mathrm{max}|-1)/(2l+1)$ & 20/3 & Muon coefficient \\
+$(2j+1)^2(2l+1)^2$ & 36 & $\binom{9}{2}$, $\alpha$ numerator \\
+$(2j+1)^2(2l+1)(2|\kappa_\mathrm{max}|+1)$ & 84 & $\binom{9}{3}$, pion coefficient \\
+$(2l+1)^2(2|\kappa_\mathrm{max}|-1)$ & 45 & $\theta_{13}$ denominator \\
+$(2j+1)^2 + (2l+1)^2$ & 13 & $\theta_{12}$ denominator \\
+$(2|\kappa_\mathrm{max}|-1)/(2j+1)^2$ & 5/4 & p-n splitting factor \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%----------------------------------------------------------------------
+\section{Master connection table: Masses}
+\label{sec:masses}
+%----------------------------------------------------------------------
+
+\begin{longtable}{p{2.5cm}p{5cm}p{3.5cm}c}
+\toprule
+Particle & Formula & Numbers used & Supplement \\
+\midrule
+\endfirsthead
+\toprule
+Particle & Formula & Numbers used & Supplement \\
+\midrule
+\endhead
+\textbf{Electron} & $m_e$ (anchor) & --- & S3 \\
+\textbf{Pion} & $m_\pi = \binom{9}{3}\pi\,m_e = 84\pi\,m_e$ & $2 \cdot 3 \cdot 7 \cdot \pi$ & S3 \\
+\textbf{Muon} & $m_\mu = \frac{20\pi^3}{3}\,m_e$ & $\frac{2^2 \cdot 5}{3}\cdot\pi^3$ & S3 \\
+\textbf{Proton} & $m_p = 6\pi^5\,m_e$ & $2 \cdot 3 \cdot \pi^5$ & S3 \\
+\textbf{Neutron} & $m_n = m_p + \frac{5}{4}\alpha C$ & $\frac{5}{2^2} \cdot \alpha \cdot C$ & S5 \\
+\textbf{Neutrino} & $m_\nu = \frac{\alpha^3 m_e}{4}$ & $\frac{1}{2^2}\cdot\alpha^3$ & S6 \\
+\textbf{Mesons} & $m = E_n(\kappa) \cdot C$ & $\kappa \in [-3,+3]$, $C$ & S2 \\
+\textbf{Baryons} & $m = E_n(\kappa) \cdot C$ on $[0, r_*/\varphi]$ & $\kappa$, $C$, $\varphi$ & S2 \\
+\bottomrule
+\end{longtable}
+
+where $C = 4\pi^2 m_e r_*$ is the calibration constant and
+$\varphi = (1+\sqrt{5})/2$ is the golden ratio (baryon sub-cavity).
+
+%----------------------------------------------------------------------
+\section{Master connection table: Couplings}
+\label{sec:couplings}
+%----------------------------------------------------------------------
+
+\begin{longtable}{p{3cm}p{5cm}p{3cm}c}
+\toprule
+Coupling & Formula & Numbers used & Supplement \\
+\midrule
+\endfirsthead
+\toprule
+Coupling & Formula & Numbers used & Supplement \\
+\midrule
+\endhead
+\textbf{$1/\alpha_\mathrm{EM}$} & $36\pi/I_2$ & $2^2 \cdot 3^2 \cdot \pi$ & S5 \\
+\textbf{Bridge $|\kappa|=1$} & $\mathcal{S}^2 E_1^2 = 1/18$ & $1/(2\cdot 3^2)$ & S8 \\
+\textbf{Bridge $|\kappa|=2$} & $\mathcal{S}^2 E_1^2 = \pi^2/36$ & $\pi^2/(2^2\cdot 3^2)$ & S8 \\
+\textbf{Bridge $|\kappa|=3$} & $\mathcal{S}^2 E_1^2 = 1/8$ & $1/(2^3)$ & S8 \\
+\bottomrule
+\end{longtable}
+
+%----------------------------------------------------------------------
+\section{Master connection table: Mixing angles}
+\label{sec:mixing}
+%----------------------------------------------------------------------
+
+\begin{longtable}{p{2.5cm}p{5cm}p{3.5cm}c}
+\toprule
+Angle & Formula & Numbers used & Supplement \\
+\midrule
+\endfirsthead
+\toprule
+Angle & Formula & Numbers used & Supplement \\
+\midrule
+\endhead
+$\sin^2\theta_{12}$ & $\frac{(2j+1)^2}{(2j+1)^2+(2l+1)^2} = \frac{4}{13}$ & $\frac{2^2}{2^2+3^2}$ & S7 \\
+$\sin^2\theta_{23}$ & $\frac{(2j+1)^2}{2|\kappa_\mathrm{max}|+1} = \frac{4}{7}$ & $\frac{2^2}{7}$ & S7 \\
+$\sin^2\theta_{13}$ & $\frac{1}{(2l+1)^2(2|\kappa_\mathrm{max}|-1)} = \frac{1}{45}$ & $\frac{1}{3^2 \cdot 5}$ & S7 \\
+\bottomrule
+\end{longtable}
+
+%----------------------------------------------------------------------
+\section{Master connection table: Cosmology}
+\label{sec:cosmology}
+%----------------------------------------------------------------------
+
+\begin{longtable}{p{3cm}p{5cm}p{3cm}c}
+\toprule
+Quantity & Formula & Numbers used & Supplement \\
+\midrule
+\endfirsthead
+\toprule
+Quantity & Formula & Numbers used & Supplement \\
+\midrule
+\endhead
+$\mu_g$ & $\pi\mu/13$ & $\pi/(2^2+3^2)$ & S10 \\
+$\kappa_\mathrm{cosmo}$ & $(3/2)\mu_g$ & $3/2$ & S10 \\
+$\beta_\mathrm{cosmo}$ & $-\cos(\pi/5)\,\mu_g^2$ & $\cos(\pi/5)$ & S10 \\
+$\gamma_\mathrm{cosmo}$ & $(2/3)\mu_g^3$ & $2/3$ & S10 \\
+$z_\mathrm{CMB}$ & $e^{\phi(r_*)}-1$ & (boundary value) & S10 \\
+$c^2 = 2GM/r_*$ & Misner--Sharp closure & (self-consistency) & S10 \\
+\bottomrule
+\end{longtable}
+
+%----------------------------------------------------------------------
+\section{Master connection table: Exterior algebra}
+\label{sec:exterior}
+%----------------------------------------------------------------------
+
+\begin{longtable}{p{3cm}p{5cm}p{3cm}c}
+\toprule
+Quantity & Formula & Numbers used & Supplement \\
+\midrule
+\endfirsthead
+\toprule
+Quantity & Formula & Numbers used & Supplement \\
+\midrule
+\endhead
+Base space dim & $2l+2|\kappa_\mathrm{max}|+1 = 9$ & $3+7-1$ & S4 \\
+$\dim\Lambda^2$ & $\binom{9}{2} = 36$ & $\alpha$ sector & S5 \\
+$\dim\Lambda^3$ & $\binom{9}{3} = 84$ & Pion sector & S3 \\
+$\dim\Lambda^4$ & $\binom{9}{4} = 126$ & Transition & S6 \\
+$\dim\Lambda^6$ & $\binom{9}{6} = 84$ & Neutrino (Hodge) & S6 \\
+Damping ratio & $84/126 = 2/3$ & Grade 3/4 & S6 \\
+Even/odd ratio & $36/84 = 3/7$ & Grade 2/3 & S6 \\
+Orbit matchings & $\binom{4}{3} = 4$ & $=(2j+1)^2$ & S9 \\
+\bottomrule
+\end{longtable}
+
+%----------------------------------------------------------------------
+\section{The derivation chain}
+\label{sec:chain}
+%----------------------------------------------------------------------
+
+The complete derivation chain from the metric to all physics:
+
+\begin{enumerate}
+  \item \textbf{Metric}: $ds^2 = -e^{-2\phi}c^2dt^2 + e^{2\phi}dr^2 + r^2d\Omega^2$.
+
+  \item \textbf{Dirac equation on the metric}: Tetrad $\to$ spin connection
+    $\to$ Form-T system $\to$ angular separation.
+
+  \item \textbf{Angular sector}: Spinor harmonics on $S^2$ with quantum
+    numbers $(j, l, |\kappa_\mathrm{max}|)$.
+
+  \item \textbf{Diophantine selection}: The self-consistency condition
+    selects $(j, l, |\kappa_\mathrm{max}|) = (1/2, 1, 3)$ uniquely.
+
+  \item \textbf{Four multiplicities}: $(2j+1, 2l+1, 2|\kappa_\mathrm{max}|-1, 2|\kappa_\mathrm{max}|+1) = (2, 3, 5, 7)$.
+
+  \item \textbf{All physics}: From these four numbers and $\pi$, construct
+    masses, couplings, mixing angles, and cosmology.
+\end{enumerate}
+
+\begin{proposition}[Completeness]
+Every dimensionless quantity predicted by UDT can be expressed as a rational
+function of $(2, 3, 5, 7, \pi)$ and the vacuum integral $I_2$.
+\end{proposition}
+
+The only non-algebraic input is $I_2 = \int e^{2\phi}\,dr$, which requires
+solving the nonlinear ODE numerically. All other quantities are exact
+algebraic expressions.
+
+%----------------------------------------------------------------------
+\section{Counting free parameters}
+\label{sec:free_params}
+%----------------------------------------------------------------------
+
+\subsection{Input parameters}
+
+UDT has the following inputs:
+\begin{enumerate}
+  \item $m_e = 0.51100$~MeV: electron mass (anchor/unit),
+  \item $\phi_0 = -\cos(\pi/5)$: metric depth (derived from the Diophantine identity),
+  \item $\mu^2 = \pi/3$: screening mass (derived from the metric),
+  \item $r_* = 7 - 1/80$: cavity size (derived from the metric).
+\end{enumerate}
+
+Of these, only $m_e$ is a measured input (it sets the unit of mass).
+The other three are geometric constants derived from the metric and
+the Diophantine identity.
+
+\subsection{Comparison with the Standard Model}
+
+The Standard Model has $\sim 19$ free parameters (6 quark masses, 3 lepton
+masses, 3 CKM angles + 1 phase, 3 gauge couplings, Higgs mass and VEV,
+$\theta_\mathrm{QCD}$). UDT has 1 free parameter ($m_e$), with all others
+derived from geometry.
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+ & Standard Model & UDT \\
+\midrule
+Free parameters & $\sim 19$ & 1 \\
+Masses predicted & 0 & 6+ \\
+Couplings predicted & 0 & $\alpha_\mathrm{EM}$ \\
+Mixing angles predicted & 0 & 3 (PMNS) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%----------------------------------------------------------------------
+\section{What is NOT determined by $(2,3,5,7)$}
+\label{sec:not_determined}
+%----------------------------------------------------------------------
+
+For completeness, the following quantities are \emph{not} purely determined
+by the four multiplicities:
+\begin{itemize}
+  \item $I_2$: requires numerical ODE integration,
+  \item Individual Dirac eigenvalues $E_n(\kappa)$: require numerical shooting,
+  \item The cosmological $\phi(r)$ profile shape: requires numerical integration,
+  \item Baryon sub-cavity eigenvalues: depend on $\varphi = (1+\sqrt{5})/2$
+    (which is algebraic but not directly from $(2,3,5,7)$).
+\end{itemize}
+
+However, the \emph{ratios} and \emph{algebraic forms} of the eigenvalues
+(e.g., $E_1(\kappa=-1) = 2\sqrt{2}/3$) are algebraic expressions involving
+only small integers and square roots.
+
+%----------------------------------------------------------------------
+\section{Verification}
+\label{sec:verification}
+%----------------------------------------------------------------------
+
+This table is the master index. Each entry references a specific supplement
+(S1--S10, S12) and analysis script (01--10). The full verification chain:
+\begin{itemize}
+  \item \texttt{analysis/01\_vacuum\_profile.py} $\to$ $\phi(r)$, $I_2$
+  \item \texttt{analysis/02\_eigenvalues.py} $\to$ $E_n(\kappa)$
+  \item \texttt{analysis/03\_sources.py} $\to$ $\mathcal{S}(\kappa)$
+  \item \texttt{analysis/04\_bridge\_identities.py} $\to$ $\mathcal{S}^2 E_1^2$
+  \item \texttt{analysis/05\_alpha\_em.py} $\to$ $1/\alpha$, $m_n - m_p$
+  \item \texttt{analysis/06\_particle\_masses.py} $\to$ meson/baryon masses
+  \item \texttt{analysis/07\_angular\_sector.py} $\to$ $m_\pi$, $m_\mu$, $m_p$, Diophantine
+  \item \texttt{analysis/10\_wedge\_product.py} $\to$ exterior algebra, Hodge duality
+\end{itemize}
+
+\end{document}

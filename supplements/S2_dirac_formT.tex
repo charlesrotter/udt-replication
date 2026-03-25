@@ -1,0 +1,373 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{S2.\arabic{equation}}
+
+\title{Supplement S2: Full Dirac Equation on the UDT Background \\
+\large Supporting Manuscript \S8}
+\author{UDT Collaboration}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We derive the complete Dirac equation on the UDT metric from first
+principles: tetrad, spin connection, covariant derivative, separation of
+variables into radial (Form-T) and angular (spinor harmonic) sectors,
+Frobenius analysis at the origin, the self-adjointness proof yielding the
+geometric Neumann boundary condition $G'(r_*) = 0$, and the
+Sturm--Liouville normalization. Every step uses the exact nonlinear
+background---no linearization. Verified by
+\texttt{analysis/02\_eigenvalues.py}.
+\end{abstract}
+
+\tableofcontents
+
+%----------------------------------------------------------------------
+\section{Tetrad and inverse tetrad}
+\label{sec:tetrad}
+%----------------------------------------------------------------------
+
+The UDT metric
+\begin{equation}
+\label{eq:metric}
+  ds^2 = -e^{-2\phi}\,c^2\,dt^2 + e^{+2\phi}\,dr^2 + r^2\,d\Omega^2
+\end{equation}
+is diagonalized by the tetrad (vierbein) $e^a{}_\mu$:
+\begin{equation}
+\label{eq:tetrad}
+\boxed{
+  e^a{}_\mu = \mathrm{diag}\!\left(e^{-\phi}\,c,\; e^{+\phi},\; r,\; r\sin\theta\right),
+}
+\end{equation}
+so that $g_{\mu\nu} = \eta_{ab}\,e^a{}_\mu\,e^b{}_\nu$ with
+$\eta_{ab} = \mathrm{diag}(-1,+1,+1,+1)$.
+
+The inverse tetrad $e_a{}^\mu$ satisfying $e^a{}_\mu\,e_b{}^\mu = \delta^a_b$:
+\begin{equation}
+\label{eq:inv_tetrad}
+  e_a{}^\mu = \mathrm{diag}\!\left(e^{+\phi}/c,\; e^{-\phi},\; 1/r,\; 1/(r\sin\theta)\right).
+\end{equation}
+
+%----------------------------------------------------------------------
+\section{Spin connection}
+\label{sec:spin_connection}
+%----------------------------------------------------------------------
+
+The spin connection one-form is
+\begin{equation}
+  \omega^{ab}{}_\mu = e^{a\nu}\!\left(\partial_\mu e^b{}_\nu
+    - \Gamma^\lambda{}_{\mu\nu}\,e^b{}_\lambda\right),
+\end{equation}
+where the Christoffel symbols are given in Supplement~S1 (\S3).
+
+\subsection{Nonvanishing components}
+
+\paragraph{$\omega^{01}$ (time-radial):}
+\begin{equation}
+\label{eq:omega01}
+  \omega^{01}{}_t = -\phi'\,e^{-\phi}\,c.
+\end{equation}
+This arises from $\partial_r(e^{-\phi}c)$ contracted with the radial Christoffel
+terms.
+
+\paragraph{$\omega^{12}$ (radial-$\theta$):}
+\begin{equation}
+\label{eq:omega12}
+  \omega^{12}{}_\theta = -e^{-\phi}.
+\end{equation}
+
+\paragraph{$\omega^{13}$ (radial-$\varphi$):}
+\begin{equation}
+\label{eq:omega13}
+  \omega^{13}{}_\varphi = -e^{-\phi}\sin\theta.
+\end{equation}
+
+\paragraph{$\omega^{23}$ ($\theta$-$\varphi$):}
+\begin{equation}
+\label{eq:omega23}
+  \omega^{23}{}_\varphi = -\cos\theta.
+\end{equation}
+
+All other components vanish by the diagonal structure and spherical symmetry.
+
+%----------------------------------------------------------------------
+\section{Covariant derivative for spinors}
+\label{sec:spinor_deriv}
+%----------------------------------------------------------------------
+
+The covariant derivative acting on a Dirac spinor $\Psi$ is
+\begin{equation}
+\label{eq:cov_deriv}
+  D_\mu\Psi = \partial_\mu\Psi + \frac{1}{4}\omega^{ab}{}_\mu\,\gamma_a\gamma_b\,\Psi,
+\end{equation}
+where $\gamma_a$ are the flat-space Dirac matrices in the $(-,+,+,+)$ convention:
+\begin{equation}
+  \{\gamma_a, \gamma_b\} = 2\eta_{ab}.
+\end{equation}
+
+The Dirac equation on curved spacetime is
+\begin{equation}
+\label{eq:dirac_curved}
+  \left(i\gamma^a\,e_a{}^\mu\,D_\mu - m\right)\Psi = 0.
+\end{equation}
+For massless fermions ($m=0$), which is the relevant case in UDT where mass
+arises from eigenvalue quantization rather than a bare mass term:
+\begin{equation}
+\label{eq:dirac_massless}
+  i\gamma^a\,e_a{}^\mu\,D_\mu\,\Psi = 0.
+\end{equation}
+
+%----------------------------------------------------------------------
+\section{Separation of variables}
+\label{sec:separation}
+%----------------------------------------------------------------------
+
+\subsection{Stationary ansatz}
+
+For a stationary state with energy $E$:
+\begin{equation}
+\label{eq:stationary}
+  \Psi(t,r,\theta,\varphi) = e^{-iEt}\,\psi(r,\theta,\varphi).
+\end{equation}
+
+\subsection{Angular separation: spinor harmonics}
+
+The spatial spinor separates into radial and angular parts:
+\begin{equation}
+\label{eq:angular_sep}
+  \psi(r,\theta,\varphi) = \frac{1}{r}\begin{pmatrix}
+    G(r)\,\Omega_\kappa^{m_j}(\theta,\varphi) \\
+    iF(r)\,\Omega_{-\kappa}^{m_j}(\theta,\varphi)
+  \end{pmatrix},
+\end{equation}
+where $\Omega_\kappa^{m_j}$ are spinor spherical harmonics satisfying
+\begin{equation}
+\label{eq:spinor_harmonic}
+  K\,\Omega_\kappa^{m_j} = -\kappa\,\Omega_\kappa^{m_j}, \qquad
+  K = \beta\!\left(\boldsymbol{\Sigma}\cdot\mathbf{L} + 1\right),
+\end{equation}
+with $\kappa = \pm(j+\tfrac{1}{2})$ for $l = j \mp \tfrac{1}{2}$.
+
+The angular quantum number $\kappa$ takes values $\kappa \in \{-1,+1,-2,+2,-3,+3\}$
+for $|\kappa| \leq |\kappa_\mathrm{max}| = 3$.
+
+%----------------------------------------------------------------------
+\section{Form-T radial system}
+\label{sec:formT}
+%----------------------------------------------------------------------
+
+Substituting the separated ansatz into the curved-space Dirac
+equation~\eqref{eq:dirac_massless} and using the spin connection
+components from \S\ref{sec:spin_connection}, the radial functions
+$G(r)$ and $F(r)$ satisfy the \emph{Form-T system}:
+
+\begin{equation}
+\label{eq:formT}
+\boxed{
+\begin{aligned}
+  G'(r) &= \left(-\frac{\kappa}{r} + \phi'\right)G + E\,e^{2\phi}\,F, \\[4pt]
+  F'(r) &= \left(+\frac{\kappa}{r} + \phi'\right)F - E\,e^{2\phi}\,G.
+\end{aligned}
+}
+\end{equation}
+
+\subsection{Derivation outline}
+
+The temporal part of the Dirac operator gives a factor $E\,e^{\phi}$ (from
+$\gamma^0 e_0{}^t E = E e^{+\phi}/c \cdot c$). The radial part gives the
+derivative terms with the $\phi'$ coupling:
+\begin{equation}
+  \gamma^1 e_1{}^r\!\left(\partial_r + \frac{1}{r} + \frac{\phi'}{2}\right)
+  = e^{-\phi}\!\left(\partial_r + \frac{1}{r} + \frac{\phi'}{2}\right)\gamma^1.
+\end{equation}
+The $1/r$ factor is absorbed by the $1/r$ in the angular
+separation~\eqref{eq:angular_sep}, and the $\phi'/2$ terms from the
+$\omega^{12}$ and $\omega^{13}$ spin connections combine with the explicit
+$\partial_r e^{-\phi}$ terms to produce the $\phi'$ coefficients in
+\eqref{eq:formT}.
+
+The angular part gives the $\pm\kappa/r$ terms from the eigenvalue of
+the angular operator $K$, while the $\omega^{23}$ connection is already
+encoded in the spinor harmonics.
+
+The key feature is that the $e^{2\phi}$ factor in the coupling term arises
+from $e^{\phi}$ (from the temporal tetrad) $\times$ $e^{\phi}$ (from the
+radial tetrad), reflecting the full nonlinear geometry.
+
+%----------------------------------------------------------------------
+\section{Frobenius analysis at the origin}
+\label{sec:frobenius}
+%----------------------------------------------------------------------
+
+Near $r = 0$, the potential $\phi(r) \sim \phi_0 + \tfrac{1}{2}\phi_2 r^2 + \cdots$,
+so $\phi' \sim \phi_2 r + \cdots$ and $e^{2\phi} \sim e^{2\phi_0}(1 + \phi_2 r^2 + \cdots)$.
+
+Define $E_0 = E\,e^{2\phi_0}$.
+
+\subsection{$\kappa = -1$}
+
+The regular (Frobenius) solution has
+\begin{align}
+  G(r) &= r\!\left[1 + \tfrac{1}{2}\!\left(\phi_2 - \tfrac{E_0^2}{3}\right)r^2 + \cdots\right], \label{eq:frob_km1_G}\\
+  F(r) &= -\frac{E_0}{3}\,r^2 + \frac{E_0}{30}\!\left(E_0^2 - 11\phi_2\right)r^4 + \cdots \label{eq:frob_km1_F}
+\end{align}
+The leading power is $G \sim r^1$, $F \sim r^2$.
+
+\subsection{$\kappa = +1$}
+
+The roles interchange:
+\begin{align}
+  F(r) &= r\!\left[1 + \tfrac{1}{2}\!\left(\phi_2 - \tfrac{E_0^2}{3}\right)r^2 + \cdots\right], \label{eq:frob_kp1_F}\\
+  G(r) &= +\frac{E_0}{3}\,r^2 + \frac{E_0}{30}\!\left(11\phi_2 - E_0^2\right)r^4 + \cdots \label{eq:frob_kp1_G}
+\end{align}
+
+\subsection{General $|\kappa| > 1$}
+
+For $\kappa > 0$: $G \sim r^{|\kappa|}$, $F \sim r^{|\kappa|-1}$.\\
+For $\kappa < 0$: $G \sim r^{|\kappa|-1}$, $F \sim r^{|\kappa|}$.
+
+The irregular solution (divergent at origin) is always discarded.
+
+%----------------------------------------------------------------------
+\section{Boundary condition: self-adjointness}
+\label{sec:selfadjoint}
+%----------------------------------------------------------------------
+
+\subsection{Sturm--Liouville structure}
+
+The Form-T system~\eqref{eq:formT} can be cast as a Sturm--Liouville
+problem with weight function $w(r) = e^{\phi}\,r^2$ and inner product
+\begin{equation}
+\label{eq:inner_product}
+  \langle\psi_1|\psi_2\rangle = \int_0^{r_*}\!\left(G_1 G_2 + F_1 F_2\right)\,e^{\phi}\,r^2\,dr.
+\end{equation}
+
+\subsection{Self-adjointness requirement}
+
+\begin{theorem}[Geometric Neumann BC]
+\label{thm:neumann}
+The Form-T operator is self-adjoint on $[0, r_*]$ with Frobenius regularity
+at the origin if and only if
+\begin{equation}
+\label{eq:neumann_bc}
+\boxed{G'(r_*) = 0.}
+\end{equation}
+\end{theorem}
+
+\textit{Proof.}
+Self-adjointness requires the boundary bilinear form to vanish:
+\begin{equation}
+  \left[r^2\,e^{\phi}\!\left(G_1 F_2 - G_2 F_1\right)\right]_0^{r_*} = 0.
+\end{equation}
+At $r = 0$, Frobenius regularity ensures vanishing. At $r = r_*$, using the
+Form-T equation to express $F$ in terms of $G$ and $G'$:
+\begin{equation}
+  F_* = \frac{1}{E\,e^{2\phi_*}}\!\left[G'_* - \left(-\frac{\kappa}{r_*} + \phi'_*\right)G_*\right].
+\end{equation}
+The boundary term vanishes for all eigenfunction pairs if and only if
+the numerator's dependence on the eigenvalue $E$ is eliminated, which
+requires $G'(r_*) = 0$. \qed
+
+\subsection{Shooting residual}
+
+In practice, the Neumann condition is enforced via the shooting residual:
+\begin{equation}
+\label{eq:residual}
+  \mathcal{R}(E) = \left(-\frac{\kappa}{r_*} + \phi'_*\right)G_* + E\,e^{2\phi_*}\,F_*,
+\end{equation}
+which equals $G'(r_*)$ by the first Form-T equation. Eigenvalues are the
+zeros of $\mathcal{R}(E) = 0$.
+
+%----------------------------------------------------------------------
+\section{Normalization}
+\label{sec:normalization}
+%----------------------------------------------------------------------
+
+\begin{definition}[Sturm--Liouville normalization]
+\begin{equation}
+\label{eq:sl_norm}
+\boxed{
+  \int_0^{r_*} e^{\phi(r)}\!\left[G^2(r) + F^2(r)\right]\,r^2\,dr = 1.
+}
+\end{equation}
+\end{definition}
+
+The weight $e^{\phi}\,r^2$ arises from the inner product~\eqref{eq:inner_product}.
+The factor $e^{\phi}$ comes from the tetrad determinant restricted to the
+radial-angular sector: $|e^1{}_r \cdot r \cdot r\sin\theta| / \sin\theta = e^{\phi}\,r^2$.
+
+\subsection{Physical vs.\ SL normalization}
+
+The Killing normalization (physical) uses weight $e^{\phi}$ without the $r^2$
+factor: $\int e^{\phi}(G^2+F^2)\,dr = 1$. The SL normalization is the one
+that makes eigenvalue ratios correct and is used throughout the analysis
+pipeline. The physical normalization constant
+$\alpha = \int e^{\phi}(G^2+F^2)\,dr \in [0.047, 0.125]$ enters absolute
+(not ratio) quantities.
+
+%----------------------------------------------------------------------
+\section{Algebraic eigenvalue targets}
+\label{sec:algebraic}
+%----------------------------------------------------------------------
+
+Several ground-state eigenvalues have known algebraic forms:
+\begin{align}
+  E_1(\kappa=-1) &= \frac{2\sqrt{2}}{3}, \label{eq:E1_km1}\\
+  E_1(\kappa=-2) &= \frac{16}{3}, \label{eq:E1_km2}\\
+  E_1(\kappa=+2) &= \frac{35}{9}, \label{eq:E1_kp2}\\
+  E_1(\kappa=-3) &= \frac{42}{5}. \label{eq:E1_km3}
+\end{align}
+
+These are verified numerically to $< 10^{-10}$ by \texttt{analysis/02\_eigenvalues.py},
+with boundary residuals $|\mathcal{R}(E_n)| < 10^{-10}$ (Gate~G1).
+
+%----------------------------------------------------------------------
+\section{Source integrals}
+\label{sec:sources}
+%----------------------------------------------------------------------
+
+The Dirac stress-energy back-reaction on $\phi$ is mediated by the
+source integral:
+\begin{equation}
+\label{eq:source}
+  \mathcal{S}(\kappa) = \int_0^{r_*}\!\left(G^2 - F^2\right)\,e^{2\phi}\,r^2\,dr,
+\end{equation}
+computed for SL-normalized wavefunctions.
+
+Ground-state algebraic targets:
+\begin{align}
+  \mathcal{S}(\kappa=-1) &= \frac{1}{4}, \\
+  \mathcal{S}(\kappa=+2) &= \frac{13}{72}, \\
+  \mathcal{S}(\kappa=-3) &= \frac{5}{84\sqrt{2}}.
+\end{align}
+
+Verified by \texttt{analysis/03\_sources.py}.
+
+%----------------------------------------------------------------------
+\section{Verification scripts}
+\label{sec:verification}
+%----------------------------------------------------------------------
+
+\begin{itemize}
+  \item \texttt{analysis/02\_eigenvalues.py}: Eigenvalue computation for
+    $\kappa \in \{-1,+1,-2,+2,-3,+3\}$, GPU-accelerated coarse scan +
+    Brent refinement to $10^{-10}$.
+  \item \texttt{analysis/03\_sources.py}: Source integrals with SL normalization.
+  \item Output: \texttt{data/generated/02\_eigenvalues.json},
+    \texttt{data/generated/03\_sources.json}.
+\end{itemize}
+
+\end{document}

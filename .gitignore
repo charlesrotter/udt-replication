@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Generated outputs (reproducible via run_all.sh)
+data/generated/*.json
+
+# Generated figures (reproducible via figure scripts)
+manuscript/figures/*.pdf
+manuscript/figures/*.png
+
+# Environment
+.venv/
+venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# LaTeX build artifacts
+manuscript/*.aux
+manuscript/*.log
+manuscript/*.bbl
+manuscript/*.blg
+manuscript/*.out
+manuscript/*.toc
+manuscript/*.fdb_latexmk
+manuscript/*.fls
+manuscript/*.synctex.gz
+supplements/*.aux
+supplements/*.log
+supplements/*.out

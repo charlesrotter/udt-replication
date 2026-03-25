@@ -1,0 +1,305 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{S6.\arabic{equation}}
+
+\title{Supplement S6: Neutrino Mass Derivation \\
+\large Supporting Manuscript \S13}
+\author{UDT Collaboration}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We derive the neutrino mass from the UDT metric via the full chain:
+action integral, electromagnetic vertex, $\alpha^3$ factorization, and the
+mass formula $m_\nu = \alpha^3 m_e/(2j+1)^2$. The $\alpha^3$ factor
+arises from a triple application of the electromagnetic vertex (the neutrino
+as a grade-6 object constructed from three grade-2 forms). The $1/(2j+1)^2 = 1/4$
+coefficient comes from the spin-squared normalization. We prove the orbit
+matching theorem on the 7-chain and derive cross-check ratios. Verified by
+\texttt{analysis/10\_wedge\_product.py}.
+\end{abstract}
+
+\tableofcontents
+
+%----------------------------------------------------------------------
+\section{The neutrino in the exterior algebra}
+\label{sec:exterior}
+%----------------------------------------------------------------------
+
+Recall from Supplement~S4 that the Diophantine identity selects a
+9-dimensional base space $\mathbb{R}^9$ with $\dim = 2l + 2|\kappa_\mathrm{max}| + 1 = 9$.
+The exterior algebra $\Lambda^*(\mathbb{R}^9)$ organizes particles by grade:
+
+\begin{center}
+\begin{tabular}{cccl}
+\toprule
+Grade $k$ & $\dim\Lambda^k$ & Particle & Role \\
+\midrule
+0 & 1 & vacuum & identity \\
+1 & 9 & --- & base vectors \\
+2 & 36 & $\alpha$-boson & electromagnetic coupling \\
+3 & 84 & pion & strong sector \\
+4 & 126 & --- & (transition grade) \\
+5 & 126 & --- & (transition grade) \\
+6 & 84 & neutrino & Hodge dual of pion \\
+7 & 36 & --- & dual of $\alpha$ \\
+8 & 9 & --- & dual of base \\
+9 & 1 & --- & top form \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The neutrino lives at grade~6, which is the Hodge dual of grade~3
+(the pion). The Hodge star on $\Lambda^9$:
+\begin{equation}
+\label{eq:hodge}
+  *: \Lambda^3(\mathbb{R}^9) \xrightarrow{\sim} \Lambda^6(\mathbb{R}^9),
+  \qquad \dim\Lambda^3 = \dim\Lambda^6 = 84.
+\end{equation}
+
+\subsection{Triple wedge construction}
+
+The grade-6 form can be constructed as a triple wedge product of grade-2 forms:
+\begin{equation}
+\label{eq:triple_wedge}
+  \omega_\nu = \alpha \wedge \alpha \wedge \alpha \in \Lambda^6(\mathbb{R}^9),
+\end{equation}
+where $\alpha \in \Lambda^2(\mathbb{R}^9)$ is the electromagnetic 2-form
+(36 components). This construction gives the neutrino its $\alpha^3$
+coupling: each wedge factor contributes one power of the fine structure
+constant.
+
+%----------------------------------------------------------------------
+\section{The $\alpha^3$ factorization}
+\label{sec:alpha3}
+%----------------------------------------------------------------------
+
+\subsection{Action integral}
+
+The neutrino effective action on the UDT background involves the
+triple-vertex diagram where the fermion line (electron) emits and
+reabsorbs three virtual photons, generating the neutrino mass:
+\begin{equation}
+\label{eq:action}
+  \mathcal{A}_\nu = \int\!\left(\bar{\psi}\gamma^\mu A_\mu\right)^3\,
+  e^{3\phi}\,r^2\,dr\,d\Omega.
+\end{equation}
+
+Each vertex contributes a factor $\sqrt{\alpha}$ (coupling constant), and
+the three vertices contribute $\alpha^{3/2}$. Squaring the amplitude to
+get the mass shift:
+\begin{equation}
+  m_\nu \propto |\mathcal{A}_\nu|^2 / m_e \propto \alpha^3 \cdot m_e.
+\end{equation}
+
+\subsection{Detailed factorization}
+
+The fine structure constant decomposes as (Supplement~S5):
+\begin{equation}
+  \alpha = \frac{I_2}{36\pi} = \frac{I_2}{\binom{9}{2}\,\pi}.
+\end{equation}
+
+Therefore:
+\begin{equation}
+\label{eq:alpha3}
+  \alpha^3 = \left(\frac{I_2}{36\pi}\right)^3 = \frac{I_2^3}{36^3\,\pi^3}
+  = \frac{I_2^3}{46656\,\pi^3}.
+\end{equation}
+
+Note that $36^3 = 46656 = \dim\left(\Lambda^2\right)^{\otimes 3}$, the full
+(unconstrained) tensor product dimension. The antisymmetrization to
+$\Lambda^6$ reduces this by a factor $46656/84 = 555.43\ldots$
+
+%----------------------------------------------------------------------
+\section{The mass formula}
+\label{sec:mass_formula}
+%----------------------------------------------------------------------
+
+\begin{theorem}[Neutrino mass]
+\label{thm:neutrino}
+\begin{equation}
+\label{eq:m_nu}
+\boxed{
+  m_\nu = \frac{\alpha^3\,m_e}{(2j+1)^2} = \frac{\alpha^3\,m_e}{4}.
+}
+\end{equation}
+\end{theorem}
+
+\subsection{The $1/(2j+1)^2$ coefficient}
+
+The denominator $(2j+1)^2 = 4$ arises from the spin-squared normalization
+of the neutrino vertex. Unlike the pion (which couples through
+$(2j+1)^2(2l+1)(2|\kappa_\mathrm{max}|+1) = 84$ channels), the neutrino
+couples through the \emph{inverse} of the spin-squared factor because the
+Hodge dual reverses the role of spin and orbit:
+
+\begin{itemize}
+  \item Pion (grade~3): coefficient includes $(2j+1)^2$ in the \emph{numerator}.
+  \item Neutrino (grade~6 = Hodge dual of grade~3): coefficient has
+    $(2j+1)^2$ in the \emph{denominator}.
+\end{itemize}
+
+This Hodge duality between grades 3 and 6 is responsible for the neutrino's
+extreme lightness: it is suppressed by both $\alpha^3$ and $1/4$ relative
+to the electron.
+
+\subsection{Numerical evaluation}
+
+Using $\alpha_\mathrm{PDG} = 1/137.036$ and $m_e = 0.51100$~MeV:
+\begin{align}
+  m_\nu &= \frac{(1/137.036)^3 \times 0.51100}{4}~\mathrm{MeV} \nonumber\\
+  &= \frac{3.886 \times 10^{-7} \times 0.51100}{4}~\mathrm{MeV} \nonumber\\
+  &= 4.97 \times 10^{-8}~\mathrm{MeV} \nonumber\\
+  &= 0.0497~\mathrm{eV}. \label{eq:m_nu_num}
+\end{align}
+
+This should be compared with $\sqrt{\Delta m^2_{31}} = \sqrt{2.515 \times 10^{-3}}~\mathrm{eV} = 0.0501$~eV from neutrino oscillation data (NuFIT~5.2, normal ordering), yielding an agreement of $\sim 1\%$.
+
+%----------------------------------------------------------------------
+\section{Orbit matching theorem}
+\label{sec:orbit_matching}
+%----------------------------------------------------------------------
+
+\subsection{The 7-chain}
+
+The orbit space $\mathbb{R}^{2|\kappa_\mathrm{max}|+1} = \mathbb{R}^7$ can
+be endowed with a graph structure: the \emph{7-chain} is the path graph
+$P_7$ with 7 vertices and 6 edges:
+\begin{equation}
+  v_1 - v_2 - v_3 - v_4 - v_5 - v_6 - v_7.
+\end{equation}
+
+\begin{definition}[Near-perfect matching]
+A \emph{near-perfect matching} on a graph with an odd number of vertices is
+a matching that covers all but one vertex. On $P_7$, a near-perfect matching
+consists of 3 disjoint edges.
+\end{definition}
+
+\begin{theorem}[Orbit matching]
+\label{thm:orbit}
+The 7-chain $P_7$ has exactly 4 near-perfect matchings.
+\end{theorem}
+
+\textit{Proof.}
+A near-perfect matching on $P_7$ leaves exactly one unmatched vertex. The
+unmatched vertex can be:
+\begin{itemize}
+  \item $v_1$: matching $\{(v_2,v_3), (v_4,v_5), (v_6,v_7)\}$,
+  \item $v_3$: matching $\{(v_1,v_2), (v_4,v_5), (v_6,v_7)\}$,
+  \item $v_5$: matching $\{(v_1,v_2), (v_3,v_4), (v_6,v_7)\}$,
+  \item $v_7$: matching $\{(v_1,v_2), (v_3,v_4), (v_5,v_6)\}$.
+\end{itemize}
+These are the only possibilities: the unmatched vertex must have even index
+from each end to allow consecutive-edge matchings on a path graph. On $P_7$,
+the valid unmatched vertices are $v_1, v_3, v_5, v_7$ (the odd-indexed
+vertices). \qed
+
+\subsection{Connection to $1/(2j+1)^2$}
+
+The 4 near-perfect matchings correspond to the $(2j+1)^2 = 4$ spin channels.
+Each matching represents one way the neutrino's internal structure can be
+arranged on the 7-dimensional orbit, and the $1/4$ in the mass formula
+counts the average over these matchings.
+
+%----------------------------------------------------------------------
+\section{Cross-check ratios}
+\label{sec:cross_checks}
+%----------------------------------------------------------------------
+
+\subsection{$m_p \cdot m_\nu / m_e^2$}
+
+\begin{equation}
+  \frac{m_p \cdot m_\nu}{m_e^2}
+  = \frac{(6\pi^5 m_e)(\alpha^3 m_e/4)}{m_e^2}
+  = \frac{3\pi^5\alpha^3}{2}.
+\end{equation}
+
+Numerically: $\frac{3 \times 305.97 \times 3.886 \times 10^{-7}}{2} = 1.78 \times 10^{-4}$.
+
+This ratio involves only the angular quantum numbers (through $\pi^5$ and $\alpha$),
+providing a cross-check that connects the heaviest baryon to the lightest lepton.
+
+\subsection{$m_\mu / m_\nu$}
+
+\begin{equation}
+  \frac{m_\mu}{m_\nu}
+  = \frac{20\pi^3 m_e/3}{\alpha^3 m_e/4}
+  = \frac{80\pi^3}{3\alpha^3}.
+\end{equation}
+
+Numerically: $\frac{80 \times 31.006}{3 \times 3.886 \times 10^{-7}} = 2.13 \times 10^9$.
+
+The enormous ratio $m_\mu/m_\nu \sim 10^9$ is generated by $1/\alpha^3 \sim 10^{6.4}$
+combined with the $\pi^3$ factor, without any hierarchy problem---both masses are
+derived from the same quantum numbers.
+
+%----------------------------------------------------------------------
+\section{Damping ratio}
+\label{sec:damping}
+%----------------------------------------------------------------------
+
+The ratio of consecutive exterior algebra dimensions provides the
+\emph{damping ratio}:
+\begin{equation}
+\label{eq:damping}
+  \frac{\dim\Lambda^3}{\dim\Lambda^4} = \frac{\binom{9}{3}}{\binom{9}{4}}
+  = \frac{84}{126} = \frac{2}{3}.
+\end{equation}
+
+And the even/odd ratio:
+\begin{equation}
+\label{eq:even_odd}
+  \frac{\dim\Lambda^2}{\dim\Lambda^3} = \frac{\binom{9}{2}}{\binom{9}{3}}
+  = \frac{36}{84} = \frac{3}{7}.
+\end{equation}
+
+These ratios govern the transition amplitudes between grades in the exterior
+algebra and constrain the neutrino coupling structure.
+
+%----------------------------------------------------------------------
+\section{Why $\alpha^3$ and not $\alpha^2$ or $\alpha^4$}
+\label{sec:why_alpha3}
+%----------------------------------------------------------------------
+
+The power of $\alpha$ is fixed by the grade structure:
+\begin{itemize}
+  \item The neutrino lives at grade~6 in $\Lambda^*(\mathbb{R}^9)$.
+  \item The electromagnetic 2-form lives at grade~2.
+  \item The number of 2-forms needed to reach grade~6 is $6/2 = 3$.
+  \item Therefore the neutrino requires $\alpha^{6/2} = \alpha^3$.
+\end{itemize}
+
+No other power is consistent with the grade assignment. An $\alpha^2$
+neutrino would live at grade~4 (which has $\dim = 126$, not matching the
+pion's Hodge dual), and an $\alpha^4$ neutrino would require grade~8
+($\dim = 9$, too small).
+
+%----------------------------------------------------------------------
+\section{Verification scripts}
+\label{sec:verification}
+%----------------------------------------------------------------------
+
+\begin{itemize}
+  \item \texttt{analysis/10\_wedge\_product.py}: Exterior algebra structure,
+    Hodge duality, damping ratios, Euler characteristic.
+  \item Neutrino mass computed in \texttt{lib/angular\_integrals.py}
+    function \texttt{neutrino\_mass()}.
+  \item Output: \texttt{data/generated/10\_wedge\_product.json}.
+\end{itemize}
+
+\end{document}

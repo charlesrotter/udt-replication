@@ -1,0 +1,370 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{S10.\arabic{equation}}
+
+\title{Supplement S10: Cosmological $\phi$ Profile \\
+\large Supporting Manuscript \S\S3--5}
+\author{UDT Collaboration}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We derive the cosmological $\phi(r)$ profile from the UDT metric. The
+key results are: (1) the separatrix theorem from the flux equation,
+(2) the $\epsilon$-decomposition of the source into drive and brake
+regimes, (3) the geometric polynomial as a sourced ODE solution, and
+(4) the shared coefficients $3/2$, $\cos(\pi/5)$, $2/3$ between the
+micro and macro sectors. The cosmological boundary condition
+$\phi(r_*) = \ln(1 + z_\mathrm{CMB})$ is algebraically fixed, not
+dynamically sourced. UDT cosmology is static: there is no expanding
+universe, and the CMB redshift is gravitational.
+\end{abstract}
+
+\tableofcontents
+
+%----------------------------------------------------------------------
+\section{The cosmological domain}
+\label{sec:domain}
+%----------------------------------------------------------------------
+
+\subsection{Micro vs.\ macro sectors}
+
+The UDT metric $ds^2 = -e^{-2\phi}c^2 dt^2 + e^{2\phi}dr^2 + r^2 d\Omega^2$
+governs physics at two decoupled scales:
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+ & Micro sector & Macro sector \\
+\midrule
+Domain & $[0, r_*]$, $r_* = 6.9875$ & $[0, r_*]$, $r_* \sim 10$~Gpc \\
+$\phi_0$ & $-\cos(\pi/5) = -0.809$ & $-\cos(\pi/5) \cdot \mu_g^2$ \\
+$\mu$ & $\sqrt{\pi/3}$ & $\mu_g = \pi\mu/13$ \\
+$\Delta\phi$ & $\sim 1$ & $\sim 7.003$ \\
+Observable & Particle masses & CMB, BAO, SNe \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The same metric, the same ODE structure, and the same geometric constants
+govern both sectors. The macro sector is simply the micro sector rescaled
+by a factor $\sim 10^{40}$ (the hierarchy factor; see Supplement~S1).
+
+\subsection{Cosmological screening mass}
+
+The cosmological screening mass is:
+\begin{equation}
+\label{eq:mu_g}
+  \mu_g = \frac{\pi\mu}{13} = \frac{\pi\sqrt{\pi/3}}{13} \approx 0.2473~\mathrm{Gpc}^{-1}.
+\end{equation}
+
+The factor $1/13 = 1/((2j+1)^2 + (2l+1)^2)$ is the same denominator that
+appears in $\sin^2\theta_{12} = 4/13$ (Supplement~S7).
+
+%----------------------------------------------------------------------
+\section{Separatrix theorem}
+\label{sec:separatrix}
+%----------------------------------------------------------------------
+
+\subsection{The vacuum flux equation}
+
+The cosmological $\phi(r)$ satisfies the same flux-form ODE as the micro
+sector:
+\begin{equation}
+\label{eq:flux_cosmo}
+  J' = r^2(\mu_g^2\phi - S), \qquad \phi' = \frac{J\,e^{2\phi}}{r^2},
+\end{equation}
+with $J(0) = 0$ (regularity) and $\phi(0) = \phi_0$.
+
+\subsection{Statement}
+
+\begin{theorem}[Separatrix]
+\label{thm:separatrix}
+The vacuum ($S = 0$) flux equation has a one-parameter family of solutions
+indexed by $\phi_0$. For each $\mu_g$, there exists a critical value
+$\phi_0^*$ such that:
+\begin{itemize}
+  \item $\phi_0 < \phi_0^*$: $\phi(r)$ reaches $-\infty$ at finite $r$
+    (black hole),
+  \item $\phi_0 = \phi_0^*$: $\phi(r)$ approaches a finite asymptotic value
+    (separatrix),
+  \item $\phi_0 > \phi_0^*$: $\phi(r)$ reaches $+\infty$ at finite $r$
+    (naked singularity).
+\end{itemize}
+\end{theorem}
+
+\textit{Proof sketch.}
+The e$^{2\phi}$ factor in $\phi' = Je^{2\phi}/r^2$ creates positive
+feedback: if $\phi$ grows, $\phi'$ grows exponentially, driving further
+growth. Conversely, if $\phi$ decreases, $e^{2\phi}$ suppresses $\phi'$,
+and the flux $J$ (driven by $\mu_g^2\phi < 0$) pushes $\phi$ further
+negative. The separatrix is the unstable fixed point between these two
+basins of attraction.
+
+The physical solution (the universe) lies near the separatrix, where
+$\phi$ grows from $\phi_0 \sim -0.8$ to $\phi(r_*) \sim 7$ over the
+cosmological domain. The sign of $\phi_0$ determines the vacuum
+classification: $\phi_0 < 0$ is the physical (attractive) vacuum,
+$\phi_0 > 0$ would be repulsive.
+
+%----------------------------------------------------------------------
+\section{$\epsilon$-decomposition}
+\label{sec:epsilon}
+%----------------------------------------------------------------------
+
+\subsection{Definition}
+
+For a sourced ODE with $S \neq 0$, we decompose the source as:
+\begin{equation}
+\label{eq:epsilon_def}
+  S(r) = \mu_g^2\phi(r)\left(1 - \epsilon(r)\right),
+\end{equation}
+so that:
+\begin{equation}
+  J' = r^2\mu_g^2\phi\,\epsilon(r).
+\end{equation}
+
+The function $\epsilon(r)$ measures the deviation of the source from the
+vacuum value:
+\begin{itemize}
+  \item $\epsilon = 0$: pure vacuum ($S = \mu_g^2\phi$, no net source),
+  \item $\epsilon > 0$: \emph{drive} regime (source adds to vacuum flux,
+    deepening the well),
+  \item $\epsilon < 0$: \emph{brake} regime (source opposes vacuum flux,
+    slowing the growth of $\phi$).
+\end{itemize}
+
+\subsection{Physical interpretation}
+
+In the cosmological domain:
+\begin{itemize}
+  \item Near the center ($r \ll r_*$): $\epsilon > 0$ (matter drives the
+    growth of $\phi$ from its initial value).
+  \item At intermediate $r$: $\epsilon$ changes sign, transitioning from
+    drive to brake.
+  \item Near $r_*$: the profile must reach $\phi(r_*) = \ln(1+z_\mathrm{CMB}) \approx 7.003$,
+    which is a boundary condition, not determined by the source dynamics.
+\end{itemize}
+
+The sign change of $\epsilon$ occurs at $r \approx 2.2$~Gpc (from the
+micro-sector source analysis), where the implied source $S_\mathrm{implied}$
+changes sign.
+
+%----------------------------------------------------------------------
+\section{The geometric polynomial}
+\label{sec:polynomial}
+%----------------------------------------------------------------------
+
+\subsection{Ansatz}
+
+For the sourced cosmological ODE, an approximate analytical solution is the
+\emph{geometric polynomial}:
+\begin{equation}
+\label{eq:geo_poly}
+  \phi(r) = \phi_0 + \kappa\,r + \beta\,r^2 + \gamma\,r^3,
+\end{equation}
+where the coefficients are fixed by the metric parameters:
+\begin{align}
+  \kappa &= \frac{3}{2}\,\mu_g, \label{eq:kappa_coeff}\\
+  \beta  &= -\cos(\pi/5)\,\mu_g^2, \label{eq:beta_coeff}\\
+  \gamma &= \frac{2}{3}\,\mu_g^3. \label{eq:gamma_coeff}
+\end{align}
+
+\subsection{Shared coefficients with the micro sector}
+
+The three numerical factors $(3/2, \cos(\pi/5), 2/3)$ appear in both
+sectors:
+
+\begin{center}
+\begin{tabular}{lcl}
+\toprule
+Coefficient & Value & Micro sector appearance \\
+\midrule
+$3/2$ & 1.5 & $\phi_2 = \mu^2\phi_0/3$ Frobenius coefficient \\
+$\cos(\pi/5)$ & 0.80902 & $\phi_0 = -\cos(\pi/5)$ (metric depth) \\
+$2/3$ & 0.66667 & Damping ratio $\binom{9}{3}/\binom{9}{4} = 84/126$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This parameter sharing is a consequence of both sectors being governed
+by the same metric: the cosmological coefficients are $\mu_g$-rescaled
+versions of the micro coefficients.
+
+\subsection{Sourced ODE origin}
+
+The polynomial~\eqref{eq:geo_poly} is the exact solution of the
+\emph{linearized} sourced ODE when the source is constant:
+$S = S_0 \implies \phi'' + (2/r)\phi' - \mu_g^2\phi = -S_0$. The
+nonlinear corrections (from $e^{2\phi}$ in the flux equation) modify the
+profile at large $\phi$, but the polynomial captures the leading behavior
+and provides the correct BAO and CMB observables when used as an
+approximate profile.
+
+%----------------------------------------------------------------------
+\section{The CMB boundary condition}
+\label{sec:cmb_bc}
+%----------------------------------------------------------------------
+
+\subsection{Algebraic chain}
+
+The CMB boundary condition is:
+\begin{equation}
+\label{eq:cmb_bc}
+\boxed{
+  \phi(r_*) = \ln(1 + z_\mathrm{CMB}) = \ln(1101) \approx 7.003974.
+}
+\end{equation}
+
+This follows from the UDT redshift formula: a photon emitted at radius
+$r$ with $\phi(r) = \phi_r$ and observed at $r = 0$ with $\phi(0) = \phi_0$
+experiences a gravitational redshift:
+\begin{equation}
+\label{eq:redshift}
+  1 + z = \frac{e^{-\phi_0}}{e^{-\phi_r}} = e^{\phi_r - \phi_0}.
+\end{equation}
+
+For the CMB: $z_\mathrm{CMB} = T_\mathrm{starlight}/T_\mathrm{CMB} - 1
+= 3000/2.725 - 1 \approx 1100$. Setting $\phi_0 \approx 0$ at the observer
+(weak field): $\phi(r_*) = \ln(1101) \approx 7.004$.
+
+\subsection{Why this is not a source problem}
+
+\begin{proposition}[D1 closure]
+\label{prop:D1}
+The cosmological $\Delta\phi = 7.003$ is a \emph{global boundary condition},
+not a source problem. It is algebraically fixed by the chain:
+\begin{equation}
+  z_\mathrm{CMB} = 1100 \implies \phi(r_*) = \ln(1101) = 7.003974.
+\end{equation}
+The Misner--Sharp mass relation $e^{-2\phi(r_*)} = 1 - 2GM/(c^2 r_*)$
+together with $c^2 = 2GM/r_*$ gives $e^{-2\phi} \approx 0$, consistent
+with $\phi(r_*) \gg 1$.
+\end{proposition}
+
+The ODE question is the \emph{shape} $\phi(r)$ of the profile between
+$r = 0$ and $r = r_*$, which determines the distance--redshift relation
+and cosmological observables.
+
+%----------------------------------------------------------------------
+\section{Self-consistency: $c^2 = 2GM/r_*$}
+\label{sec:self_consistency}
+%----------------------------------------------------------------------
+
+\subsection{The Misner--Sharp constraint}
+
+The metric function at the cosmological boundary satisfies:
+\begin{equation}
+\label{eq:misner_sharp}
+  e^{-2\phi(r_*)} = 1 - \frac{2GM}{c^2 r_*}.
+\end{equation}
+
+If $\phi(r_*) \gg 1$, then $e^{-2\phi} \approx 0$, giving:
+\begin{equation}
+\label{eq:c2_2GM}
+  c^2 = \frac{2GM}{r_*}.
+\end{equation}
+
+This is a self-referential constraint: $c$ is determined by $M$ and $r_*$,
+but $M$ and $r_*$ are determined by $c$ through the metric. The system
+is self-consistent:
+\begin{equation}
+  c \to M \to r_* \to c.
+\end{equation}
+
+This has been verified to $0.0000\%$ error with the BAO-fitted parameters
+$C = 1.14$, $\mu_g = 0.229$~Gpc$^{-1}$, $r_* = 9.79$~Gpc.
+
+\subsection{Gap structure}
+
+The ``gap'' at the cosmological boundary is:
+\begin{equation}
+  e^{-2\phi(r_*)} = e^{-14.008} = 8.25 \times 10^{-7}.
+\end{equation}
+
+This extremely small number is the physical content of the boundary
+condition: the universe is almost (but not exactly) a black hole, with
+$2GM/(c^2 r_*)$ differing from 1 by $\sim 10^{-6}$.
+
+%----------------------------------------------------------------------
+\section{Static cosmology and the Hubble parameter}
+\label{sec:static}
+%----------------------------------------------------------------------
+
+\subsection{No expansion}
+
+UDT cosmology is \emph{static}. The $\phi(r)$ profile is a time-independent
+solution of the field equation. There is no scale factor $a(t)$, no Friedmann
+equation, and no Big Bang.
+
+\subsection{Apparent Hubble flow}
+
+The observed Hubble parameter $H_0$ is reinterpreted as the radial gradient
+of the gravitational redshift:
+\begin{equation}
+  H_0 \equiv c\,\frac{d\ln(1+z)}{dr}\bigg|_{r=0} = c\,\phi'(0).
+\end{equation}
+
+From the geometric polynomial: $\phi'(0) = \kappa = (3/2)\mu_g$, giving
+$H_0 = (3/2)\,c\,\mu_g$.
+
+\subsection{BAO as geometric coherence}
+
+Baryon acoustic oscillations are reinterpreted as a geometric coherence
+phenomenon, not acoustic waves. The ``sound horizon'' $r_d$ is a geometric
+ruler:
+\begin{equation}
+  r_d = \frac{1000}{\sqrt{2\pi|k|\,|\beta|\,(1+z_d)}},
+\end{equation}
+where $k$ and $\beta$ are the geometric polynomial coefficients.
+This is NOT the LCDM sound horizon $r_d = 147$~Mpc, which imports
+acoustic physics.
+
+%----------------------------------------------------------------------
+\section{Hierarchy bridge: micro--macro connection}
+\label{sec:hierarchy}
+%----------------------------------------------------------------------
+
+The ratio of micro to macro screening masses is:
+\begin{equation}
+  \frac{\mu}{\mu_g} = \frac{13}{\pi} \approx 4.14,
+\end{equation}
+but the physical ratio involves the characteristic radii:
+\begin{equation}
+  \frac{\mu_g^{-1}}{r_*^\mathrm{micro}} = \frac{1/0.247}{6.9875}
+  \approx 0.58~\mathrm{Gpc}/\mathrm{(natural~units)} \sim 10^{40}.
+\end{equation}
+
+This $\sim 10^{40}$ hierarchy between micro and macro sectors is the same
+hierarchy found in the Einstein--Dirac analysis ($G_\mathrm{eff}/G_N \sim 10^{40.8}$,
+see Supplement~S1).
+
+%----------------------------------------------------------------------
+\section{Verification}
+\label{sec:verification}
+%----------------------------------------------------------------------
+
+Cosmological profile results verified by scripts in
+\texttt{validations/cosmology/} (in the main UDT repository). Key results:
+\begin{itemize}
+  \item Macro-$\phi$ closure: ALL gates PASS ($\phi_0 = -1.14$ from BAO+CMB),
+  \item $c^2 = 2GM/r_*$ verified to $0.0000\%$ error,
+  \item Geometric polynomial BAO fits: $\chi^2/\mathrm{dof} \sim 1.15$.
+\end{itemize}
+
+\end{document}

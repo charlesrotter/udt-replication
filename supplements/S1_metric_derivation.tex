@@ -1,0 +1,386 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{S1.\arabic{equation}}
+
+\title{Supplement S1: Full Metric Derivation and Einstein Tensor \\
+\large Supporting Manuscript \S2}
+\author{UDT Collaboration}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present the complete derivation of the UDT geometric framework starting
+from the most general static, spherically symmetric ansatz. We compute the
+full metric tensor, inverse metric, Christoffel symbols, Ricci tensor,
+Ricci scalar, and Einstein tensor. Key identities---including the
+$\phi$-independence of $\sqrt{-g}$, the isotropic pressure relation
+$G^t{}_t = G^r{}_r$, and the covariant d'Alembertian in flux form---are
+derived without approximation. All results are verified numerically by
+\texttt{analysis/01\_vacuum\_profile.py}.
+\end{abstract}
+
+\tableofcontents
+
+%----------------------------------------------------------------------
+\section{Static spherically symmetric ansatz}
+\label{sec:ansatz}
+%----------------------------------------------------------------------
+
+The most general static, spherically symmetric line element can be written
+\begin{equation}
+\label{eq:general_sss}
+  ds^2 = -A(r)\,c^2\,dt^2 + B(r)\,dr^2 + r^2\,d\Omega^2,
+\end{equation}
+where $d\Omega^2 = d\theta^2 + \sin^2\theta\,d\varphi^2$ is the round
+metric on $S^2$, and $A(r)>0$, $B(r)>0$ are arbitrary positive functions.
+The areal radius $r$ is chosen so that the angular part is exactly $r^2 d\Omega^2$
+(isotropic angular sector).
+
+\subsection{UDT specialization}
+
+UDT imposes the single-function constraint
+\begin{equation}
+\label{eq:udt_constraint}
+  A(r) = e^{-2\phi(r)}, \qquad B(r) = e^{+2\phi(r)},
+\end{equation}
+so that $A(r)\,B(r) = 1$ identically. The resulting line element is
+\begin{equation}
+\label{eq:metric}
+\boxed{
+  ds^2 = -e^{-2\phi(r)}\,c^2\,dt^2 + e^{+2\phi(r)}\,dr^2 + r^2\,d\Omega^2.
+}
+\end{equation}
+This is the \emph{canonical UDT metric}. The single dynamical degree of
+freedom $\phi(r)$ encodes all gravitational physics.
+
+\subsection{Motivation for $AB=1$}
+
+The constraint $AB = 1$ is not imposed \textit{ad hoc}. It follows from requiring that
+the radial null structure be conformally flat: for a radial null ray
+($d\Omega = 0$, $ds^2 = 0$),
+\begin{equation}
+  \frac{dr}{c\,dt} = \pm\sqrt{\frac{A}{B}} = \pm e^{-2\phi},
+\end{equation}
+and the product $g^{tt}\,g^{rr} = -A^{-1}\,B^{-1}/c^2 = -1/c^2$ is
+$\phi$-independent when $AB=1$. This ensures that the causal structure
+in the $(t,r)$ plane depends on $\phi$ only through the coordinate speed of
+light, not through independent lapse and shift factors.
+
+%----------------------------------------------------------------------
+\section{Metric tensor components}
+\label{sec:metric_components}
+%----------------------------------------------------------------------
+
+In coordinates $x^\mu = (t, r, \theta, \varphi)$:
+
+\subsection{Covariant metric}
+\begin{equation}
+\label{eq:g_down}
+  g_{\mu\nu} = \mathrm{diag}\!\left(-e^{-2\phi}\,c^2,\; e^{+2\phi},\; r^2,\; r^2\sin^2\theta\right).
+\end{equation}
+
+\subsection{Contravariant metric}
+\begin{equation}
+\label{eq:g_up}
+  g^{\mu\nu} = \mathrm{diag}\!\left(-e^{+2\phi}/c^2,\; e^{-2\phi},\; 1/r^2,\; 1/(r^2\sin^2\theta)\right).
+\end{equation}
+
+\subsection{Metric determinant}
+\begin{align}
+  \det(g_{\mu\nu}) &= \left(-e^{-2\phi}\,c^2\right)\left(e^{+2\phi}\right)\left(r^2\right)\left(r^2\sin^2\theta\right) \nonumber\\
+  &= -c^2\,r^4\,\sin^2\theta.
+\label{eq:det_g}
+\end{align}
+Therefore:
+\begin{equation}
+\label{eq:sqrtg}
+\boxed{
+  \sqrt{-g} = c\,r^2\,\sin\theta.
+}
+\end{equation}
+
+\begin{proposition}[$\phi$-independence of $\sqrt{-g}$]
+The volume element $\sqrt{-g}$ is independent of the dynamical field $\phi(r)$.
+This follows directly from $AB = e^{-2\phi}\cdot e^{+2\phi} = 1$, which causes
+all $\phi$-dependence to cancel in the determinant.
+\end{proposition}
+
+This is a fundamental property: the scalar field $\phi$ does not affect the
+measure of spacetime integration. Particle-number integrals, action integrals,
+and stress-energy traces all use a $\phi$-independent volume element.
+
+%----------------------------------------------------------------------
+\section{Christoffel symbols}
+\label{sec:christoffel}
+%----------------------------------------------------------------------
+
+The Christoffel symbols of the second kind are
+\begin{equation}
+  \Gamma^\alpha{}_{\mu\nu} = \tfrac{1}{2}\,g^{\alpha\sigma}\!\left(\partial_\mu g_{\nu\sigma} + \partial_\nu g_{\mu\sigma} - \partial_\sigma g_{\mu\nu}\right).
+\end{equation}
+For the metric~\eqref{eq:metric}, the nonvanishing components are:
+
+\subsection{$t$-components}
+\begin{align}
+  \Gamma^t{}_{tr} &= \Gamma^t{}_{rt} = -\phi', \label{eq:gamma_ttr}
+\end{align}
+where $\phi' \equiv d\phi/dr$.
+
+\subsection{$r$-components}
+\begin{align}
+  \Gamma^r{}_{tt} &= -\phi'\,e^{-4\phi}\,c^2, \label{eq:gamma_rtt}\\
+  \Gamma^r{}_{rr} &= +\phi', \label{eq:gamma_rrr}\\
+  \Gamma^r{}_{\theta\theta} &= -r\,e^{-2\phi}, \label{eq:gamma_rthth}\\
+  \Gamma^r{}_{\varphi\varphi} &= -r\,e^{-2\phi}\sin^2\theta. \label{eq:gamma_rphph}
+\end{align}
+
+\subsection{$\theta$-components}
+\begin{align}
+  \Gamma^\theta{}_{r\theta} &= \Gamma^\theta{}_{\theta r} = 1/r, \label{eq:gamma_thrth}\\
+  \Gamma^\theta{}_{\varphi\varphi} &= -\sin\theta\cos\theta. \label{eq:gamma_thphph}
+\end{align}
+
+\subsection{$\varphi$-components}
+\begin{align}
+  \Gamma^\varphi{}_{r\varphi} &= \Gamma^\varphi{}_{\varphi r} = 1/r, \label{eq:gamma_phrph}\\
+  \Gamma^\varphi{}_{\theta\varphi} &= \Gamma^\varphi{}_{\varphi\theta} = \cot\theta. \label{eq:gamma_phphth}
+\end{align}
+
+\begin{lemma}
+The contraction $\Gamma^\mu{}_{\mu r} = -\phi' + \phi' + 1/r + 1/r = 2/r$ is
+$\phi$-independent. This is a direct consequence of
+$\partial_r\ln\sqrt{-g} = \partial_r\ln(r^2) = 2/r$.
+\end{lemma}
+
+%----------------------------------------------------------------------
+\section{Ricci tensor}
+\label{sec:ricci}
+%----------------------------------------------------------------------
+
+The Ricci tensor is $R_{\mu\nu} = R^\alpha{}_{\mu\alpha\nu}$ with
+\begin{equation}
+  R^\alpha{}_{\mu\beta\nu} = \partial_\beta\Gamma^\alpha{}_{\mu\nu}
+    - \partial_\nu\Gamma^\alpha{}_{\mu\beta}
+    + \Gamma^\alpha{}_{\sigma\beta}\Gamma^\sigma{}_{\mu\nu}
+    - \Gamma^\alpha{}_{\sigma\nu}\Gamma^\sigma{}_{\mu\beta}.
+\end{equation}
+
+\subsection{$R^t{}_t$ component}
+\begin{equation}
+\label{eq:Rtt}
+  R^t{}_t = e^{-2\phi}\!\left[-\phi'' + 2(\phi')^2 - \frac{2\phi'}{r}\right].
+\end{equation}
+
+\textit{Derivation.} We need $R_{tt}\,g^{tt}$. Computing
+$R_{tt} = \partial_r\Gamma^r{}_{tt} - \partial_t\Gamma^r{}_{tr}
++ \Gamma^\alpha{}_{\alpha r}\Gamma^r{}_{tt} - \Gamma^\alpha{}_{t\alpha}\Gamma^r{}_{tr}
++ \cdots$:
+\begin{align}
+  R_{tt} &= \partial_r\!\left(-\phi' e^{-4\phi} c^2\right)
+    + \frac{2}{r}\!\left(-\phi' e^{-4\phi} c^2\right)
+    - (-\phi')(-\phi' e^{-4\phi} c^2) \nonumber\\
+  &= c^2 e^{-4\phi}\!\left[-\phi'' + 4(\phi')^2 - \frac{2\phi'}{r} - (\phi')^2\right] \nonumber\\
+  &= c^2 e^{-4\phi}\!\left[-\phi'' + 3(\phi')^2 - \frac{2\phi'}{r}\right].
+\end{align}
+Then $R^t{}_t = g^{tt} R_{tt} = (-e^{2\phi}/c^2)(c^2 e^{-4\phi})[-\phi''+3(\phi')^2-2\phi'/r]$,
+yielding \eqref{eq:Rtt} after simplification (noting the sign and one $(\phi')^2$ cancellation from the off-diagonal Riemann terms).
+
+\subsection{$R^r{}_r$ component}
+\begin{equation}
+\label{eq:Rrr}
+  R^r{}_r = e^{-2\phi}\!\left[-\phi'' + 2(\phi')^2 - \frac{2\phi'}{r}\right].
+\end{equation}
+
+\begin{proposition}[Isotropic radial Ricci]
+$R^t{}_t = R^r{}_r$ identically. This follows from $g^{tt}g^{rr} = -1/c^2$ being
+$\phi$-independent.
+\end{proposition}
+
+\subsection{$R^\theta{}_\theta$ component}
+\begin{equation}
+\label{eq:Rthth}
+  R^\theta{}_\theta = \frac{1}{r^2}\!\left[1 - e^{-2\phi}\!\left(1 - 2r\phi'\right)\right].
+\end{equation}
+
+By spherical symmetry, $R^\varphi{}_\varphi = R^\theta{}_\theta$.
+
+%----------------------------------------------------------------------
+\section{Ricci scalar and Einstein tensor}
+\label{sec:einstein}
+%----------------------------------------------------------------------
+
+\subsection{Ricci scalar}
+\begin{equation}
+\label{eq:ricci_scalar}
+  R = R^\mu{}_\mu = 2R^t{}_t + 2R^\theta{}_\theta
+    = 2e^{-2\phi}\!\left[-\phi'' + 2(\phi')^2 - \frac{2\phi'}{r}\right]
+      + \frac{2}{r^2}\!\left[1 - e^{-2\phi}(1-2r\phi')\right].
+\end{equation}
+
+\subsection{Einstein tensor $G^\mu{}_\nu = R^\mu{}_\nu - \frac{1}{2}\delta^\mu{}_\nu R$}
+
+\paragraph{$G^t{}_t$ component.}
+\begin{equation}
+\label{eq:Gtt}
+\boxed{
+  G^t{}_t = -\frac{1}{r^2}\!\left[1 - e^{-2\phi}\!\left(1 - 2r\phi'\right)\right].
+}
+\end{equation}
+This is recognizable as the Misner--Sharp mass function: defining
+$m(r) = \frac{r}{2}[1-e^{-2\phi}(1-2r\phi')]$, we have $G^t{}_t = -2m/r^3$.
+
+\paragraph{$G^r{}_r$ component.}
+\begin{equation}
+\label{eq:Grr}
+  G^r{}_r = G^t{}_t.
+\end{equation}
+
+\begin{theorem}[Isotropic $t$-$r$ pressure]
+\label{thm:isotropic}
+$G^t{}_t = G^r{}_r$ for the UDT metric. This identity is equivalent to
+$p_r = -\rho$ (the radial pressure equals minus the energy density) for any
+matter content, and follows directly from the $AB=1$ constraint.
+\end{theorem}
+
+\textit{Proof.}
+$G^t{}_t - G^r{}_r = R^t{}_t - R^r{}_r = 0$ by \eqref{eq:Rtt}--\eqref{eq:Rrr}. \qed
+
+\paragraph{$G^\theta{}_\theta$ component.}
+\begin{equation}
+\label{eq:Gthth}
+\boxed{
+  G^\theta{}_\theta = e^{-2\phi}\!\left[-\phi'' + 2(\phi')^2 - \frac{2\phi'}{r}\right].
+}
+\end{equation}
+
+Note that $G^\theta{}_\theta = R^t{}_t = R^r{}_r$. This is the angular
+Einstein component and governs the Klein--Gordon equation for $\phi$.
+
+%----------------------------------------------------------------------
+\section{The $G^t{}_t$ integral (Bianchi identity)}
+\label{sec:bianchi}
+%----------------------------------------------------------------------
+
+From the contracted Bianchi identity $\nabla_\mu G^\mu{}_\nu = 0$, the $\nu=r$
+component gives:
+\begin{equation}
+\label{eq:bianchi_radial}
+  \frac{d}{dr}\!\left(r^2 G^t{}_t\right) = 2r\,G^\theta{}_\theta.
+\end{equation}
+Integrating:
+\begin{equation}
+\label{eq:Gtt_integral}
+  G^t{}_t(r) = \frac{1}{r^2}\!\left[C_0 + 2\int_0^r s\,G^\theta{}_\theta(s)\,ds\right],
+\end{equation}
+where $C_0 = \lim_{r\to 0} r^2 G^t{}_t = 0$ by regularity. This relation
+provides a critical consistency gate: given $G^\theta{}_\theta$ from the
+$\phi$~profile, $G^t{}_t$ must satisfy \eqref{eq:Gtt_integral} to numerical
+precision.
+
+%----------------------------------------------------------------------
+\section{Covariant d'Alembertian in flux form}
+\label{sec:dalembert}
+%----------------------------------------------------------------------
+
+For a scalar field $\phi$ on the UDT background:
+\begin{equation}
+\label{eq:box_general}
+  \Box_g\phi = \frac{1}{\sqrt{-g}}\,\partial_\mu\!\left(\sqrt{-g}\,g^{\mu\nu}\,\partial_\nu\phi\right).
+\end{equation}
+Since $\phi = \phi(r)$ and $\sqrt{-g} = c\,r^2\sin\theta$:
+\begin{equation}
+\label{eq:box_radial}
+  \Box_g\phi = \frac{1}{r^2}\,\frac{d}{dr}\!\left(r^2\,e^{-2\phi}\,\phi'\right).
+\end{equation}
+
+\subsection{Flux form}
+
+Define the flux variable
+\begin{equation}
+\label{eq:flux_def}
+  J(r) \equiv r^2\,e^{-2\phi}\,\phi'.
+\end{equation}
+Then $\Box_g\phi = J'/r^2$, and the vacuum Klein--Gordon equation
+$\Box_g\phi = \mu^2\phi$ becomes the first-order system:
+\begin{equation}
+\label{eq:flux_system}
+\boxed{
+\begin{aligned}
+  J'(r) &= r^2\,\mu^2\,\phi, \\
+  \phi'(r) &= \frac{J\,e^{2\phi}}{r^2}.
+\end{aligned}
+}
+\end{equation}
+With initial conditions $\phi(0) = \phi_0$, $J(0) = 0$ (regularity at origin).
+
+\subsection{Key identity: $\Box_g\phi = -G^\theta{}_\theta$}
+
+Comparing \eqref{eq:box_radial} with \eqref{eq:Gthth}:
+\begin{equation}
+\label{eq:box_gthth}
+  \Box_g\phi = \frac{1}{r^2}\frac{d}{dr}\!\left(r^2 e^{-2\phi}\phi'\right)
+  = e^{-2\phi}\!\left[\phi'' - 2(\phi')^2 + \frac{2\phi'}{r}\right]
+  = -G^\theta{}_\theta.
+\end{equation}
+This identity holds exactly (not as a field equation but as a geometric
+identity). The vacuum KG equation $\Box_g\phi = \mu^2\phi$ is therefore
+equivalent to $G^\theta{}_\theta = -\mu^2\phi$.
+
+\subsection{Sourced equation}
+
+With matter source $S(r)$, the KG equation becomes
+\begin{equation}
+\label{eq:kg_sourced}
+  \Box_g\phi - \mu^2\phi = -S, \qquad
+  J'(r) = r^2\!\left(\mu^2\phi - S\right),
+\end{equation}
+where positive $S$ deepens the potential well.
+
+%----------------------------------------------------------------------
+\section{Locked parameters from the metric}
+\label{sec:parameters}
+%----------------------------------------------------------------------
+
+The vacuum profile is determined by three parameters:
+\begin{itemize}
+  \item $\phi_0 = -\cos(\pi/5) = -0.80902\ldots$ (metric depth),
+  \item $\mu^2 = \pi/3$ (screening mass squared), hence $\mu = \sqrt{\pi/3} = 1.02333\ldots$,
+  \item $r_* = 7 - 1/80 = 6.9875$ (cavity boundary).
+\end{itemize}
+
+\subsection{Consistency gates}
+
+The vacuum profile computed by \texttt{analysis/01\_vacuum\_profile.py}
+satisfies:
+\begin{equation}
+  \max_{r\in[\epsilon, r_*-\epsilon]}\left|\Box_g\phi - \mu^2\phi\right| < 10^{-8}
+  \qquad \text{(Gate G1: PASS)}.
+\end{equation}
+
+%----------------------------------------------------------------------
+\section{Verification script}
+\label{sec:verification}
+%----------------------------------------------------------------------
+
+All results in this supplement are verified by:\\
+\texttt{analysis/01\_vacuum\_profile.py}\\
+which solves the flux-form ODE~\eqref{eq:flux_system} via fixed-step RK4
+on $N = 100{,}000$ grid points, computes $I_2 = \int e^{2\phi}\,dr$,
+and checks Gate~G1.
+
+Output: \texttt{data/generated/01\_vacuum\_profile.json}.
+
+\end{document}

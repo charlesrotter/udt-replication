@@ -1,0 +1,336 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{tikz}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{S9.\arabic{equation}}
+
+\title{Supplement S9: Orbit Matching Theorem \\
+\large Supporting Manuscript \S13}
+\author{UDT Collaboration}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give a complete proof of the orbit matching theorem: the path graph
+$P_7$ (the ``7-chain'') admits exactly 4 near-perfect matchings. This
+combinatorial result connects the orbit structure of the angular sector
+to the $1/(2j+1)^2 = 1/4$ coefficient in the neutrino mass formula.
+We classify all matchings, prove optimality, and establish the connection
+to the spin multiplicity. Verified by
+\texttt{analysis/10\_wedge\_product.py}.
+\end{abstract}
+
+\tableofcontents
+
+%----------------------------------------------------------------------
+\section{Graph-theoretic setup}
+\label{sec:setup}
+%----------------------------------------------------------------------
+
+\subsection{The path graph $P_n$}
+
+\begin{definition}
+The \emph{path graph} $P_n$ has $n$ vertices $\{v_1, v_2, \ldots, v_n\}$
+and $n-1$ edges $\{(v_i, v_{i+1}) : i = 1, \ldots, n-1\}$.
+\end{definition}
+
+We are interested in $P_7$, the path graph on 7 vertices:
+\begin{equation}
+  v_1 \text{---} v_2 \text{---} v_3 \text{---} v_4 \text{---}
+  v_5 \text{---} v_6 \text{---} v_7.
+\end{equation}
+
+This graph represents the orbit space $\mathbb{R}^{2|\kappa_\mathrm{max}|+1} = \mathbb{R}^7$
+with its natural ordering. The 7 vertices correspond to the 7 basis vectors
+of the orbit space, and the edges represent nearest-neighbor couplings.
+
+\subsection{Matchings}
+
+\begin{definition}
+A \emph{matching} $M$ on a graph $G = (V, E)$ is a set of edges with no
+shared vertices: $e, e' \in M, e \neq e' \implies e \cap e' = \emptyset$.
+\end{definition}
+
+\begin{definition}
+A \emph{perfect matching} covers all vertices. A \emph{near-perfect matching}
+on a graph with an odd number of vertices covers all vertices except one.
+On $P_{2k+1}$, a near-perfect matching consists of $k$ disjoint edges.
+\end{definition}
+
+For $P_7$ (odd, $k = 3$): a near-perfect matching consists of 3 disjoint
+edges covering 6 of the 7 vertices.
+
+%----------------------------------------------------------------------
+\section{Enumeration of near-perfect matchings on $P_7$}
+\label{sec:enumeration}
+%----------------------------------------------------------------------
+
+\begin{theorem}[Orbit matching theorem]
+\label{thm:orbit_matching}
+The path graph $P_7$ has exactly 4 near-perfect matchings.
+\end{theorem}
+
+\textit{Proof by explicit construction.}
+We enumerate all near-perfect matchings by identifying the unmatched vertex.
+
+\subsection{Classification by unmatched vertex}
+
+Let $v_k$ be the unmatched vertex. The remaining 6 vertices must be covered
+by 3 disjoint edges, all of which must be edges of $P_7$ (i.e., consecutive
+pairs).
+
+The removal of $v_k$ splits $P_7$ into two paths: $P_{k-1}$ (vertices $v_1, \ldots, v_{k-1}$)
+and $P_{7-k}$ (vertices $v_{k+1}, \ldots, v_7$). Each sub-path must admit a
+\emph{perfect} matching (since we need to cover all 6 remaining vertices).
+
+A path $P_m$ admits a perfect matching if and only if $m$ is even.
+
+Therefore, $v_k$ can be unmatched if and only if both $k - 1$ and $7 - k$
+are even, i.e., $k$ is odd.
+
+The odd values of $k$ in $\{1, 2, \ldots, 7\}$ are $k \in \{1, 3, 5, 7\}$.
+
+\subsection{Explicit matchings}
+
+\paragraph{$k = 1$ (unmatched: $v_1$):}
+Sub-paths: $P_0$ (empty) and $P_6 = (v_2, \ldots, v_7)$.
+$P_6$ has a unique perfect matching: $\{(v_2,v_3), (v_4,v_5), (v_6,v_7)\}$.
+\begin{equation}
+  M_1 = \{(v_2,v_3), (v_4,v_5), (v_6,v_7)\}.
+\end{equation}
+
+\paragraph{$k = 3$ (unmatched: $v_3$):}
+Sub-paths: $P_2 = (v_1, v_2)$ and $P_4 = (v_4, v_5, v_6, v_7)$.
+$P_2$ matching: $\{(v_1,v_2)\}$. $P_4$ matching: $\{(v_4,v_5), (v_6,v_7)\}$.
+\begin{equation}
+  M_3 = \{(v_1,v_2), (v_4,v_5), (v_6,v_7)\}.
+\end{equation}
+
+\paragraph{$k = 5$ (unmatched: $v_5$):}
+Sub-paths: $P_4 = (v_1, v_2, v_3, v_4)$ and $P_2 = (v_6, v_7)$.
+$P_4$ matching: $\{(v_1,v_2), (v_3,v_4)\}$. $P_2$ matching: $\{(v_6,v_7)\}$.
+\begin{equation}
+  M_5 = \{(v_1,v_2), (v_3,v_4), (v_6,v_7)\}.
+\end{equation}
+
+\paragraph{$k = 7$ (unmatched: $v_7$):}
+Sub-paths: $P_6 = (v_1, \ldots, v_6)$ and $P_0$ (empty).
+$P_6$ matching: $\{(v_1,v_2), (v_3,v_4), (v_5,v_6)\}$.
+\begin{equation}
+  M_7 = \{(v_1,v_2), (v_3,v_4), (v_5,v_6)\}.
+\end{equation}
+
+\paragraph{Even $k$ (impossible):}
+For $k = 2$: sub-paths $P_1$ and $P_5$, both odd length. No perfect matching
+exists on odd-length paths. Similarly for $k = 4$ and $k = 6$. \qed
+
+%----------------------------------------------------------------------
+\section{Uniqueness of perfect matchings on paths}
+\label{sec:path_matchings}
+%----------------------------------------------------------------------
+
+\begin{lemma}
+\label{lem:path_unique}
+The path graph $P_{2m}$ has exactly one perfect matching.
+\end{lemma}
+
+\textit{Proof.}
+By induction on $m$. Base case: $P_2$ has the unique matching $\{(v_1,v_2)\}$.
+Inductive step: In $P_{2m}$, vertex $v_1$ must be matched to $v_2$ (its only
+neighbor). Removing $\{v_1, v_2\}$ leaves $P_{2m-2}$, which by induction has
+a unique perfect matching. \qed
+
+\begin{corollary}
+Each near-perfect matching on $P_7$ is unique once the unmatched vertex is
+specified. Therefore, the number of near-perfect matchings equals the number
+of valid unmatched vertices, which is 4.
+\end{corollary}
+
+%----------------------------------------------------------------------
+\section{General formula for $P_{2k+1}$}
+\label{sec:general}
+%----------------------------------------------------------------------
+
+\begin{theorem}
+\label{thm:general}
+The number of near-perfect matchings on $P_{2k+1}$ is $k+1$.
+\end{theorem}
+
+\textit{Proof.}
+The unmatched vertex $v_m$ must satisfy: $m - 1$ is even and $2k + 1 - m$
+is even, i.e., $m$ is odd. The odd values in $\{1, \ldots, 2k+1\}$ are
+$\{1, 3, 5, \ldots, 2k+1\}$, which has $k+1$ elements. By
+Lemma~\ref{lem:path_unique}, each choice gives exactly one matching. \qed
+
+For $P_7$: $k = 3$, so $k + 1 = 4$. $\checkmark$
+
+\subsection{Values for small $n$}
+
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+$P_n$ ($n$ odd) & $k$ & Near-perfect matchings \\
+\midrule
+$P_1$ & 0 & 1 \\
+$P_3$ & 1 & 2 \\
+$P_5$ & 2 & 3 \\
+$P_7$ & 3 & \textbf{4} \\
+$P_9$ & 4 & 5 \\
+$P_{11}$ & 5 & 6 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The value 4 for $P_7$ matches $(2j+1)^2 = 4$ exactly.
+
+%----------------------------------------------------------------------
+\section{Connection to $1/(2j+1)^2$}
+\label{sec:connection}
+%----------------------------------------------------------------------
+
+\subsection{The correspondence}
+
+The 4 near-perfect matchings on $P_7$ correspond to the $(2j+1)^2 = 4$
+spin states of the $j = 1/2$ doublet:
+
+\begin{center}
+\begin{tabular}{ccl}
+\toprule
+Matching & Unmatched vertex & Spin state \\
+\midrule
+$M_1$ & $v_1$ & $\ket{\uparrow\uparrow}$ \\
+$M_3$ & $v_3$ & $\ket{\uparrow\downarrow}$ \\
+$M_5$ & $v_5$ & $\ket{\downarrow\uparrow}$ \\
+$M_7$ & $v_7$ & $\ket{\downarrow\downarrow}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The labeling is symbolic: the precise correspondence is that the 4 matchings
+provide 4 independent channels for the neutrino coupling, and the neutrino
+mass is the \emph{average} over these channels:
+\begin{equation}
+  m_\nu = \frac{\alpha^3 m_e}{\#\text{(near-perfect matchings on }P_7\text{)}}
+  = \frac{\alpha^3 m_e}{4}.
+\end{equation}
+
+\subsection{Why $P_7$ and not $P_5$ or $P_9$?}
+
+The orbit size is $2|\kappa_\mathrm{max}| + 1 = 7$, fixed by the Diophantine
+identity (Supplement~S4). For $P_5$ the count would be 3, and for $P_9$ it
+would be 5. Only $P_7$ gives $k + 1 = 4 = (2j+1)^2$, connecting the orbit
+matching count back to the spin quantum number.
+
+\begin{proposition}
+The identity
+\begin{equation}
+\label{eq:matching_spin}
+  \#\text{(near-perfect matchings on }P_{2|\kappa_\mathrm{max}|+1}\text{)}
+  = (2j+1)^2
+\end{equation}
+is equivalent to $|\kappa_\mathrm{max}| + 1 = (2j+1)^2$, i.e.,
+$|\kappa_\mathrm{max}| = (2j+1)^2 - 1 = 4j(j+1)$.
+For $j = 1/2$: $|\kappa_\mathrm{max}| = 4 \cdot \frac{1}{2} \cdot \frac{3}{2} = 3$. $\checkmark$
+\end{proposition}
+
+This provides an alternative route to the quantum number constraint:
+the matching count on the orbit chain must equal the spin-squared multiplicity.
+
+%----------------------------------------------------------------------
+\section{Symmetry properties of the matchings}
+\label{sec:symmetry}
+%----------------------------------------------------------------------
+
+\subsection{Reflection symmetry}
+
+$P_7$ has a reflection symmetry $v_k \leftrightarrow v_{8-k}$. Under this
+reflection:
+\begin{equation}
+  M_1 \leftrightarrow M_7, \qquad M_3 \leftrightarrow M_5.
+\end{equation}
+
+The 4 matchings form two reflection-symmetric pairs, corresponding to the
+two spin orientations.
+
+\subsection{Translation structure}
+
+The unmatched vertices $\{1, 3, 5, 7\}$ are uniformly spaced with gap 2.
+This regularity reflects the uniform structure of the $P_7$ chain and
+ensures that all 4 neutrino channels are equivalent---there is no preferred
+spin state.
+
+%----------------------------------------------------------------------
+\section{Connection to perfect matchings on $K_6$}
+\label{sec:K6}
+%----------------------------------------------------------------------
+
+Each near-perfect matching on $P_7$ covers 6 vertices with 3 edges. The
+number of perfect matchings on the complete graph $K_6$ (which allows
+\emph{all} edges, not just path edges) is:
+\begin{equation}
+  \frac{6!}{2^3 \cdot 3!} = \frac{720}{48} = 15.
+\end{equation}
+
+The path matchings are a subset: 4 out of 15 possible ways to pair 6
+vertices. The ratio $4/15$ reflects the restriction to nearest-neighbor
+couplings in the path graph.
+
+This connects to the exterior algebra structure (Supplement~S6): the
+grade-6 form $\omega_\nu = \alpha \wedge \alpha \wedge \alpha$ has
+$\binom{9}{6} = 84$ components in $\Lambda^6(\mathbb{R}^9)$, and the
+15 perfect matchings on $K_6$ govern the Pfaffian structure of this triple
+wedge product.
+
+%----------------------------------------------------------------------
+\section{Generalization to other path lengths}
+\label{sec:generalization}
+%----------------------------------------------------------------------
+
+\subsection{Even paths}
+
+For even-length paths $P_{2k}$, the relevant object is the number of
+\emph{perfect} matchings (covering all vertices). By Lemma~\ref{lem:path_unique},
+$P_{2k}$ has exactly 1 perfect matching for all $k$.
+
+\subsection{Odd paths and Fibonacci numbers}
+
+The total number of matchings (of all sizes) on $P_n$ is the Fibonacci
+number $F_{n+2}$. For $P_7$: $F_9 = 34$ total matchings. The near-perfect
+matchings (size exactly 3) form a small subset.
+
+More precisely, the number of matchings of size $k$ on $P_n$ is
+$\binom{n-k}{k}$. For $P_7$, $k = 3$: $\binom{4}{3} = 4$. This provides
+an alternative proof of Theorem~\ref{thm:orbit_matching}:
+\begin{equation}
+  \#\text{(near-perfect matchings on }P_7\text{)} = \binom{7-3}{3} = \binom{4}{3} = 4. \quad \checkmark
+\end{equation}
+
+%----------------------------------------------------------------------
+\section{Verification}
+\label{sec:verification}
+%----------------------------------------------------------------------
+
+The orbit matching theorem is used in the neutrino mass derivation
+(Supplement~S6) and is verified as part of the exterior algebra analysis
+in \texttt{analysis/10\_wedge\_product.py}.
+
+The combinatorial identities ($\binom{4}{3} = 4$, $K_6$ perfect matchings
+$= 15$, $\binom{9}{6} = 84$) are all checked numerically and reported in
+\texttt{data/generated/10\_wedge\_product.json}.
+
+\end{document}
