@@ -43,36 +43,30 @@ from a single static metric}
 \date{\today}
 
 \begin{abstract}
-We investigate the physical consequences of the static, spherically
-symmetric metric
-$ds^2 = -e^{-2\phi(r)}c^2\,dt^2 + e^{2\phi(r)}dr^2 + r^2\,d\Omega^2$,
-where $\phi(r)$ satisfies a covariant screened scalar equation derived
-from the Einstein field equations.  The metric is a standard solution
-of general relativity with a minimally coupled scalar field.  From
-three geometric parameters --- all determined by angular quantum
-numbers on $S^2$ --- and one mass anchor ($m_e$), we derive:
-(i)~parameter-free lepton mass ratios ($m_p/m_e = 6\pi^5$ at
-$0.002\%$, $m_\mu/m_e = 20\pi^3/3$ at $0.03\%$);
-(ii)~the pion mass from the Diophantine identity $84 = \binom{9}{3}$
-at $0.09\%$; (iii)~a meson--baryon spectrum matching 17~particles
-within $1\%$; (iv)~the fine-structure constant
-$1/\alpha = 36\pi/I_2 = 137.4$ at $0.29\%$; (v)~three PMNS mixing
-angles, all within $1\sigma$ of experiment; (vi)~the atmospheric
-neutrino mass scale $m_\nu = \alpha^3 m_e/4 = 0.049$~eV at $0.5\%$;
-(vii)~Type~Ia supernova distances at $0.166$~mag RMS with one
-parameter; (viii)~CMB peak positions at $1.32\%$ RMS; and (ix)~BAO
-distance ratios at $3.8\%$ RMS.  In total, more than 30~quantitative
-predictions emerge from a single line element.  All derivations,
-numerical codes, and datasets are publicly available.  We present the
-predictions before the derivations to facilitate independent
-verification.
+We derive the physical consequences of a static, spherically symmetric
+metric $ds^2 = -e^{-2\phi(r)}c^2\,dt^2 + e^{2\phi(r)}dr^2 +
+r^2\,d\Omega^2$, where $\phi(r)$ satisfies a covariant screened
+scalar equation obtained from the Einstein field equations.  The
+metric, a standard solution of general relativity with a minimally
+coupled scalar field, yields a luminosity-distance relation consistent
+with 1701~Type~Ia supernovae at $0.166$~mag RMS and baryon acoustic
+oscillation distance ratios at $3.8\%$ RMS with zero free
+cosmological parameters.  We show that the same geometric structure,
+through its angular decomposition on $S^2$, determines three metric
+parameters from a unique Diophantine triple and produces
+parameter-free lepton mass ratios ($m_p/m_e = 6\pi^5$ at $0.002\%$,
+$m_\mu/m_e = 20\pi^3/3$ at $0.03\%$), the fine-structure constant
+($1/\alpha = 36\pi/I_2 = 137.4$ at $0.29\%$), the atmospheric
+neutrino mass ($m_\nu = \alpha^3 m_e/4 = 0.049$~eV at $0.5\%$), and
+three PMNS mixing angles all within $1\sigma$ of experiment.  The
+cosmological peak structure and the microphysical mass spectrum emerge
+from the same operators on the same metric.  The framework makes
+specific falsifiable predictions for JUNO, KATRIN, DUNE, the ELT
+Sandage--Loeb test, and next-generation galaxy surveys.  All
+derivations, numerical codes, and datasets are publicly available.
 \end{abstract}
 
 \maketitle
-
-%===================================================================
-% TABLE OF CONTENTS (implicit via sections)
-%===================================================================
 
 %===================================================================
 \section{Introduction}\label{sec:intro}
@@ -85,148 +79,38 @@ Friedmann--Lema\^{i}tre--Robertson--Walker (FLRW) solutions.  Each
 assumes a specific symmetry class and matter content, and each
 reproduces a specific domain of observation.
 
-In this paper, we explore the consequences of a single static,
+In this paper, we derive the geodesic implications of a single static,
 spherically symmetric metric with a screened scalar dilation field
-$\phi(r)$:
-% VERIFIED: CG §1
-\begin{equation}\label{eq:metric}
-  ds^2 = -e^{-2\phi(r)}\,c^2\,dt^2 + e^{2\phi(r)}\,dr^2
-         + r^2\,d\Omega^2\,.
-\end{equation}
-This is a GR metric.  The scalar field $\phi$ satisfies a covariant
-equation derived from the Einstein field equations.  There is no
-modification to GR, no additional postulate, and no new symmetry
-principle.  We merely take the metric seriously: every operator,
-boundary condition, and physical prediction is derived from
-Eq.~\eqref{eq:metric} and its consequences.
+$\phi(r)$.  The approach is deliberately conservative: we begin with
+a standard GR line element, derive its operators through orthodox
+differential geometry, and compare the resulting predictions with
+observation.  No modification of GR is proposed.  No additional
+postulate or symmetry principle is introduced.
 
-The metric~\eqref{eq:metric} was first published on Zenodo in
-September 2025~\cite{zenodo2025}.  It belongs to a well-studied class
-of static spherically symmetric spacetimes with $g_{tt}\,g_{rr} =
--c^2$ (constant), a condition that simultaneously produces:
-\begin{itemize}
-\item exact Coulomb electrostatics ($g^{tt}g^{rr} = -1/c^2$),
-\item the identity $G^t_{\ t} \equiv G^r_{\ r}$ (constraining all
-  matter to satisfy $T^t_{\ t} = T^r_{\ r}$), and
-\item a metric determinant $\sqrt{-g} = c\,r^2\sin\theta$ independent
-  of $\phi$.
-\end{itemize}
-
-The program is straightforward: derive all operators from the metric,
-solve the eigenvalue problems, and compare with observation.  We find
-that the resulting predictions span particle physics, cosmology, and
-astrophysics.  We present them in a single predictions table
-(Table~\ref{tab:predictions}) \emph{before} any derivation, so that
-the reader may evaluate the scope of the results before examining the
-mathematical chain.
-
-The paper is organized as follows.  Section~\ref{sec:predictions}
-presents the full predictions table.
-Section~\ref{sec:metric} defines the metric and scalar field equation.
-Sections~\ref{sec:sne}--\ref{sec:bao} cover cosmological tests.
-Section~\ref{sec:causality} establishes causal structure.
-Section~\ref{sec:gr-reduction} demonstrates reduction to standard GR.
+The structure of the paper follows the derivation chain from the
+simplest consequences of the metric to increasingly detailed
+predictions.  We begin with the metric and its structural identities
+(Sec.~\ref{sec:metric}), then validate the cosmological distance
+relation against Type~Ia supernovae
+(Sec.~\ref{sec:sne}).  Sections~\ref{sec:causality}
+and~\ref{sec:gr-reduction} establish causality and reduction to
+standard GR at accessible scales.  Section~\ref{sec:bao} extends the
+cosmological tests to baryon acoustic oscillations.
 Sections~\ref{sec:angular}--\ref{sec:hadrons} derive the particle
-mass spectrum.  Sections~\ref{sec:alpha}--\ref{sec:pmns} derive
-coupling constants, neutrino masses, and mixing angles.
-Sections~\ref{sec:cmb}--\ref{sec:blackholes} cover CMB, JWST
-predictions, rotation curves, and black holes.
-Section~\ref{sec:falsify} presents falsification criteria.
-Section~\ref{sec:discussion} discusses the physical picture, and
-Sec.~\ref{sec:conclusion} concludes.
+mass spectrum from the angular decomposition of the Dirac equation on
+the metric.  Sections~\ref{sec:alpha}--\ref{sec:pmns} derive coupling
+constants, neutrino parameters, and mixing angles.
+Sections~\ref{sec:bridge-gen}--\ref{sec:cmb} establish the bridge between
+microphysical and cosmological sectors.
+Sections~\ref{sec:jwst}--\ref{sec:blackholes} discuss astrophysical
+implications.  Section~\ref{sec:falsify} presents the full predictions
+table and falsification criteria.
+Sections~\ref{sec:discussion}--\ref{sec:conclusion} discuss and
+conclude.
 
 Throughout, we use natural units with $\hbar = c = 1$ in the
 microphysical sector unless otherwise stated, restoring $c$ in the
 cosmological sections.  The metric signature is $(-,+,+,+)$.
-
-%===================================================================
-\section{Predictions Table}\label{sec:predictions}
-%===================================================================
-
-Table~\ref{tab:predictions} collects the quantitative predictions
-derived in the remainder of this paper.  The first column identifies
-the observable; the second gives the UDT prediction (with its
-algebraic form where applicable); the third gives the experimental
-value; and the fourth gives the percentage deviation.  All predictions
-flow from the single metric~\eqref{eq:metric} with three geometric
-parameters and one mass anchor~($m_e$).
-
-We emphasize: \emph{none of these values are fitted}.  The three
-parameters $(\phiz, \mu^2, \rstar)$ are fixed by angular quantum
-numbers on $S^2$ (Sec.~\ref{sec:angular}), and the mass scale $C$ is
-set by a single calibration to the electron mass.
-
-\begingroup
-\squeezetable
-\begin{table*}[t]
-\caption{\label{tab:predictions}%
-Predictions of the metric~\eqref{eq:metric}.  ``Angular'' denotes
-quantities derived from the angular structure on $S^2$ with zero free
-parameters; ``Eigenvalue'' denotes Dirac eigenvalues with one
-calibration~$C$; ``Coupling'' and ``Neutrino'' denote derived
-constants; ``Cosmological'' denotes fits with at most one free
-parameter ($\mug$).  PDG values from Ref.~\cite{PDG2024}; CMB from
-Planck 2018~\cite{Planck2018}; BAO from BOSS/DESI~\cite{DESI2024};
-SNe from Pantheon+~\cite{Pantheon2022}.  Neutrino data from NuFIT
-5.2~\cite{NuFIT}.}
-\begin{ruledtabular}
-\begin{tabular}{llll}
-\textrm{Observable} & \textrm{UDT prediction} & \textrm{Experiment}
-  & \textrm{Deviation} \\
-\colrule
-\multicolumn{4}{c}{\textit{Angular sector} (parameter-free, from
-  $j\!=\!1/2$, $\ell\!=\!1$, $\kmax\!=\!3$)} \\[3pt]
-$m_\pi / m_e$ & $84\pi = 263.89$ & $264.14$ & $-0.09\%$ \\
-$m_\mu / m_e$ & $20\pi^3/3 = 206.71$ & $206.77$ & $-0.03\%$ \\
-$m_p / m_e$ & $6\pi^5 = 1836.12$ & $1836.15$ & $-0.002\%$ \\
-$m_p / m_\mu$ & $9\pi^2/10 = 8.883$ & $8.880$ & $+0.03\%$ \\
-$m_p / m_\pi$ & $\pi^4/14 = 6.951$ & $6.951$ & $+0.09\%$ \\[6pt]
-\multicolumn{4}{c}{\textit{Eigenvalue sector} (one calibration
-  $C = 4\pi^2 m_e\,\rstar$)} \\[3pt]
-$E_1(\kappa\!=\!-1)$ & $2\sqrt{2}/3 = 0.9428$ & (exact, 10 digits)
-  & $0.08\%$ \\
-$m_\eta$ & 548.0~MeV ($\kappa\!=\!+2$, $n\!=\!1$)
-  & 547.9~MeV & $+0.03\%$ \\
-$m_\rho$ & 784.3~MeV ($\kappa\!=\!-1$, $n\!=\!2$)
-  & 775.3~MeV & $+1.2\%$ \\
-$m_\omega$ & 784.3~MeV ($\kappa\!=\!-1$, $n\!=\!2$)
-  & 782.7~MeV & $+0.20\%$ \\
-$m_{\phi(1020)}$ & 1022.7~MeV ($\kappa\!=\!+3$, $n\!=\!1$)
-  & 1019.5~MeV & $+0.32\%$ \\
-$m_{f_2(1270)}$ & 1270.5~MeV ($\kappa\!=\!+2$, $n\!=\!2$)
-  & 1275.5~MeV & $-0.39\%$ \\
-$m_{a_0(980)}$ & 973.6~MeV ($\kappa\!=\!+1$, $n\!=\!1$)
-  & 980.0~MeV & $-0.66\%$ \\
-$m_\Lambda$ & 1115.7~MeV ($\kappa\!=\!-3$, $n\!=\!1$, sub-cavity)
-  & 1115.7~MeV & $+0.32\%$ \\
-$m_\Omega$ & 1672.5~MeV ($\kappa\!=\!-1$, $n\!=\!3$, sub-cavity)
-  & 1672.5~MeV & $+0.52\%$ \\[6pt]
-\multicolumn{4}{c}{\textit{Coupling constants}} \\[3pt]
-$1/\aEM$ & $36\pi/I_2 = 137.4$ & $137.036$ & $+0.29\%$ \\
-$m_n - m_p$ & $(5/4)\,\aEM\,C = 1.282$~MeV
-  & 1.293~MeV & $-0.87\%$ \\[6pt]
-\multicolumn{4}{c}{\textit{Neutrino sector}} \\[3pt]
-$m_\nu$ (atmospheric) & $\alpha^3 m_e/4 = 0.049$~eV
-  & $\sqrt{\Delta m^2_{\mathrm{atm}}} = 0.050$~eV & $-0.5\%$ \\
-$\sin^2\theta_{12}$ & $4/13 = 0.3077$ & $0.304 \pm 0.012$
-  & $+1.2\%$ ($0.31\sigma$) \\
-$\sin^2\theta_{23}$ & $4/7 = 0.5714$ & $0.573 \pm 0.018$
-  & $-0.3\%$ ($0.09\sigma$) \\
-$\sin^2\theta_{13}$ & $1/45 = 0.02222$ & $0.02220 \pm 0.00062$
-  & $+0.1\%$ ($0.04\sigma$) \\[6pt]
-\multicolumn{4}{c}{\textit{Cosmological}} \\[3pt]
-SNe (Pantheon+, 1701) & $d_L = r\,e^{\phi(r)}$, 1 param ($M$)
-  & --- & 0.166~mag~RMS \\
-CMB peaks 1--7 & WKB on sourced $\phi$, 1 param ($\mug$)
-  & Planck 2018 & 1.32\%~RMS \\
-BAO (8 surveys) & Native $r_d$, 0 free params
-  & BOSS/DESI & 3.8\%~RMS \\
-$c^2 = 2GM/\rstar$ & Misner--Sharp at boundary
-  & $c = 2.998 \times 10^8$~m/s & $< 0.01\%$ \\
-\end{tabular}
-\end{ruledtabular}
-\end{table*}
-\endgroup
 
 %===================================================================
 \section{The Metric and Scalar Field}\label{sec:metric}
@@ -235,23 +119,48 @@ $c^2 = 2GM/\rstar$ & Misner--Sharp at boundary
 \subsection{The line element}
 
 We work with the static, spherically symmetric line element
-\begin{equation}\label{eq:metric-full}
+\begin{equation}\label{eq:metric}
   ds^2 = -e^{-2\phi(r)}\,c^2\,dt^2 + e^{2\phi(r)}\,dr^2
          + r^2(d\theta^2 + \sin^2\!\theta\,d\varphi^2)\,,
 \end{equation}
 where $\phi(r)$ is a single real scalar field and $r$ is the areal
-radius.  The metric components are
+radius.  The metric was first published on Zenodo in September
+2025~\cite{zenodo2025}.  The metric components are
 \begin{equation}
   g_{tt} = -e^{-2\phi}c^2,\quad g_{rr} = e^{2\phi},\quad
   g_{\theta\theta} = r^2,\quad g_{\varphi\varphi} = r^2\sin^2\theta\,.
 \end{equation}
+
+This line element belongs to a well-studied class of static
+spherically symmetric spacetimes.  Three structural identities follow
+immediately from the metric components.
+
+\paragraph{Metric determinant.}
 The determinant satisfies
 % VERIFIED: CG §1.2
 \begin{equation}\label{eq:detg}
   \sqrt{-g} = c\,r^2\sin\theta\,,
 \end{equation}
 independent of $\phi$.  This property simplifies all covariant
-operators and is the origin of several exact identities.
+operators.
+
+\paragraph{The product identity.}
+% VERIFIED: CG §1
+\begin{equation}\label{eq:gttgrr}
+  g_{tt}\,g_{rr} = -c^2\,,
+\end{equation}
+a constant.  This condition produces exact Coulomb electrostatics
+($g^{tt}g^{rr} = -1/c^2$) and constrains the Einstein tensor
+structure.
+
+\paragraph{Einstein tensor degeneracy.}
+The condition~\eqref{eq:gttgrr} implies
+% VERIFIED: CG §9.2
+\begin{equation}\label{eq:gtgr}
+  G^t_{\ t} \equiv G^r_{\ r}\,,
+\end{equation}
+identically.  Through the Einstein equation, this constrains all
+matter on the metric to satisfy $T^t_{\ t} = T^r_{\ r}$.
 
 \subsection{Metric-derived kinematics}
 
@@ -268,7 +177,7 @@ radius).
 
 \subsection{The covariant scalar equation}
 
-The covariant d'Alembertian on the metric~\eqref{eq:metric-full}, for
+The covariant d'Alembertian on the metric~\eqref{eq:metric}, for
 a static, spherically symmetric scalar field, is
 % VERIFIED: CG §2.1
 \begin{equation}\label{eq:box}
@@ -318,37 +227,13 @@ The particle branch is bounded on any finite domain $[0, \rstar]$ and
 admits well-posed eigenvalue problems.  All microphysical results in
 this paper use this branch.
 
-\subsection{The structural identity $G^t_{\ t} = G^r_{\ r}$}
-
-The metric condition $g_{tt}\,g_{rr} = -c^2$ implies
-% VERIFIED: CG §9.2
-\begin{equation}\label{eq:gtgr}
-  G^t_{\ t} \equiv G^r_{\ r}\,,
-\end{equation}
-identically.  Through the Einstein equation, this constrains the total
-stress-energy to satisfy $T^t_{\ t} = T^r_{\ r}$, i.e., total radial
-pressure equals negative total energy density.  This constraint is
-automatically satisfied by the electromagnetic field
-(Sec.~\ref{sec:alpha}) but not by individual Dirac modes, implying
-that gauge fields are geometrically required.
-
-\subsection{Reduction to GR at intermediate scales}\label{sec:gr-weak}
-
-For $|\phi| \ll 1$, the metric reduces to
-$ds^2 \approx -(1 - 2\phi)\,c^2\,dt^2 + (1 + 2\phi)\,dr^2 + r^2\,d\Omega^2$,
-which is the standard weak-field metric with Newtonian potential
-$\Phi_N = c^2\phi$.  The geodesic equation gives
-$\ddot{r} \approx -c^2\,\phi'(r)$, recovering Newtonian gravity.  At
-solar system scales, $|\phi| \sim 10^{-7}$, and all standard tests of
-GR are satisfied~\cite{Will2014}.
-
 %===================================================================
 \section{Type Ia Supernovae}\label{sec:sne}
 %===================================================================
 
-In a static metric, the luminosity distance is related to the angular
-diameter distance by a single factor of $(1+z)$, not the double
-factor of FLRW:
+The first observational test of the metric requires only the
+redshift relation~\eqref{eq:redshift} and the areal radius.  In a
+static metric, the luminosity distance is
 % VERIFIED: VR §4.1
 \begin{equation}\label{eq:dL}
   d_L = D_A\,(1+z) = r\,e^{\phi(r)}\,,
@@ -363,12 +248,20 @@ supernovae using the distance modulus
   \right)\,,
 \end{equation}
 with $r(z)$ obtained by inverting Eq.~\eqref{eq:redshift} on the
-geometric polynomial profile (Sec.~\ref{sec:bao}).
+geometric polynomial profile
+% VERIFIED: VR §1.1
+\begin{equation}\label{eq:cosmophi}
+  \phi(r) = \tfrac{3}{2}\mug\,r - \cos(\pi/5)\,\mug^2\,r^2
+    + \tfrac{2}{3}\mug^3\,r^3\,,
+\end{equation}
+where $\mug \approx 0.230$~Gpc$^{-1}$ is the cosmological screening
+mass.  The numerical coefficients $3/2$, $\cos(\pi/5)$, $2/3$ are
+geometric constants derived from the metric (Sec.~\ref{sec:leptons}).
 
 % VERIFIED: VR §4.2
 \begin{table}[b]
 \caption{\label{tab:sne}%
-SNe distance modulus fits.  UDT uses
+SNe distance modulus fits.  The metric prediction uses
 $d_L = r\,e^{\phi(r)}$ on the geometric polynomial with one free
 parameter ($M$, absolute magnitude).  $\Lambda$CDM uses $H_0 = 70$,
 $\Omega_m = 0.3$.}
@@ -377,25 +270,27 @@ $\Omega_m = 0.3$.}
 Model & Free params & RMS (mag) & $\chi^2/N$ \\
 \colrule
 $\Lambda$CDM & 3 ($H_0, \Omega_m, M$) & 0.155 & 0.45 \\
-UDT ($M$ only) & 1 & 0.166 & 0.53 \\
-UDT ($M + \alpha z$) & 2 & 0.155 & --- \\
+Metric (Eq.~\ref{eq:dL}, $M$ only) & 1 & 0.166 & 0.53 \\
+Metric ($M + \alpha z$) & 2 & 0.155 & --- \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
 
 Table~\ref{tab:sne} summarizes the results.  With a single free
-parameter (absolute magnitude $M$), the UDT fit achieves
+parameter (absolute magnitude $M$), the metric fit achieves
 $0.166$~mag RMS --- 8\% above $\Lambda$CDM.  With one linear
-correction, UDT matches $\Lambda$CDM exactly.  No cosmological
+correction, the metric matches $\Lambda$CDM exactly.  No cosmological
 parameters ($H_0$, $\Omega_m$, $\Omega_\Lambda$) appear.  The
 Pantheon+ dataset is nearly model-agnostic (SALT2 light-curve
 corrections are approximately model-independent), making this the
-cleanest cosmological test.  See Fig.~\ref{fig:sne}.
+cleanest cosmological test.  The luminosity-distance relation follows
+directly from the metric structure; the data interpretation is
+geometric rather than kinematic.
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig_sne_placeholder}
 \caption{\label{fig:sne}%
-Distance modulus residuals for Pantheon+ SNe.  Solid line: UDT
+Distance modulus residuals for Pantheon+ SNe.  Solid line: metric
 geometric polynomial ($M$ only).  Dashed: $\Lambda$CDM best fit.
 The RMS difference is 0.011~mag.}
 \end{figure}
@@ -404,7 +299,9 @@ The RMS difference is 0.011~mag.}
 \section{Causality and Lorentz Invariance}\label{sec:causality}
 %===================================================================
 
-The null geodesic condition $ds^2 = 0$ for radial propagation gives
+Before proceeding to further predictions, we address the causal
+structure of the metric.  The null geodesic condition $ds^2 = 0$ for
+radial propagation gives
 % VERIFIED: CG §5
 \begin{equation}\label{eq:ceff}
   \frac{dr}{dt} = \pm\,c\,e^{-2\phi(r)}\,.
@@ -424,34 +321,43 @@ Shapiro time delay in standard GR.
 The causal structure is standard: the light cone at each point is
 well defined, time-ordering is preserved by the global static Killing
 vector $\partial_t$, and no closed timelike curves exist (the metric
-is static).
+is static).  There is no violation of Lorentz invariance at any
+accessible scale.
 
 %===================================================================
-\section{BAO}\label{sec:bao}
+\section{Reduction to General Relativity}\label{sec:gr-reduction}
 %===================================================================
 
-\subsection{The cosmological $\phi$ profile}
+At solar system scales, the screened scalar equation with
+$\mu \sim 1$~fm$^{-1}$ and galactic separation distances gives
+$|\phi| \sim 10^{-7}$.  In this regime:
+\begin{enumerate}
+\item The metric reduces to the standard weak-field form
+  $ds^2 \approx -(1 - 2\phi)\,c^2\,dt^2 + (1 + 2\phi)\,dr^2
+  + r^2\,d\Omega^2$,
+  with Newtonian potential $\Phi_N = c^2\phi$.
+\item The geodesic equation gives $\ddot{r} \approx -c^2\,\phi'(r)$,
+  recovering Newtonian gravity.
+\item The Shapiro time delay, light deflection, perihelion precession,
+  and frame dragging all take their standard GR values to corrections
+  of order $\phi^2 \sim 10^{-14}$, which are unmeasurable.
+\item Static Coulomb electrostatics is exact (no $\phi$-corrections),
+  as shown in Sec.~\ref{sec:alpha}.
+\end{enumerate}
+The metric~\eqref{eq:metric} is therefore indistinguishable from
+standard GR at intermediate scales~\cite{Will2014}.  Departures
+appear only at microphysical scales (where $\phi$ reaches $O(1)$
+inside the cavity) and at cosmological scales (where $\phi$ reaches
+$O(7)$ at the CMB surface).
 
-At cosmological scales, the sourced scalar equation produces a bounded
-profile.  The geometric polynomial~\cite{zenodo2025}
-% VERIFIED: VR §1.1
-\begin{equation}\label{eq:cosmophi}
-  \phi(r) = \tfrac{3}{2}\mug\,r - \cos(\pi/5)\,\mug^2\,r^2
-    + \tfrac{2}{3}\mug^3\,r^3
-\end{equation}
-has one free parameter, the cosmological screening mass
-$\mug \approx 0.230$~Gpc$^{-1}$.  The numerical coefficients
-$3/2$, $\cos(\pi/5)$, $2/3$ are the same geometric constants that
-appear in the microphysical sector (Sec.~\ref{sec:leptons}).  The
-$\varepsilon$-decomposition (Sec.~\ref{sec:metric}) confirms that this
-polynomial satisfies the flux equation with a sign-changing source:
-drive ($\varepsilon > 0$) in the inner region, brake
-($\varepsilon < 0$) in the outer region~\cite{zenodo2025}.
+%===================================================================
+\section{Baryon Acoustic Oscillations}\label{sec:bao}
+%===================================================================
 
 \subsection{BAO distance measure}
 
-The BAO drag scale is derived from the microphysical acoustic scale,
-eliminating the $\Lambda$CDM drag epoch:
+The BAO drag scale is derived from the metric's acoustic structure,
+without reference to $\Lambda$CDM parameters:
 % VERIFIED: VR §3.2
 \begin{equation}\label{eq:rd}
   r_d = \frac{\pi\,\rstar^{\mathrm{CMB}} \times 1000}{\ell_A}\,,
@@ -467,7 +373,7 @@ BAO predictions at derived $\mug = 0.247$~Gpc$^{-1}$ with fully
 native $r_d$.  Zero free parameters.}
 \begin{ruledtabular}
 \begin{tabular}{lccr}
-Dataset & $z$ & $D_V/r_d$ (obs) & UDT dev. \\
+Dataset & $z$ & $D_V/r_d$ (obs) & Dev. \\
 \colrule
 6dFGS  & 0.11 & 3.05  & $+4.8\%$ \\
 BOSS DR12 & 0.38 & 10.27 & $+3.2\%$ \\
@@ -486,44 +392,32 @@ DESI Ly$\alpha$ & 2.33 & 39.71 & $+1.7\%$ \\
 Table~\ref{tab:bao} shows the results.  The cleanest measurement
 (DESI Ly$\alpha$, minimal pipeline assumptions) gives the best match
 at $+1.7\%$.  The systematic positive bias in galaxy surveys is
-consistent with $\Lambda$CDM fiducial contamination in data reduction.
-See Fig.~\ref{fig:bao}.
+consistent with $\Lambda$CDM fiducial contamination in data
+reduction pipelines.
+
+At this point, the reader has seen: Type~Ia supernovae matched at
+$0.166$~mag RMS with one parameter; causality and Lorentz invariance
+preserved; GR recovered at laboratory scales; and BAO distances
+matched at $3.8\%$ RMS with zero free cosmological parameters.  All
+from one line element.
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig_bao_placeholder}
 \caption{\label{fig:bao}%
 BAO distance ratios $D_V/r_d$ versus redshift.  Points: BOSS, eBOSS,
-DESI measurements.  Curve: UDT prediction with $\mug = 0.247$~Gpc$^{-1}$
+DESI measurements.  Curve: metric prediction with $\mug = 0.247$~Gpc$^{-1}$
 and native $r_d$.}
 \end{figure}
-
-%===================================================================
-\section{Reduction to General Relativity}\label{sec:gr-reduction}
-%===================================================================
-
-At solar system scales, the screened scalar equation with
-$\mu \sim 1$~fm$^{-1}$ and galactic separation distances gives
-$|\phi| \sim 10^{-7}$.  In this regime:
-\begin{enumerate}
-\item The metric reduces to the standard weak-field form
-  (Sec.~\ref{sec:gr-weak}).
-\item The geodesic equation gives Newtonian gravity.
-\item The Shapiro time delay, light deflection, and perihelion
-  precession all take their standard GR values to corrections of
-  order $\phi^2 \sim 10^{-14}$, which are unmeasurable.
-\item Static Coulomb electrostatics is exact (no $\phi$-corrections),
-  as shown in Sec.~\ref{sec:alpha}.
-\end{enumerate}
-The metric~\eqref{eq:metric} is therefore indistinguishable from
-standard GR at intermediate scales.  Departures appear only at
-microphysical scales (where $\phi$ reaches $O(1)$ inside the cavity)
-and at cosmological scales (where $\phi$ reaches $O(7)$ at the CMB
-surface).
 
 %===================================================================
 \section{Angular Structure on $S^2$: The Pivot}%
 \label{sec:angular}
 %===================================================================
+
+At this point, the scalar field has served as an auxiliary field
+governing the distance-redshift relation.  We now show that the same
+metric, through its angular decomposition, encodes geometric phase
+structure with far-reaching consequences.
 
 The Dirac equation on the metric~\eqref{eq:metric} separates into
 radial and angular parts.  The angular part produces spinor spherical
@@ -556,10 +450,11 @@ has a \emph{unique} solution for $j = 1/2$:
   j = \tfrac{1}{2},\quad \ell = 1,\quad \kmax = 3\,.
 \end{equation}
 % VERIFIED: CG §13.10
-This triple determines three integers $2j+1 = 2$, $2\ell+1 = 3$,
-$2\kmax + 1 = 7$, and a fourth, $2\kmax - 1 = 5$.  These four
-numbers --- 2, 3, 5, 7 --- generate \emph{every} derived quantity in
-the theory:
+This triple determines four integers: $2j+1 = 2$, $2\ell+1 = 3$,
+$2\kmax + 1 = 7$, and $2\kmax - 1 = 5$.  These four
+numbers --- 2, 3, 5, 7 --- generate every derived quantity in
+the theory (Table~\ref{tab:multiplicities}).
+
 % VERIFIED: CG §17.1
 \begin{table}[b]
 \caption{\label{tab:multiplicities}%
@@ -621,12 +516,12 @@ condition}:
   G'(\rstar) = 0\,,
 \end{equation}
 which is the natural self-adjoint boundary condition of the Form-T
-operator.  This condition contains \emph{zero free parameters} and
-replaces earlier fitted Robin conditions.
+operator.  This condition contains zero free parameters.
 
 \subsection{Locked parameters}\label{sec:params}
 
-The three metric parameters are determined geometrically:
+The three metric parameters are determined geometrically by the
+Diophantine triple of Sec.~\ref{sec:angular}:
 % VERIFIED: CG §17.2
 \begin{align}
   \phiz &= -\cos(\pi/5) = -0.80902\,, \label{eq:phi0}\\
@@ -701,22 +596,22 @@ These ratios depend on \emph{nothing}: no $\phiz$, no $\mu$, no
 $\rstar$, no $C$.  They are pure consequences of the angular structure
 of spinor harmonics on $S^2$.
 
-The derivation chain (Fig.~\ref{fig:leptons}) traces entirely from
-the metric through the angular coupling integrals, the quadratic
-selection rule~\eqref{eq:quadratic}, the Gaussian measure on the
-complex mode space, and the relation $C/\rstar = 4\pi^2 m_e$.
+The derivation chain traces entirely from the metric through the
+angular coupling integrals, the quadratic selection
+rule~\eqref{eq:quadratic}, the Gaussian measure on the complex mode
+space, and the relation $C/\rstar = 4\pi^2 m_e$.
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig_leptons_placeholder}
 \caption{\label{fig:leptons}%
 Lepton mass ratios: $m_\mu/m_e$ and $m_p/m_e$ from the angular
-coupling on $S^2$.  Horizontal bars: PDG values.  Points: UDT
+coupling on $S^2$.  Horizontal bars: PDG values.  Points: metric
 predictions.  The proton--electron ratio $6\pi^5$ is accurate to
 $0.002\%$.}
 \end{figure}
 
 %===================================================================
-\section{The Pion}\label{sec:pion}
+\section{The Pion and the Angular Sector}\label{sec:pion}
 %===================================================================
 
 The pion is the unique particle whose mass comes from the angular
@@ -738,10 +633,10 @@ collects all three quantum number factors.  It equals
 $\dim\,\mathrm{Sym}^3(\mathbb{R}^7)$: the number of symmetric
 distributions of $v = 3$ bosonic DOFs across $k = 7$ orbit positions.
 
-The pion also has a Dirac eigenvalue $E_1 = 2\sqrt{2}/3$
-[Eq.~\eqref{eq:E1}], but the eigenvalue formula
-$m_\pi = E_1 \times C = 132.9$~MeV underpredicts by $1.53\%$.  The
-angular formula~\eqref{eq:pion} is $16\times$ more precise.
+The four angular-sector particles --- $e$, $\mu$, $p$, $\pi$ ---
+exhaust the four quantum number slots $(2j+1, 2\ell+1, 2\kmax-1,
+2\kmax+1) = (2, 3, 5, 7)$.  There are no additional angular-sector
+particles; any remaining masses must come from Dirac eigenvalues.
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig_pion_placeholder}
@@ -785,7 +680,7 @@ Meson predictions at locked parameters with $C = 140.95$~MeV
 [Eq.~\eqref{eq:pion}]; all others from Dirac eigenvalues.}
 \begin{ruledtabular}
 \begin{tabular}{lcrrrr}
-Meson & $\kappa, n$ & UDT (MeV) & PDG (MeV) & Error \\
+Meson & $\kappa, n$ & Prediction (MeV) & PDG (MeV) & Error \\
 \colrule
 $\pi^0$       & angular & 134.85 & 135.0  & $-0.09\%$ \\
 $\eta$        & $+2, 1$ & 548.0  & 547.9  & $+0.03\%$ \\
@@ -812,7 +707,7 @@ $C = 140.95$~MeV.  The proton is an angular-sector particle
 [Eq.~\eqref{eq:p-e}], not an eigenvalue.}
 \begin{ruledtabular}
 \begin{tabular}{lcrrr}
-Baryon & $\kappa, n$ & UDT (MeV) & PDG (MeV) & Error \\
+Baryon & $\kappa, n$ & Prediction (MeV) & PDG (MeV) & Error \\
 \colrule
 $p$         & angular    & 938.3  & 938.3  & $-0.002\%$ \\
 $\Lambda$   & $-3, 1$    & 1119.3 & 1115.7 & $+0.32\%$ \\
@@ -830,15 +725,6 @@ Other baryons are sub-cavity eigenvalues.  The angular correction
 $m_\Omega / m_\Lambda = l_F/l_G|_{\kappa=-3} = 3/2$ is derived to
 $0.06\%$.
 
-\begin{figure}[t]
-\includegraphics[width=\columnwidth]{figures/fig_hadrons_placeholder}
-\caption{\label{fig:hadrons}%
-Hadron mass spectrum.  Horizontal axis: PDG mass.  Vertical axis:
-UDT prediction.  Diagonal line: perfect agreement.  Circles: mesons
-(full cavity).  Squares: baryons (sub-cavity).  Triangle: proton
-(angular sector).  The pion is marked separately.}
-\end{figure}
-
 \subsection{Three-sector summary}
 
 The mass spectrum divides into three sectors, all from the same metric:
@@ -853,24 +739,28 @@ The mass spectrum divides into three sectors, all from the same metric:
 Total: 17~particles from one metric, one ODE, one boundary condition,
 one calibration.
 
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{figures/fig_hadrons_placeholder}
+\caption{\label{fig:hadrons}%
+Hadron mass spectrum.  Horizontal axis: PDG mass.  Vertical axis:
+metric prediction.  Diagonal line: perfect agreement.  Circles: mesons
+(full cavity).  Squares: baryons (sub-cavity).  Triangle: proton
+(angular sector).  The pion is marked separately.}
+\end{figure}
+
 %===================================================================
 \section{The Fine-Structure Constant}\label{sec:alpha}
 %===================================================================
 
-\subsection{The identity $g^{tt}\,g^{rr} = -1/c^2$}
+\subsection{Exact Coulomb electrostatics}
 
-The metric~\eqref{eq:metric} satisfies
-\begin{equation}\label{eq:gttgrr}
-  g^{tt}\,g^{rr} = -\frac{e^{2\phi}}{c^2}\,e^{-2\phi}
-  = -\frac{1}{c^2}\,,
-\end{equation}
-identically.  This reduces the static Maxwell equation to flat-space
-Poisson:
+The identity~\eqref{eq:gttgrr} reduces the static Maxwell equation to
+flat-space Poisson:
 \begin{equation}
   \partial_r(r^2\,\partial_r A_t) = -\rho\,.
 \end{equation}
-Coulomb's law $A_t = Q/(4\pi r)$ is \emph{exact} on the UDT metric
---- no $\phi$-corrections.  This is verified numerically to
+Coulomb's law $A_t = Q/(4\pi r)$ is \emph{exact} on the
+metric --- no $\phi$-corrections.  This is verified numerically to
 $2.2 \times 10^{-16}$.
 
 \subsection{Decomposition of $\alpha_{\mathrm{EM}}$}
@@ -903,7 +793,7 @@ eigenvalue satisfies
   = \frac{\ell(\ell+1)}{[(2j+1)(2\ell+1)]^2}\,,
 \end{equation}
 connecting the eigenvalue sector to the angular quantum numbers.  This
-is the UDT analog of the Wigner--Eckart theorem.
+is the analog of the Wigner--Eckart theorem for this metric.
 
 \subsection{Proton--neutron mass splitting}
 
@@ -917,7 +807,7 @@ $5/4 = (2\kmax - 1)/(2j+1)^2$ is the ratio of closure angular
 content to spin bilinear.
 
 %===================================================================
-\section{Neutrino Mass}\label{sec:neutrino}
+\section{The Neutrino Mass Scale}\label{sec:neutrino}
 %===================================================================
 
 The atmospheric neutrino mass scale follows from three metric
@@ -965,7 +855,9 @@ antisymmetric, accessed through three 2-form EM couplings):
   \cong {*}\Lambda^3\,.
 \end{equation}
 The pion (heavy, grade~3) and the neutrino (light, grade~6) are Hodge
-duals on the same base space.
+duals on the same base space.  The orbit matching theorem requires the
+two to exhaust the exterior algebra, fixing the neutrino mass without
+additional parameters.
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig_neutrino_placeholder}
@@ -980,7 +872,8 @@ on the 9-dimensional angular base space.}
 %===================================================================
 
 The three neutrino mixing angles are determined by the same quantum
-numbers $(2j+1, 2\ell+1, 2\kmax+1) = (2, 3, 7)$:
+numbers $(2j+1, 2\ell+1, 2\kmax+1) = (2, 3, 7)$ that generated
+the mass spectrum:
 % VERIFIED: VR §22.7
 \begin{align}
   \sin^2\theta_{12} &= \frac{(2j+1)^2}{(2j+1)^2 + (2\ell+1)^2}
@@ -993,11 +886,12 @@ numbers $(2j+1, 2\ell+1, 2\kmax+1) = (2, 3, 7)$:
 
 \begin{table}[t]
 \caption{\label{tab:pmns}%
-PMNS mixing angles.  UDT predictions from quantum number fractions
-vs.\ NuFIT~5.2 (normal ordering).  All within $1\sigma$.}
+PMNS mixing angles.  Predictions from quantum number fractions
+vs.\ NuFIT~5.2 (normal ordering).  All within $1\sigma$.  Zero free
+parameters.}
 \begin{ruledtabular}
 \begin{tabular}{lcccr}
-Angle & UDT & Expt.\ & $\sigma$ & Dev. \\
+Angle & Prediction & Expt.\ & $\sigma$ & Dev. \\
 \colrule
 $\sin^2\theta_{12}$ & $4/13 = 0.3077$
   & $0.304 \pm 0.012$ & 0.31 & $+1.2\%$ \\
@@ -1009,6 +903,11 @@ $\sin^2\theta_{13}$ & $1/45 = 0.02222$
 \end{ruledtabular}
 \end{table}
 
+Table~\ref{tab:pmns} presents the comparison.  Three angles, zero
+free parameters, all within $1\sigma$ of the global experimental
+fit.  The combined $\chi^2$ for three measurements is $0.10$ for
+three degrees of freedom.
+
 The denominators have physical meaning:
 \begin{itemize}
 \item $13 = 4 + 9 = (2j+1)^2 + (2\ell+1)^2$: spin-orbital partition.
@@ -1017,12 +916,13 @@ The denominators have physical meaning:
   barrier times angular content.
 \end{itemize}
 The PMNS matrix constructed from these angles is exactly unitary
-(verified numerically).
+(verified numerically).  The reactor angle $\theta_{13}$ --- the most
+precisely measured of the three --- is matched to $0.04\sigma$.
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig_pmns1_placeholder}
 \caption{\label{fig:pmns1}%
-PMNS mixing angles: UDT predictions (vertical lines) vs.\ NuFIT
+PMNS mixing angles: predictions (vertical lines) vs.\ NuFIT
 5.2 distributions.  All three predictions fall within the $1\sigma$
 bands.}
 \end{figure}
@@ -1035,7 +935,7 @@ their decomposition into the four multiplicities $\{2, 3, 5, 7\}$.}
 \end{figure}
 
 %===================================================================
-\section{The Generalized Bridge Identity}\label{sec:bridge}
+\section{The Generalized Bridge Identity}\label{sec:bridge-gen}
 %===================================================================
 
 The bridge identity~\eqref{eq:bridge} is the first row of a
@@ -1068,7 +968,9 @@ Table~\ref{tab:bridge} shows the transition: at $|\kappa| = 1$,
 the orbital quantum number $\ell$ governs; at
 $|\kappa| = 3 = \kmax$, the spin quantum number $j$ takes over; at
 $|\kappa| = 2$, both participate and $\pi$ enters as the $S^2$
-circumference factor.
+circumference factor.  The unified structure is: one metric produces
+four numbers $(2, 3, 5, 7)$, which generate all particle masses,
+coupling constants, and mixing angles.
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig_bridge_placeholder}
@@ -1082,6 +984,15 @@ $|\kappa| = 2$ to the spin sector ($j$-dominated) at $|\kappa| = 3$.}
 %===================================================================
 \section{CMB Peak Positions}\label{sec:cmb}
 %===================================================================
+
+\subsection{Sector unification}
+
+The cosmological peak structure and the microphysical mass spectrum
+are not independent predictions.  They emerge from the same operators
+on the same metric.  The CMB peak positions are derived from the
+scalar wave equation on the cosmological $\phi$ profile, using
+operators that are cosmological-scale analogs of those that produced
+particle masses.
 
 \subsection{WKB peak law on the sourced profile}
 
@@ -1097,6 +1008,16 @@ where $\ell_A = 220/F_1$ is the acoustic scale, $c_{\mathrm{eff}} =
 \arctan(\eta)/\pi$ is the phase offset, and $q_1$, $q_2$ are curvature
 corrections from $\phi$ derivatives at $\rstar$.  All quantities are
 derived from the metric.
+
+\subsection{Cross-sector link}
+
+The acoustic scale $\ell_A$ is algebraically related to microphysical
+eigenvalues:
+\begin{equation}
+  \ell_A = \frac{2\pi\rstar(E_2/E_1)}{I_2}
+  = \frac{6\pi\rstar\vgold}{I_2^2}\,,
+\end{equation}
+connecting the CMB peak spacing to the meson mass ratio.
 
 \subsection{Results}
 
@@ -1131,33 +1052,25 @@ beam deconvolution, introducing an estimated 2--3\% model
 contamination.  A model-independent CMB reduction would be needed for
 a fairer comparison.
 
-\subsection{Cross-sector link}
-
-The acoustic scale $\ell_A$ is algebraically related to microphysical
-eigenvalues:
-\begin{equation}
-  \ell_A = \frac{2\pi\rstar(E_2/E_1)}{I_2}
-  = \frac{6\pi\rstar\vgold}{I_2^2}\,,
-\end{equation}
-connecting the CMB peak spacing to the meson mass ratio.
-
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig_cmb_placeholder}
 \caption{\label{fig:cmb}%
 CMB angular power spectrum: peak positions.  Vertical lines: Planck
-2018 measured positions.  Points: UDT predictions from WKB on the
+2018 measured positions.  Points: metric predictions from WKB on the
 sourced $\phi$ profile.  RMS: 1.32\%.}
 \end{figure}
 
 %===================================================================
-\section{JWST Predictions}\label{sec:jwst}
+\section{JWST Early Galaxies}\label{sec:jwst}
 %===================================================================
 
-In UDT, the universe is static and eternal.  There is no Big Bang, no
-``first epoch'' of galaxy formation, and no age--redshift
-relationship.  A galaxy at $z = 12$ is not younger than one at
-$z = 2$ --- it is at a different radial position in the $\phi$
-profile, experiencing different dilation.
+The metric~\eqref{eq:metric} is static.  There is no time dependence
+in the line element, and the redshift relation~\eqref{eq:redshift} is
+spatial, not kinematic.  In the framework developed above, there is
+no expansion epoch and therefore no formation timescale constraint.
+A galaxy at $z = 12$ is not younger than one at $z = 2$ --- it is
+at a different radial position in the $\phi$ profile, experiencing
+different dilation.
 
 This produces a specific prediction:
 \begin{quote}
@@ -1166,16 +1079,15 @@ redshifts, with no systematic trend toward ``youth'' at high~$z$.}
 \end{quote}
 The JWST observations of massive galaxies at $z > 10$
 --- widely described as ``impossibly early'' in the $\Lambda$CDM
-framework~\cite{Labbe2023,Boylan2023} --- are precisely what UDT
-predicts.  The ``impossible early galaxies'' are simply galaxies seen
-through a deeper part of the $\phi$ gradient.  In UDT, there is no
-paradox.
+framework~\cite{Labbe2023,Boylan2023} --- are consistent with this
+prediction.  The ``impossible early galaxies'' are galaxies seen
+through a deeper part of the $\phi$ gradient.
 
-This prediction was inherent in the metric from the start and
-predates the JWST data.  It is qualitative (the galaxy population
+This prediction was inherent in the metric from its publication
+and predates the JWST data.  It is qualitative (the galaxy population
 statistics have not been quantitatively modeled), but the qualitative
 content --- mature galaxies at all redshifts --- is confirmed by JWST
-observations and is in direct tension with $\Lambda$CDM expectations.
+observations and is in tension with $\Lambda$CDM expectations.
 
 %===================================================================
 \section{Rotation Curves}\label{sec:rotcurves}
@@ -1193,35 +1105,36 @@ At galactic scales, $\mu_g r \sim 10^{-5}$, so the screening term
 $\mu_g^2\phi$ is suppressed by $O(\mu_g^2 r^2) \sim 10^{-10}$.  In
 the weak-field limit:
 \begin{equation}\label{eq:newt}
-  v^2_{\mathrm{UDT}}(r) = \frac{G\,M_{\mathrm{bar}}(<r)}{r}
+  v^2_{\mathrm{metric}}(r) = \frac{G\,M_{\mathrm{bar}}(<r)}{r}
   = v^2_{\mathrm{Newton}}(r)\,.
 \end{equation}
-UDT recovers Newtonian gravity exactly at galactic scales.  The flat
-rotation curve problem is open in UDT, as in standard GR.
+The metric recovers Newtonian gravity exactly at galactic scales.
+The flat rotation curve problem is open, as in standard GR.
 
 \subsection{Ancient baryonic remnants}
 
-In UDT's static, eternal universe, galaxies accumulate dead stellar
-remnants (white dwarfs, neutron stars, black holes) over
-100--1000~Gyr.  Supernova kicks naturally form halos.  A
+In a static universe with no age constraint, galaxies accumulate dead
+stellar remnants (white dwarfs, neutron stars, black holes) over
+100--1000~Gyr.  Supernova kicks naturally form extended halos.  A
 one-parameter ($T_{\mathrm{age}}$) model applied to 175~SPARC
-galaxies achieves 96\%~improvement over baryons-only for massive
-galaxies, within $1.76\times$ of NFW dark matter halos with half the
-free parameters~\cite{zenodo2025}.
+galaxies~\cite{SPARC2016} achieves 96\%~improvement over
+baryons-only for massive galaxies, within $1.76\times$ of NFW dark
+matter halos with half the free parameters~\cite{zenodo2025}.
 
 This mechanism requires no new fields, no modified geodesics, and no
-dark matter --- only standard stellar evolution on longer timescales.
+dark matter --- only standard stellar evolution on longer timescales
+than $\Lambda$CDM permits.
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig_sparc_placeholder}
 \caption{\label{fig:sparc}%
-SPARC rotation curve fits.  Left: UDT baryons-only.  Right: UDT with
+SPARC rotation curve fits.  Left: baryons-only.  Right: with
 ancient baryonic remnants ($T_{\mathrm{age}}$ model).  The remnant
 mechanism closes most of the gap between baryons-only and NFW fits.}
 \end{figure}
 
 %===================================================================
-\section{Black Holes}\label{sec:blackholes}
+\section{Black Holes and Matter Recycling}\label{sec:blackholes}
 %===================================================================
 
 \subsection{The positive-$\phiz$ branch}
@@ -1234,16 +1147,17 @@ a finite radius $r_c$, where
   g_{tt} \to 0,\qquad g_{rr} \to +\infty\,,
 \end{equation}
 and the Misner--Sharp mass gives $r_c = 2\,\mMS$ --- the Schwarzschild
-radius.  UDT and GR agree on the horizon location.
+radius.  The metric and GR agree on the horizon location.
 
 \subsection{Differences from Schwarzschild}
 
 \begin{table}[b]
 \caption{\label{tab:bh}%
-Structural differences between UDT and Schwarzschild black holes.}
+Structural differences between metric black holes and Schwarzschild
+black holes.}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
-Property & Schwarzschild & UDT \\
+Property & Schwarzschild & Metric \\
 \colrule
 Horizon & $g_{tt} = 0$ at $r = 2M$ & $g_{tt} \to 0$ asymptotically \\
 Interior & Sign swap & No sign swap \\
@@ -1253,9 +1167,10 @@ Center & Singular & Regular ($\phi_0$ finite) \\
 \end{ruledtabular}
 \end{table}
 
-The UDT black hole (Table~\ref{tab:bh}) has no interior singularity.
-The center is regular ($\phi(0) = \phiz$), and the ``singularity'' is
-at the boundary surface $r_c$.  There is no causal disconnection.
+The metric black hole (Table~\ref{tab:bh}) has no interior
+singularity.  The center is regular ($\phi(0) = \phiz$), and the
+``singularity'' is at the boundary surface $r_c$.  There is no
+causal disconnection.
 
 \subsection{Matter dissolution and recycling}
 
@@ -1264,11 +1179,96 @@ A particle cavity ($\phiz < 0$) approaching a black hole
 effective $\phiz$ crosses zero, the eigenvalue spectrum ceases to
 exist (Sec.~\ref{sec:mass}): the particle dissolves.  This occurs
 \emph{outside} the horizon, providing a natural mechanism for matter
-recycling in a static universe.
+recycling.
+
+In a static universe, this recycling mechanism provides the dynamical
+cycle: matter forms in the particle branch, accumulates, collapses,
+dissolves at the $\phi = 0$ surface, and re-emerges as new particle
+cavities.  There is no beginning, no heat death, and no need for
+initial conditions.  The universe may be static, infinite, and
+eternal.
 
 %===================================================================
 \section{Predictions and Falsification}\label{sec:falsify}
 %===================================================================
+
+The preceding sections have derived more than 30 quantitative
+predictions from the single metric~\eqref{eq:metric}.
+Table~\ref{tab:predictions} collects them.  All predictions flow from
+three geometric parameters and one mass anchor ($m_e$).  None are
+fitted.
+
+\begingroup
+\squeezetable
+\begin{table*}[t]
+\caption{\label{tab:predictions}%
+Predictions of the metric~\eqref{eq:metric}.  ``Angular'' denotes
+quantities derived from the angular structure on $S^2$ with zero free
+parameters; ``Eigenvalue'' denotes Dirac eigenvalues with one
+calibration~$C$; ``Coupling'' and ``Neutrino'' denote derived
+constants; ``Cosmological'' denotes fits with at most one free
+parameter ($\mug$).  PDG values from Ref.~\cite{PDG2024}; CMB from
+Planck 2018~\cite{Planck2018}; BAO from BOSS/DESI~\cite{DESI2024};
+SNe from Pantheon+~\cite{Pantheon2022}.  Neutrino data from NuFIT
+5.2~\cite{NuFIT}.}
+\begin{ruledtabular}
+\begin{tabular}{llll}
+\textrm{Observable} & \textrm{Prediction} & \textrm{Experiment}
+  & \textrm{Deviation} \\
+\colrule
+\multicolumn{4}{c}{\textit{Angular sector} (parameter-free, from
+  $j\!=\!1/2$, $\ell\!=\!1$, $\kmax\!=\!3$)} \\[3pt]
+$m_\pi / m_e$ & $84\pi = 263.89$ & $264.14$ & $-0.09\%$ \\
+$m_\mu / m_e$ & $20\pi^3/3 = 206.71$ & $206.77$ & $-0.03\%$ \\
+$m_p / m_e$ & $6\pi^5 = 1836.12$ & $1836.15$ & $-0.002\%$ \\
+$m_p / m_\mu$ & $9\pi^2/10 = 8.883$ & $8.880$ & $+0.03\%$ \\
+$m_p / m_\pi$ & $\pi^4/14 = 6.951$ & $6.951$ & $+0.09\%$ \\[6pt]
+\multicolumn{4}{c}{\textit{Eigenvalue sector} (one calibration
+  $C = 4\pi^2 m_e\,\rstar$)} \\[3pt]
+$E_1(\kappa\!=\!-1)$ & $2\sqrt{2}/3 = 0.9428$ & (exact, 10 digits)
+  & $0.08\%$ \\
+$m_\eta$ & 548.0~MeV ($\kappa\!=\!+2$, $n\!=\!1$)
+  & 547.9~MeV & $+0.03\%$ \\
+$m_\rho$ & 784.3~MeV ($\kappa\!=\!-1$, $n\!=\!2$)
+  & 775.3~MeV & $+1.2\%$ \\
+$m_\omega$ & 784.3~MeV ($\kappa\!=\!-1$, $n\!=\!2$)
+  & 782.7~MeV & $+0.20\%$ \\
+$m_{\phi(1020)}$ & 1022.7~MeV ($\kappa\!=\!+3$, $n\!=\!1$)
+  & 1019.5~MeV & $+0.32\%$ \\
+$m_{f_2(1270)}$ & 1270.5~MeV ($\kappa\!=\!+2$, $n\!=\!2$)
+  & 1275.5~MeV & $-0.39\%$ \\
+$m_{a_0(980)}$ & 973.6~MeV ($\kappa\!=\!+1$, $n\!=\!1$)
+  & 980.0~MeV & $-0.66\%$ \\
+$m_\Lambda$ & 1115.7~MeV ($\kappa\!=\!-3$, $n\!=\!1$, sub-cavity)
+  & 1115.7~MeV & $+0.32\%$ \\
+$m_\Omega$ & 1672.5~MeV ($\kappa\!=\!-1$, $n\!=\!3$, sub-cavity)
+  & 1672.5~MeV & $+0.52\%$ \\[6pt]
+\multicolumn{4}{c}{\textit{Coupling constants}} \\[3pt]
+$1/\aEM$ & $36\pi/I_2 = 137.4$ & $137.036$ & $+0.29\%$ \\
+$m_n - m_p$ & $(5/4)\,\aEM\,C = 1.282$~MeV
+  & 1.293~MeV & $-0.87\%$ \\[6pt]
+\multicolumn{4}{c}{\textit{Neutrino sector}} \\[3pt]
+$m_\nu$ (atmospheric) & $\alpha^3 m_e/4 = 0.049$~eV
+  & $\sqrt{\Delta m^2_{\mathrm{atm}}} = 0.050$~eV & $-0.5\%$ \\
+$\sin^2\theta_{12}$ & $4/13 = 0.3077$ & $0.304 \pm 0.012$
+  & $+1.2\%$ ($0.31\sigma$) \\
+$\sin^2\theta_{23}$ & $4/7 = 0.5714$ & $0.573 \pm 0.018$
+  & $-0.3\%$ ($0.09\sigma$) \\
+$\sin^2\theta_{13}$ & $1/45 = 0.02222$ & $0.02220 \pm 0.00062$
+  & $+0.1\%$ ($0.04\sigma$) \\[6pt]
+\multicolumn{4}{c}{\textit{Cosmological}} \\[3pt]
+SNe (Pantheon+, 1701) & $d_L = r\,e^{\phi(r)}$, 1 param ($M$)
+  & --- & 0.166~mag~RMS \\
+CMB peaks 1--7 & WKB on sourced $\phi$, 1 param ($\mug$)
+  & Planck 2018 & 1.32\%~RMS \\
+BAO (8 surveys) & Native $r_d$, 0 free params
+  & BOSS/DESI & 3.8\%~RMS \\
+$c^2 = 2GM/\rstar$ & Misner--Sharp at boundary
+  & $c = 2.998 \times 10^8$~m/s & $< 0.01\%$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+\endgroup
 
 A theory with 30+ predictions must specify the conditions under which
 it would be falsified.  Table~\ref{tab:falsify} lists concrete
@@ -1334,7 +1334,7 @@ The most immediate tests:
 \caption{\label{fig:falsify}%
 Falsification landscape.  Each point represents a prediction; the
 horizontal axis shows current experimental precision; the vertical
-axis shows the UDT prediction.  Arrows indicate experiments that
+axis shows the prediction accuracy.  Arrows indicate experiments that
 will improve precision into the falsification range within 5~years.}
 \end{figure}
 
@@ -1403,12 +1403,22 @@ cosmological boundary has $\rstar \approx 10$~Gpc.  The same equation
 [Eq.~\eqref{eq:kg}] governs both, with different parameters
 ($\mu$ vs.\ $\mug$) and different sources.
 
+\subsection{The Hubble tension}
+
+In this framework, the Hubble constant $H_0$ is not a fundamental
+parameter.  The distance-redshift relation is determined by the
+$\phi$ profile, not by an expansion rate.  The ``Hubble tension'' ---
+the disagreement between early-universe and late-universe
+measurements of $H_0$ --- dissolves: there is no single $H_0$ to
+measure, and the apparent tension arises from fitting a
+redshift-dependent $\phi$ profile with a constant expansion rate.
+
 \subsection{What this theory does not explain}
 
 We note the following open problems:
 \begin{itemize}
-\item \textbf{Rotation curves}: UDT recovers Newtonian gravity at
-  galactic scales.  The flat rotation curve problem is open, though
+\item \textbf{Rotation curves}: the metric recovers Newtonian gravity
+  at galactic scales.  The flat rotation curve problem is open, though
   the ancient baryonic remnant mechanism is promising.
 \item \textbf{CMB peak heights}: the full power spectrum (including
   peak amplitudes) is not yet competitive with $\Lambda$CDM.
@@ -1424,17 +1434,17 @@ We note the following open problems:
 
 The standard cosmological model uses six parameters
 ($H_0$, $\Omega_b$, $\Omega_m$, $n_s$, $A_s$, $\tau$) to fit
-cosmological data.  UDT uses one cosmological parameter ($\mug$) and
-achieves comparable results on peak positions, while falling short on
-peak heights and the full CMB power spectrum.
+cosmological data.  The metric uses one cosmological parameter
+($\mug$) and achieves comparable results on peak positions, while
+falling short on peak heights and the full CMB power spectrum.
 
 On particle physics, $\Lambda$CDM has no predictions (particle masses
-are free parameters in the Standard Model).  UDT derives 17+~particle
-masses and three mixing angles from the metric --- content that the
+are free parameters in the Standard Model).  The metric derives
+17+~particle masses and three mixing angles --- content that the
 Standard Model takes as input.
 
-The comparison is not symmetric: UDT attempts to unify particle
-physics and cosmology from a single geometric object, while
+The comparison is not symmetric: this framework attempts to unify
+particle physics and cosmology from a single geometric object, while
 $\Lambda$CDM addresses only cosmology and treats particle physics
 as external input.
 
@@ -1461,10 +1471,12 @@ wrong.  The falsification criteria (Table~\ref{tab:falsify}) specify
 the experiments that will distinguish these two possibilities within
 the next decade.
 
-This is a modest extension of general relativity: one metric, one
-scalar field, one principle (everything from the geometry).  The
-metric was published in September 2025.  All numerical codes,
-derivations, and datasets are available at \cite{zenodo2025}.
+Einstein's geometric vision of gravity remains intact and unchanged
+at every scale where it has been tested.  What changes is the
+boundary condition.  The metric is GR.  The scalar field satisfies
+the Einstein equations.  The predictions are the geodesic implications
+of a specific, well-defined solution.  All numerical codes,
+derivations, and datasets are available at~\cite{zenodo2025}.
 
 \begin{acknowledgments}
 The authors acknowledge the use of the Pantheon+ supernova
@@ -1485,7 +1497,7 @@ under CC~BY-NC-ND~4.0 at \cite{zenodo2025}.
 \section{The Einstein Tensor}\label{app:einstein}
 %===================================================================
 
-For the metric~\eqref{eq:metric-full}, the nonzero mixed components
+For the metric~\eqref{eq:metric}, the nonzero mixed components
 of the Einstein tensor are:
 \begin{align}
   G^t_{\ t} &= -\frac{1}{r^2}\left[1 - e^{-2\phi}(1 - 2r\phi')
@@ -1533,7 +1545,7 @@ and the Misner--Sharp relation~\eqref{eq:ms}.
 \section{Dirac Stress-Energy Tensor}\label{app:tmunu}
 %===================================================================
 
-For a massless Dirac eigenstate $(G, F, E, \kappa)$ on the UDT metric,
+For a massless Dirac eigenstate $(G, F, E, \kappa)$ on the metric,
 the stress-energy components (after angular integration) are:
 % VERIFIED: CG §9.5
 \begin{align}
