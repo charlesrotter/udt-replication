@@ -1,4 +1,4 @@
-# Geodesic implications of a screened scalar dilation field: Mass emergence, coupling constants, and cosmological structure from a single static metric
+# Cosmological distance relations from a screened scalar modification of the Schwarzschild metric
 
 **Charles Rotter**
 Independent Researcher
@@ -13,26 +13,20 @@ Independent Researcher
 
 ## Abstract
 
-We derive the physical consequences of a static, spherically symmetric
-metric $ds^2 = -e^{-2\phi(r)}c^2\,dt^2 + e^{2\phi(r)}dr^2 +
-r^2\,d\Omega^2$, where $\phi(r)$ satisfies a covariant screened
-scalar equation obtained from the Einstein field equations.  The
-metric, a standard solution of general relativity with a minimally
-coupled scalar field, yields a luminosity-distance relation consistent
-with 1701 Type Ia supernovae at $0.166$ mag RMS and baryon acoustic
-oscillation distance ratios at $3.8\%$ RMS with zero free
-cosmological parameters.  We show that the same geometric structure,
-through its angular decomposition on $S^2$, determines three metric
-parameters from a unique Diophantine triple and produces
-parameter-free lepton mass ratios ($m_p/m_e = 6\pi^5$ at $0.002\%$,
-$m_\mu/m_e = 20\pi^3/3$ at $0.03\%$), the fine-structure constant
-($1/\alpha = 36\pi/I_2 = 137.4$ at $0.29\%$), the atmospheric
-neutrino mass ($m_\nu = \alpha^3 m_e/4 = 0.049$ eV at $0.5\%$), and
-three PMNS mixing angles all within $1\sigma$ of experiment.  The
-cosmological peak structure and the microphysical mass spectrum emerge
-from the same operators on the same metric.  The framework makes
-specific falsifiable predictions for JUNO, KATRIN, DUNE, the ELT
-Sandage--Loeb test, and next-generation galaxy surveys.  All
+We investigate the geodesic structure of the static, spherically
+symmetric metric $ds^2 = -e^{-2\phi(r)}c^2\,dt^2 +
+e^{2\phi(r)}dr^2 + r^2\,d\Omega^2$, where $\phi(r)$ satisfies a
+covariant screened scalar equation derived from the Einstein field
+equations.  The metric is a standard solution of general relativity
+with a minimally coupled scalar field.  We derive the
+luminosity-distance relation and compare it with 1701 Type Ia
+supernovae from the Pantheon+ compilation, obtaining $0.166$ mag RMS.
+The same geometric polynomial reproduces baryon acoustic oscillation
+distance ratios at $3.8\%$ RMS with zero free cosmological parameters.
+We verify that the framework preserves local Lorentz invariance,
+causality, and all solar-system tests of GR.  The angular
+decomposition of the Dirac equation on this metric yields additional
+structure that we explore in the later sections of the paper.  All
 derivations, numerical codes, and datasets are publicly available.
 
 ---
@@ -47,33 +41,20 @@ assumes a specific symmetry class and matter content, and each
 reproduces a specific domain of observation.
 
 In this paper, we derive the geodesic implications of a single static,
-spherically symmetric metric with a screened scalar dilation field
-$\phi(r)$.  The approach is deliberately conservative: we begin with
-a standard GR line element, derive its operators through orthodox
-differential geometry, and compare the resulting predictions with
-observation.  No modification of GR is proposed.  No additional
-postulate or symmetry principle is introduced.
+spherically symmetric metric with a screened scalar field $\phi(r)$.
+The approach is deliberately conservative: we begin with a standard GR
+line element, derive its operators through orthodox differential
+geometry, and compare the resulting predictions with observation.  No
+modification of GR is proposed.  No additional postulate or symmetry
+principle is introduced.
 
-The structure of the paper follows the derivation chain from the
-simplest consequences of the metric to increasingly detailed
-predictions.  We begin with the metric and its structural identities
-(Sec. 2), then validate the cosmological distance
-relation against Type Ia supernovae
-(Sec. 3).  Sections 4
-and 5 establish causality and reduction to
-standard GR at accessible scales.  Section 6 extends the
-cosmological tests to baryon acoustic oscillations.
-Sections 7--11 derive the particle
-mass spectrum from the angular decomposition of the Dirac equation on
-the metric.  Sections 12--14 derive coupling
-constants, neutrino parameters, and mixing angles.
-Sections 15--16 establish the bridge between
-microphysical and cosmological sectors.
-Sections 17--19 discuss astrophysical
-implications.  Section 20 presents the full predictions
-table and falsification criteria.
-Sections 21--22 discuss and
-conclude.
+We begin with cosmological tests --- Type Ia supernovae
+(Sec. 3) and baryon acoustic oscillations
+(Sec. 6) --- establishing that the metric reproduces
+standard distance measures.  We then verify causality and reduction to
+GR at laboratory scales.  In the later sections, we find that the
+angular decomposition of the Dirac equation on this metric produces
+additional structure whose consequences we explore.
 
 Throughout, we use natural units with $\hbar = c = 1$ in the
 microphysical sector unless otherwise stated, restoring $c$ in the
@@ -287,7 +268,9 @@ cleanest cosmological test.  The luminosity-distance relation follows
 directly from the metric structure; the data interpretation is
 geometric rather than kinematic.
 
-[Figure 1] Distance modulus residuals for Pantheon+ SNe.  Solid line: metric
+![Figure 1: SNe Hubble diagram](figures/fig01_sne_hubble.png)
+
+**Figure 1.** Distance modulus residuals for Pantheon+ SNe.  Solid line: metric
 geometric polynomial ($M$ only).  Dashed: $\Lambda$CDM best fit.
 The RMS difference is 0.011 mag.
 
@@ -399,7 +382,9 @@ preserved; GR recovered at laboratory scales; and BAO distances
 matched at $3.8\%$ RMS with zero free cosmological parameters.  All
 from one line element.
 
-[Figure 2] BAO distance ratios $D_V/r_d$ versus redshift.  Points: BOSS, eBOSS,
+![Figure 2: BAO distance ratios](figures/fig02_bao.png)
+
+**Figure 2.** BAO distance ratios $D_V/r_d$ versus redshift.  Points: BOSS, eBOSS,
 DESI measurements.  Curve: metric prediction with $\mu_g = 0.247$ Gpc$^{-1}$
 and native $r_d$.
 
@@ -646,7 +631,9 @@ angular coupling integrals, the quadratic selection
 rule (17), the Gaussian measure on the complex mode
 space, and the relation $C/r_* = 4\pi^2 m_e$.
 
-[Figure 3] Lepton mass ratios: $m_\mu/m_e$ and $m_p/m_e$ from the angular
+![Figure 3: Lepton mass ratios](figures/fig03_mass_ratios.png)
+
+**Figure 3.** Lepton mass ratios: $m_\mu/m_e$ and $m_p/m_e$ from the angular
 coupling on $S^2$.  Horizontal bars: PDG values.  Points: metric
 predictions.  The proton--electron ratio $6\pi^5$ is accurate to
 $0.002\%$.
@@ -684,7 +671,9 @@ exhaust the four quantum number slots $(2j+1, 2\ell+1, 2|\kappa_{\mathrm{max}}|-
 2|\kappa_{\mathrm{max}}|+1) = (2, 3, 5, 7)$.  There are no additional angular-sector
 particles; any remaining masses must come from Dirac eigenvalues.
 
-[Figure 4] The pion mass derivation chain.  From the Diophantine triple
+![Figure 4: Angular sector](figures/fig04_angular_sector.png)
+
+**Figure 4.** The pion mass derivation chain.  From the Diophantine triple
 $(j, \ell, |\kappa_{\mathrm{max}}|) = (1/2, 1, 3)$, the C-closure orbit produces
 $84 = \binom{9}{3}$ configurations.  The angular formula
 $m_\pi = 84\pi\,m_e$ matches PDG to $0.09\%$.
@@ -774,7 +763,9 @@ The mass spectrum divides into three sectors, all from the same metric:
 Total: 17 particles from one metric, one ODE, one boundary condition,
 one calibration.
 
-[Figure 5] Hadron mass spectrum.  Horizontal axis: PDG mass.  Vertical axis:
+![Figure 5: Hadron mass ladder](figures/fig05_mass_ladder.png)
+
+**Figure 5.** Hadron mass spectrum.  Horizontal axis: PDG mass.  Vertical axis:
 metric prediction.  Diagonal line: perfect agreement.  Circles: mesons
 (full cavity).  Squares: baryons (sub-cavity).  Triangle: proton
 (angular sector).  The pion is marked separately.
@@ -913,7 +904,9 @@ duals on the same base space.  The orbit matching theorem requires the
 two to exhaust the exterior algebra, fixing the neutrino mass without
 additional parameters.
 
-[Figure 6] Neutrino mass derivation.  The atmospheric mass scale
+![Figure 6: Neutrino mass scale](figures/fig06_neutrino_scale.png)
+
+**Figure 6.** Neutrino mass derivation.  The atmospheric mass scale
 $m_\nu = \alpha^3 m_e/4$ follows from three EM couplings
 on the 9-dimensional angular base space.
 
@@ -970,11 +963,15 @@ The PMNS matrix constructed from these angles is exactly unitary
 (verified numerically).  The reactor angle $\theta_{13}$ --- the most
 precisely measured of the three --- is matched to $0.04\sigma$.
 
-[Figure 7] PMNS mixing angles: predictions (vertical lines) vs. NuFIT
+![Figure 7: PMNS contours](figures/fig07_pmns_contours.png)
+
+**Figure 7.** PMNS mixing angles: predictions (vertical lines) vs. NuFIT
 5.2 distributions.  All three predictions fall within the $1\sigma$
 bands.
 
-[Figure 8] The quantum number denominators (13, 7, 45) in the PMNS formulas and
+![Figure 8: Exterior algebra](figures/fig08_exterior_algebra.png)
+
+**Figure 8.** The quantum number denominators (13, 7, 45) in the PMNS formulas and
 their decomposition into the four multiplicities $\{2, 3, 5, 7\}$.
 
 ---
@@ -1009,7 +1006,9 @@ circumference factor.  The unified structure is: one metric produces
 four numbers $(2, 3, 5, 7)$, which generate all particle masses,
 coupling constants, and mixing angles.
 
-[Figure 9] The generalized bridge identity.  The product
+![Figure 9: Connection map](figures/fig09_connection_map.png)
+
+**Figure 9.** The generalized bridge identity.  The product
 $\mathrm{source}^2 \times E_1^2$ transitions from the orbital sector
 ($\ell$-dominated) at $|\kappa| = 1$ through the mixed sector at
 $|\kappa| = 2$ to the spin sector ($j$-dominated) at $|\kappa| = 3$.
@@ -1083,7 +1082,9 @@ beam deconvolution, introducing an estimated 2--3% model
 contamination.  A model-independent CMB reduction would be needed for
 a fairer comparison.
 
-[Figure 10] CMB angular power spectrum: peak positions.  Vertical lines: Planck
+![Figure 10: CMB spectrum](figures/fig10_cmb_spectrum.png)
+
+**Figure 10.** CMB angular power spectrum: peak positions.  Vertical lines: Planck
 2018 measured positions.  Points: metric predictions from WKB on the
 sourced $\phi$ profile.  RMS: 1.32%.
 
@@ -1158,7 +1159,9 @@ This mechanism requires no new fields, no modified geodesics, and no
 dark matter --- only standard stellar evolution on longer timescales
 than $\Lambda$CDM permits.
 
-[Figure 11] SPARC rotation curve fits.  Left: baryons-only.  Right: with
+![Figure 11: SPARC rotation curves](figures/fig11_sparc_rotation.png)
+
+**Figure 11.** SPARC rotation curve fits.  Left: baryons-only.  Right: with
 ancient baryonic remnants ($T_{\mathrm{age}}$ model).  The remnant
 mechanism closes most of the gap between baryons-only and NFW fits.
 
@@ -1305,7 +1308,9 @@ The most immediate tests:
 4. **JWST/Roman**: continued high-$z$ surveys will either
    find or rule out massive mature galaxies at $z > 15$.
 
-[Figure 12] Falsification landscape.  Each point represents a prediction; the
+![Figure 12: Falsification roadmap](figures/fig12_falsification_roadmap.png)
+
+**Figure 12.** Falsification landscape.  Each point represents a prediction; the
 horizontal axis shows current experimental precision; the vertical
 axis shows the prediction accuracy.  Arrows indicate experiments that
 will improve precision into the falsification range within 5 years.

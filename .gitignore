@@ -10,9 +10,8 @@ build/
 # Generated outputs (reproducible via run_all.sh)
 data/generated/*.json
 
-# Generated figures (reproducible via figure scripts)
-manuscript/figures/*.pdf
-manuscript/figures/*.png
+# Generated figures tracked in repo for GitHub rendering
+# (reproducible via figure scripts)
 
 # Environment
 .venv/

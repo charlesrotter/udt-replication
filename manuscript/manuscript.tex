@@ -30,9 +30,8 @@
 
 \begin{document}
 
-\title{Geodesic implications of a screened scalar dilation field:\\
-Mass emergence, coupling constants, and cosmological structure\\
-from a single static metric}
+\title{Cosmological distance relations from a screened scalar\\
+modification of the Schwarzschild metric}
 
 \author{Charles~Rotter}
 \affiliation{Independent Researcher}
@@ -43,26 +42,20 @@ from a single static metric}
 \date{\today}
 
 \begin{abstract}
-We derive the physical consequences of a static, spherically symmetric
-metric $ds^2 = -e^{-2\phi(r)}c^2\,dt^2 + e^{2\phi(r)}dr^2 +
-r^2\,d\Omega^2$, where $\phi(r)$ satisfies a covariant screened
-scalar equation obtained from the Einstein field equations.  The
-metric, a standard solution of general relativity with a minimally
-coupled scalar field, yields a luminosity-distance relation consistent
-with 1701~Type~Ia supernovae at $0.166$~mag RMS and baryon acoustic
-oscillation distance ratios at $3.8\%$ RMS with zero free
-cosmological parameters.  We show that the same geometric structure,
-through its angular decomposition on $S^2$, determines three metric
-parameters from a unique Diophantine triple and produces
-parameter-free lepton mass ratios ($m_p/m_e = 6\pi^5$ at $0.002\%$,
-$m_\mu/m_e = 20\pi^3/3$ at $0.03\%$), the fine-structure constant
-($1/\alpha = 36\pi/I_2 = 137.4$ at $0.29\%$), the atmospheric
-neutrino mass ($m_\nu = \alpha^3 m_e/4 = 0.049$~eV at $0.5\%$), and
-three PMNS mixing angles all within $1\sigma$ of experiment.  The
-cosmological peak structure and the microphysical mass spectrum emerge
-from the same operators on the same metric.  The framework makes
-specific falsifiable predictions for JUNO, KATRIN, DUNE, the ELT
-Sandage--Loeb test, and next-generation galaxy surveys.  All
+We investigate the geodesic structure of the static, spherically
+symmetric metric $ds^2 = -e^{-2\phi(r)}c^2\,dt^2 +
+e^{2\phi(r)}dr^2 + r^2\,d\Omega^2$, where $\phi(r)$ satisfies a
+covariant screened scalar equation derived from the Einstein field
+equations.  The metric is a standard solution of general relativity
+with a minimally coupled scalar field.  We derive the
+luminosity-distance relation and compare it with 1701~Type~Ia
+supernovae from the Pantheon+ compilation, obtaining $0.166$~mag RMS.
+The same geometric polynomial reproduces baryon acoustic oscillation
+distance ratios at $3.8\%$ RMS with zero free cosmological parameters.
+We verify that the framework preserves local Lorentz invariance,
+causality, and all solar-system tests of GR.  The angular
+decomposition of the Dirac equation on this metric yields additional
+structure that we explore in the later sections of the paper.  All
 derivations, numerical codes, and datasets are publicly available.
 \end{abstract}
 
@@ -80,33 +73,20 @@ assumes a specific symmetry class and matter content, and each
 reproduces a specific domain of observation.
 
 In this paper, we derive the geodesic implications of a single static,
-spherically symmetric metric with a screened scalar dilation field
-$\phi(r)$.  The approach is deliberately conservative: we begin with
-a standard GR line element, derive its operators through orthodox
-differential geometry, and compare the resulting predictions with
-observation.  No modification of GR is proposed.  No additional
-postulate or symmetry principle is introduced.
+spherically symmetric metric with a screened scalar field~$\phi(r)$.
+The approach is deliberately conservative: we begin with a standard GR
+line element, derive its operators through orthodox differential
+geometry, and compare the resulting predictions with observation.  No
+modification of GR is proposed.  No additional postulate or symmetry
+principle is introduced.
 
-The structure of the paper follows the derivation chain from the
-simplest consequences of the metric to increasingly detailed
-predictions.  We begin with the metric and its structural identities
-(Sec.~\ref{sec:metric}), then validate the cosmological distance
-relation against Type~Ia supernovae
-(Sec.~\ref{sec:sne}).  Sections~\ref{sec:causality}
-and~\ref{sec:gr-reduction} establish causality and reduction to
-standard GR at accessible scales.  Section~\ref{sec:bao} extends the
-cosmological tests to baryon acoustic oscillations.
-Sections~\ref{sec:angular}--\ref{sec:hadrons} derive the particle
-mass spectrum from the angular decomposition of the Dirac equation on
-the metric.  Sections~\ref{sec:alpha}--\ref{sec:pmns} derive coupling
-constants, neutrino parameters, and mixing angles.
-Sections~\ref{sec:bridge-gen}--\ref{sec:cmb} establish the bridge between
-microphysical and cosmological sectors.
-Sections~\ref{sec:jwst}--\ref{sec:blackholes} discuss astrophysical
-implications.  Section~\ref{sec:falsify} presents the full predictions
-table and falsification criteria.
-Sections~\ref{sec:discussion}--\ref{sec:conclusion} discuss and
-conclude.
+We begin with cosmological tests --- Type~Ia supernovae
+(Sec.~\ref{sec:sne}) and baryon acoustic oscillations
+(Sec.~\ref{sec:bao}) --- establishing that the metric reproduces
+standard distance measures.  We then verify causality and reduction to
+GR at laboratory scales.  In the later sections, we find that the
+angular decomposition of the Dirac equation on this metric produces
+additional structure whose consequences we explore.
 
 Throughout, we use natural units with $\hbar = c = 1$ in the
 microphysical sector unless otherwise stated, restoring $c$ in the
