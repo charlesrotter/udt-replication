@@ -1,0 +1,11 @@
+# NuFIT 5.2 neutrino oscillation parameters
+# Normal Ordering (NO), with Super-Kamiokande atmospheric data
+# Source: Esteban et al., JHEP 09 (2020) 178; updated at www.nu-fit.org
+# Version: NuFIT 5.2 (November 2022)
+parameter,best_fit,1sigma_low,1sigma_high,unit,description
+sin2_theta_12,0.304,0.292,0.316,dimensionless,Solar mixing angle
+sin2_theta_23,0.573,0.557,0.589,dimensionless,Atmospheric mixing angle
+sin2_theta_13,0.02219,0.02157,0.02281,dimensionless,Reactor mixing angle
+dm2_21,7.42e-5,7.22e-5,7.63e-5,eV^2,Solar mass-squared difference (m2^2 - m1^2)
+dm2_31,2.515e-3,2.490e-3,2.540e-3,eV^2,Atmospheric mass-squared difference (m3^2 - m1^2)
+delta_CP,197,135,284,degrees,Dirac CP-violation phase

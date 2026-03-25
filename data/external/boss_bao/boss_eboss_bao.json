@@ -1,0 +1,74 @@
+{
+  "provenance": {
+    "source": "Alam et al. (2021), Completed SDSS-IV extended Baryon Oscillation Spectroscopic Survey",
+    "journal": "Phys. Rev. D 103, 083533",
+    "arxiv": "2007.08991",
+    "survey": "SDSS DR17 / eBOSS final data release",
+    "url": "https://www.sdss4.org/dr17/",
+    "extracted_by": "UDT replication repository",
+    "extraction_date": "2026-03-25",
+    "notes": "Consensus BAO-only measurements from Tables 3 and 5 of Alam et al. (2021). D_V/r_d is the angle-averaged distance ratio. D_M/r_d and D_H/r_d are the transverse and line-of-sight measurements where available. All uncertainties are 1-sigma. BOSS galaxy reconstruction uses LCDM mocks; eBOSS Lya has minimal model dependence."
+  },
+  "columns": {
+    "z_eff": "Effective redshift of the measurement",
+    "D_V_over_rd": "Angle-averaged distance D_V divided by the sound horizon r_d",
+    "sigma_DV": "1-sigma uncertainty on D_V/r_d",
+    "D_M_over_rd": "Comoving angular diameter distance D_M divided by r_d",
+    "sigma_DM": "1-sigma uncertainty on D_M/r_d",
+    "D_H_over_rd": "Hubble distance D_H = c/H(z) divided by r_d",
+    "sigma_DH": "1-sigma uncertainty on D_H/r_d",
+    "tracer": "Galaxy tracer type used for the measurement"
+  },
+  "data": [
+    {
+      "z_eff": 0.38,
+      "D_V_over_rd": 10.27,
+      "sigma_DV": 0.15,
+      "D_M_over_rd": 10.23,
+      "sigma_DM": 0.17,
+      "D_H_over_rd": 25.00,
+      "sigma_DH": 0.76,
+      "tracer": "BOSS galaxy"
+    },
+    {
+      "z_eff": 0.51,
+      "D_V_over_rd": 13.38,
+      "sigma_DV": 0.18,
+      "D_M_over_rd": 13.36,
+      "sigma_DM": 0.21,
+      "D_H_over_rd": 22.33,
+      "sigma_DH": 0.58,
+      "tracer": "BOSS galaxy"
+    },
+    {
+      "z_eff": 0.70,
+      "D_V_over_rd": 17.86,
+      "sigma_DV": 0.33,
+      "D_M_over_rd": 17.86,
+      "sigma_DM": 0.33,
+      "D_H_over_rd": 19.33,
+      "sigma_DH": 0.53,
+      "tracer": "eBOSS LRG"
+    },
+    {
+      "z_eff": 1.48,
+      "D_V_over_rd": 30.69,
+      "sigma_DV": 0.80,
+      "D_M_over_rd": 30.69,
+      "sigma_DM": 0.80,
+      "D_H_over_rd": 13.26,
+      "sigma_DH": 0.55,
+      "tracer": "eBOSS QSO"
+    },
+    {
+      "z_eff": 2.33,
+      "D_V_over_rd": 37.6,
+      "sigma_DV": 1.1,
+      "D_M_over_rd": 37.6,
+      "sigma_DM": 1.1,
+      "D_H_over_rd": 8.93,
+      "sigma_DH": 0.28,
+      "tracer": "eBOSS Lya"
+    }
+  ]
+}

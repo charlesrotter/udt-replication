@@ -1,0 +1,14 @@
+# DESI Year 1 BAO measurements from DESI Collaboration (2024)
+# arXiv: 2404.03002
+# Survey: DESI Year 1
+# Extracted: 2026-03-25
+# All uncertainties are 1-sigma
+# BGS=Bright Galaxy Survey, LRG=Luminous Red Galaxies, ELG=Emission Line Galaxies, QSO=Quasars, Lya=Lyman-alpha
+z_eff,D_V_over_rd,sigma_DV,tracer
+0.30,7.93,0.15,BGS
+0.51,13.62,0.25,LRG1
+0.71,16.85,0.32,LRG2
+0.93,21.71,0.28,LRG3+ELG1
+1.32,27.79,0.69,ELG2
+1.49,30.69,1.00,QSO
+2.33,39.71,0.94,Lya

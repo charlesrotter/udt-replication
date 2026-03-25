@@ -1,0 +1,71 @@
+{
+  "description": "Neutrino oscillation parameters from NuFIT 5.2 global analysis",
+  "source": "NuFIT 5.2 (November 2022)",
+  "reference": "Esteban et al., JHEP 09 (2020) 178; updated at www.nu-fit.org",
+  "url": "http://www.nu-fit.org/",
+  "ordering": "Normal Ordering (NO)",
+  "atmospheric_data": "with Super-Kamiokande atmospheric data",
+  "parameters": {
+    "sin2_theta_12": {
+      "best_fit": 0.304,
+      "1sigma_low": 0.292,
+      "1sigma_high": 0.316,
+      "1sigma_error": 0.012,
+      "unit": "dimensionless"
+    },
+    "sin2_theta_23": {
+      "best_fit": 0.573,
+      "1sigma_low": 0.557,
+      "1sigma_high": 0.589,
+      "1sigma_error": 0.016,
+      "unit": "dimensionless"
+    },
+    "sin2_theta_13": {
+      "best_fit": 0.02219,
+      "1sigma_low": 0.02157,
+      "1sigma_high": 0.02281,
+      "1sigma_error": 0.00062,
+      "unit": "dimensionless"
+    },
+    "dm2_21": {
+      "best_fit": 7.42e-5,
+      "1sigma_low": 7.22e-5,
+      "1sigma_high": 7.63e-5,
+      "unit": "eV^2",
+      "description": "Solar mass-squared difference (m2^2 - m1^2)"
+    },
+    "dm2_31": {
+      "best_fit": 2.515e-3,
+      "1sigma_low": 2.490e-3,
+      "1sigma_high": 2.540e-3,
+      "unit": "eV^2",
+      "description": "Atmospheric mass-squared difference (m3^2 - m1^2)"
+    },
+    "delta_CP": {
+      "best_fit": 197,
+      "1sigma_low": 135,
+      "1sigma_high": 284,
+      "unit": "degrees",
+      "description": "Dirac CP-violation phase"
+    }
+  },
+  "derived_quantities": {
+    "theta_12_deg": {
+      "value": 33.44,
+      "description": "Solar mixing angle in degrees"
+    },
+    "theta_23_deg": {
+      "value": 49.2,
+      "description": "Atmospheric mixing angle in degrees"
+    },
+    "theta_13_deg": {
+      "value": 8.57,
+      "description": "Reactor mixing angle in degrees"
+    },
+    "dm2_32": {
+      "value": 2.4408e-3,
+      "unit": "eV^2",
+      "description": "dm2_31 - dm2_21"
+    }
+  }
+}
