@@ -16,3 +16,14 @@ Cross-reference: every figure in the manuscript, its generating script, input da
 | Fig. 10 | `figures/fig10_cmb_spectrum.py` | `data/generated/15_cmb_spectrum.json` | §16 (CMB) |
 | Fig. 11 | `figures/fig11_sparc_rotation.py` | `data/generated/16_sparc_remnants.json` | §18 (Rotation curves) |
 | Fig. 12 | `figures/fig12_falsification_roadmap.py` | None (schematic) | §20 (Predictions) |
+
+## Figures Needed for Manuscript Update (2026-03-25 results)
+
+| Figure | Content | Section | Status |
+|--------|---------|---------|--------|
+| Fig. 13 | Unified mixing: 5 angles on one plot (PMNS + Weinberg + CKM) | §15a (Unified mixing) | NEEDED |
+| Fig. 14 | CKM elements: predicted vs PDG (7 elements) | §15a (CKM) | NEEDED |
+| Fig. 15 | Coupling hierarchy: α_EM, α_weak, α_strong from bridge identity | §12 or §15b | NEEDED |
+| Fig. 16 | Tau mass: Z₃ Brannen orbit on the lepton mass vector in ℝ³ | §9 (Leptons) | NEEDED |
+| Update Fig. 3 | Add tau to lepton mass ratios | §9 (Leptons) | NEEDED |
+| Update Fig. 7 | Add sin²θ_W = 3/13 alongside PMNS contours | §14 (PMNS) | NEEDED |
