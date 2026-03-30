@@ -115,51 +115,54 @@ draw_node(ax, 4.0, -0.5, 'Mass formulas\n' + r'$m_e,\pi,\mu,p$',
 draw_edge(ax, 2.0, 0.6, 1.5, 0.1, r'$I_2$', CB_BLUE, 1.0)
 draw_edge(ax, 3.0, 0.6, 3.8, 0.1, r'$(j,l,|\kappa|)$', CB_GREEN, 1.0)
 
-# === Third level: leaf predictions ===
-# From microphysics
-draw_node(ax, -5.0, -2.5, 'Mass ladder\n' + r'$m_n = E_n C$',
-          size=0.9, color='white', fontsize=6.5)
-draw_node(ax, -3.0, -2.5, 'Hierarchy\n' + r'$H \approx 40$',
-          size=0.9, color='white', fontsize=6.5)
+# === Third level: leaf predictions (spread wider, smaller nodes) ===
+leaf_y = -2.6
+leaf_fs = 6
 
-draw_edge(ax, -4.2, -1.1, -4.8, -1.9, '', CB_RED, 0.7)
-draw_edge(ax, -3.8, -1.1, -3.2, -1.9, '', CB_RED, 0.7)
+# From microphysics
+draw_node(ax, -4.8, leaf_y, 'Masses\n' + r'$E_n \!\times\! C$',
+          size=0.7, color='white', fontsize=leaf_fs)
+draw_node(ax, -3.0, leaf_y, 'Hierarchy\n' + r'$10^{40}$',
+          size=0.7, color='white', fontsize=leaf_fs)
+
+draw_edge(ax, -4.2, -1.1, -4.6, -2.0, '', CB_RED, 0.7)
+draw_edge(ax, -3.8, -1.1, -3.2, -2.0, '', CB_RED, 0.7)
 
 # From cosmology
-draw_node(ax, -1.5, -2.5, 'SNe Ia\n0.166 mag',
-          size=0.8, color='white', fontsize=6.5)
-draw_node(ax, 0.3, -2.5, 'BAO\n' + r'$D_V/r_d$',
-          size=0.7, color='white', fontsize=6.5)
+draw_node(ax, -1.5, leaf_y, 'SNe\n0.164 mag',
+          size=0.65, color='white', fontsize=leaf_fs)
+draw_node(ax, 0.1, leaf_y, 'BAO\n3.2%',
+          size=0.55, color='white', fontsize=leaf_fs)
 
-draw_edge(ax, -1.0, -1.1, -1.3, -1.9, '', CB_PURPLE, 0.7)
-draw_edge(ax, -0.8, -1.1, 0.1, -1.9, '', CB_PURPLE, 0.7)
+draw_edge(ax, -1.0, -1.1, -1.4, -2.0, '', CB_PURPLE, 0.7)
+draw_edge(ax, -0.8, -1.1, 0.0, -2.0, '', CB_PURPLE, 0.7)
 
 # From alpha
-draw_node(ax, 1.5, -2.5, r'$\nu$ mass' + '\n' + r'$\alpha^3 m_e/4$',
-          size=0.8, color='white', fontsize=6.5)
+draw_node(ax, 1.5, leaf_y, r'$\nu$ mass' + '\n' + r'$\alpha^3 m_e/4$',
+          size=0.7, color='white', fontsize=leaf_fs)
 
-draw_edge(ax, 1.5, -1.1, 1.5, -1.9, '', CB_BLUE, 0.7)
+draw_edge(ax, 1.5, -1.1, 1.5, -2.0, '', CB_BLUE, 0.7)
 
 # From mass formulas
-draw_node(ax, 3.2, -2.5, 'PMNS\n' + r'$\frac{4}{13},\frac{4}{7},\frac{1}{45}$',
-          size=0.9, color='white', fontsize=6.5)
-draw_node(ax, 5.0, -2.5, r'$\Lambda^k$ algebra' + '\n' + 'grades',
-          size=0.8, color='white', fontsize=6.5)
+draw_node(ax, 3.2, leaf_y, 'PMNS\nmixing',
+          size=0.65, color='white', fontsize=leaf_fs)
+draw_node(ax, 4.8, leaf_y, r'$\Lambda^k$' + '\nalgebra',
+          size=0.6, color='white', fontsize=leaf_fs)
 
-draw_edge(ax, 3.8, -1.1, 3.2, -1.9, '', CB_GREEN, 0.7)
-draw_edge(ax, 4.2, -1.1, 4.8, -1.9, '', CB_GREEN, 0.7)
+draw_edge(ax, 3.8, -1.1, 3.2, -2.0, '', CB_GREEN, 0.7)
+draw_edge(ax, 4.2, -1.1, 4.6, -2.0, '', CB_GREEN, 0.7)
 
 # === Bottom: CMB from cosmo + angular ===
-draw_node(ax, -0.5, -3.8, r'CMB:  $\phi(r_*) = \ln(1+z_{\rm CMB}) = 7.004$',
+draw_node(ax, -0.5, -3.9, r'CMB:  $\phi(r_*) = \ln(1\!+\!z_{\rm CMB}) = 7.004$',
           size=2.0, color='#FFFDE7', ec='0.5', fontsize=7)
 
-draw_edge(ax, -1.5, -3.1, -1.0, -3.3, '', '0.6', 0.5)
-draw_edge(ax, 0.3, -3.1, -0.2, -3.3, '', '0.6', 0.5)
+draw_edge(ax, -1.5, -3.2, -1.0, -3.4, '', '0.6', 0.5)
+draw_edge(ax, 0.1, -3.2, -0.2, -3.4, '', '0.6', 0.5)
 
 # === Count annotations ===
-ax.text(0, -4.3, r'1 metric $\,\to\,$ 0 free parameters $\,\to\,$ '
+ax.text(0, -4.4, r'1 metric $\,\to\,$ 0 free parameters $\,\to\,$ '
         r'masses, $\alpha$, PMNS, CMB, BAO, hierarchy',
-        ha='center', va='center', fontsize=8, fontweight='bold',
+        ha='center', va='center', fontsize=7.5, fontweight='bold',
         color='0.3')
 
 fig.tight_layout()

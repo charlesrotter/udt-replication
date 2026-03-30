@@ -105,12 +105,14 @@ ax.text(0.05, 0.95, 'NGC 2403',
         transform=ax.transAxes, fontsize=9, va='top',
         fontweight='bold', color='0.3')
 
-# Open-problem annotation
-ax.text(0.05, 0.84,
+# Open-problem annotation — inside the shaded gap region
+ax.text(0.55, 0.45,
         'Baryons-only: gap = open problem\n'
-        r'UDT: $g_{\rm tt}$ remnants (not yet computed)',
-        transform=ax.transAxes, fontsize=6.5, va='top',
-        color='0.45', linespacing=1.4)
+        r'UDT: $g_{tt}$ remnants (not yet computed)',
+        transform=ax.transAxes, fontsize=6.5, va='center', ha='center',
+        color='0.4', linespacing=1.4, style='italic',
+        bbox=dict(boxstyle='round,pad=0.3', facecolor='white',
+                  edgecolor='0.6', alpha=0.85, linewidth=0.4))
 
 fig.tight_layout()
 

@@ -54,9 +54,9 @@ CB_PURPLE = '#CC79A7'
 CB_CYAN   = '#56B4E9'
 
 # === Create figure ===
-fig, ax = plt.subplots(figsize=(3.4, 4.5))
+fig, ax = plt.subplots(figsize=(3.4, 4.0))
 ax.set_xlim(0, 10)
-ax.set_ylim(0, 12)
+ax.set_ylim(0.3, 12)
 ax.set_aspect('equal')
 ax.axis('off')
 
