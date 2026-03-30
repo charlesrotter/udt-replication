@@ -1468,7 +1468,7 @@ compilations [Ref: PDG2024], and the NuFIT neutrino oscillation
 global fit [Ref: NuFIT].  Numerical computations were performed on a
 Tesla V100 GPU using PyTorch for vectorized ODE integration.  This
 work was supported by no external funding.  All code is available
-under CC BY-NC-ND 4.0 at [Ref: zenodo2025].
+under CC BY-NC 4.0 at [Ref: zenodo2025].
 
 ---
 

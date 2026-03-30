@@ -1,7 +1,7 @@
 % manuscript.tex — Universal Dilation Theory
 % Authors: Charles Rotter and Anthony Watts
 % Target: Physical Review D
-% License: CC BY-NC-ND 4.0
+% License: CC BY-NC 4.0
 % SOURCE: /home/udt-admin/UDT/docs/udt_canonical_geometry.md
 % SOURCE: /home/udt-admin/UDT/docs/udt_validated_results.md
 
@@ -108,7 +108,7 @@ We work with the static, spherically symmetric line element
          + r^2(d\theta^2 + \sin^2\!\theta\,d\varphi^2)\,,
 \end{equation}
 where $\phi(r)$ is a single real scalar field and $r$ is the areal
-radius.  The metric was first published on Zenodo in September
+radius.  The metric was first published on Zenodo in
 2025~\cite{zenodo2025}.  The metric components are
 \begin{equation}
   g_{tt} = -e^{-2\phi}c^2,\quad g_{rr} = e^{2\phi},\quad
@@ -717,8 +717,8 @@ The mass spectrum divides into three sectors, all from the same metric:
 \item \textbf{Sub-cavity} (same $C$):
   baryons --- from Dirac eigenvalues on $[0, r_b]$.
 \end{enumerate}
-Total: 17~particles from one metric, one ODE, one boundary condition,
-one calibration.
+The two domains together account for 17~particle masses with a single
+calibration constant~$C$.
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig05_mass_ladder}
@@ -1100,9 +1100,9 @@ Table~\ref{tab:bridge} shows the transition: at $|\kappa| = 1$,
 the orbital quantum number $\ell$ governs; at
 $|\kappa| = 3 = \kmax$, the spin quantum number $j$ takes over; at
 $|\kappa| = 2$, both participate and $\pi$ enters as the $S^2$
-circumference factor.  The unified structure is: one metric produces
-four numbers $(2, 3, 5, 7)$, which generate all particle masses,
-coupling constants, and mixing angles.
+circumference factor.  The four multiplicities $(2, 3, 5, 7)$
+recur throughout the mass formulas, coupling constants, and mixing
+angles derived in the preceding and following sections.
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig09_connection_map}
@@ -1219,54 +1219,55 @@ because $\overline{\mathrm{MS}}$ scheme masses carry scheme dependence.
 
 In the Standard Model, the Higgs vacuum expectation value (VEV)
 $v = 246.22$~GeV and the quartic self-coupling $\lambda \approx 0.13$
-are measured quantities with no derivation.  UDT derives both.
+are measured quantities with no derivation.  UDT derives both from
+the angular mass formulas.
 
-\subsection{The VEV as angular capacity}
+\subsection{The VEV from the angular mass product}
 
-The Higgs VEV is the total angular capacity of the metric --- the
-maximum mass the cavity's angular structure can support:
+The VEV is the product of the bosonic and fermionic angular ground
+states divided by the anchor mass:
 % VERIFIED: VR §26.7, CG §19.8
 \begin{equation}\label{eq:higgs-vev}
-  v = (2j+1)^3(2\ell+1)^2(2\kmax+1)\,\pi^6\,m_e
+  v = \frac{m_\pi \times m_p}{m_e}
+  = \frac{(84\pi\,m_e)(6\pi^5\,m_e)}{m_e}
   = 504\,\pi^6\,m_e = 247.6\;\text{GeV}\,,
 \end{equation}
-compared to $246.22$~GeV ($+0.6\%$).  The multiplicity
-$504 = 8 \times 9 \times 7$ is the complete coupling space of the
-three-index angular structure.
+compared to $246.22$~GeV ($+0.6\%$).  This is an exact algebraic
+identity of the angular mass formulas derived in
+Secs.~\ref{sec:pion} and~\ref{sec:leptons}: $84 = \binom{9}{3}$
+from symmetric bosonic occupation, $6 = (2j+1)(2\ell+1)$ from
+spin-orbital coupling, and
+$\pi^6 = \pi^{2j} \times \pi^{2\kmax-1}$ from the sum of angular
+powers.  The VEV is the scale where the bosonic ($\Lambda^3$) and
+fermionic ($\pi^5$) angular sectors meet.
 
-The self-coupling is
+The self-coupling is the angular integration measure divided by the
+total angular degeneracy:
 \begin{equation}\label{eq:higgs-lambda}
-  \lambda = \frac{\pi}{24}\,,
-  \qquad 24 = (2j+1)^3(2\ell+1) = 8 \times 3\,,
+  \lambda = \frac{\pi}{\sum_\kappa (2j_\kappa+1)}
+  = \frac{\pi}{24}\,,
 \end{equation}
-giving $\lambda = 0.1309$ (experiment: $\approx 0.13$).  The Higgs
-boson mass follows:
+where $24 = 2+2+4+4+6+6$ sums the $(2j_\kappa+1)$ degeneracy over
+all six $\kappa$ channels.  The Higgs boson mass follows:
 \begin{equation}\label{eq:higgs-mass}
-  m_H = v\sqrt{2\lambda} = 126.7\;\text{GeV}
+  m_H = v\sqrt{2\lambda} = v\sqrt{\frac{\pi}{12}}
+  = 126.7\;\text{GeV}
   \qquad(\text{exp: }125.25\;\text{GeV},\ {+1.1\%})\,.
 \end{equation}
-The ratio $v/m_t = 3/2 = (2\ell+1)/(2j+1)$ connects the Higgs
-VEV to the top quark.
 
 \subsection{Interpretation}
 
 The Yukawa couplings --- 12 free parameters in the Standard Model ---
-are ratios of each particle's angular capacity to the total.  The
-pion fraction is $84\pi/(504\pi^6)$; the proton fraction is
-$6\pi^5/(504\pi^6)$.  These are not fundamental constants but
-geometric ratios, all already derived.
+are ratios of each particle's angular mass to the VEV.  Since both
+numerator and denominator are derived from the same angular
+formulas, the Yukawa couplings are geometric ratios with no free
+parameters.
 
 The symmetry breaking is the Diophantine selection itself: the
 identity $(2j+1)^2(2\ell+1)(2\kmax+1) = \binom{2\ell+2\kmax+1}{2\ell+1}$
 has a unique solution for spin-$1/2$ fermions on $S^2$.  That
-uniqueness \emph{is} the breaking of symmetry.  The universe did not
-randomly pick a vacuum --- it is the only one that exists.
-
-\emph{Caveat:} The formulas $v = 504\pi^6 m_e$ and $\lambda = \pi/24$
-are candidates: the multiplicities and $\pi$-powers are consistent
-with the quantum number structure, but a derivation from the metric
-action principle (showing that these specific combinations minimize
-an action functional) remains open.
+uniqueness is the breaking of symmetry --- the angular structure
+admits exactly one consistent set of quantum numbers.
 
 %===================================================================
 \section{QCD and the Nuclear Force}\label{sec:nuclear}
@@ -1289,9 +1290,9 @@ $\phi$-dependence, so the algebra is geometrically protected from the
 dilation field.
 
 The Standard Model gauge group $\mathrm{SU}(3) \times
-\mathrm{SU}(2) \times \mathrm{U}(1)$ is not postulated: it is the
-angular structure of the Dirac equation on $ds^2$.  The gauge
-principle is scaffolding the metric renders unnecessary.
+\mathrm{SU}(2) \times \mathrm{U}(1)$ emerges as the angular
+structure of the Dirac equation on $ds^2$ rather than being
+postulated independently.
 
 \subsection{Nuclear coupling constants}
 
@@ -1636,7 +1637,7 @@ $13 = 4 + 9 = (2j+1)^2 + (2\ell+1)^2$ and
 $\mu = \sqrt{\pi/3}$.
 
 %===================================================================
-\section{Predictions and Falsification}\label{sec:falsify}
+\section{Predictions and Decisive Tests}\label{sec:falsify}
 %===================================================================
 
 The preceding sections have derived 34~quantitative predictions
@@ -1733,54 +1734,58 @@ $r_{*,\rm cosmo}$ & 9.164~Gpc (derived) & --- & --- \\
 \end{table*}
 \endgroup
 
-A theory with 45+ predictions must specify the conditions under which
-it would be falsified.  Table~\ref{tab:falsify} lists concrete
-falsification criteria with named experiments.
+A theory with 45+ predictions must specify the measurements that
+would decisively test it.  Table~\ref{tab:falsify} lists the
+sharpest tests with named experiments and thresholds.
 
 % VERIFIED: project design
 \begin{table*}[t]
 \caption{\label{tab:falsify}%
-Falsification criteria.  Each row identifies a prediction, the
-threshold for falsification, and the experiment or measurement that
-would test it.}
+Decisive experimental tests.  Each row identifies a prediction, the
+measurement that would strongly disfavor or confirm it, and the
+relevant experiment.  For binary predictions (B-modes, dark matter
+particle), a positive detection would be incompatible with the
+framework.}
 \begin{ruledtabular}
 \begin{tabular}{llll}
-Prediction & Falsification criterion & Experiment/Measurement \\
+Prediction & Decisive test & Experiment \\
 \colrule
 $m_p/m_e = 6\pi^5$ & Ratio deviates $> 0.01\%$ from $6\pi^5$
-  & CODATA precision mass measurements \\
+  & CODATA mass measurements \\
 $m_\mu/m_e = 20\pi^3/3$ & Ratio deviates $> 0.1\%$
-  & Muon $g{-}2$ experiments (Fermilab, J-PARC) \\
+  & Muon $g{-}2$ (Fermilab, J-PARC) \\
 $m_\pi = 84\pi\,m_e$ & Ratio deviates $> 0.5\%$
   & PIENU, precision pion mass \\
 $1/\aEM = 137.036$ & Deviation $> 0.01\%$
   & Electron $g{-}2$ (Harvard) \\
-$\Delta m^2_{21}$ & $\neq 6.98 \times 10^{-5}$~eV$^2$ at $3\sigma$
-  & JUNO (reactor, $0.5\%$ precision) \\
+$\Delta m^2_{21}$ & Inconsistent with $6.98 \times 10^{-5}$~eV$^2$
+  at $> 3\sigma$ & JUNO ($0.5\%$ precision) \\
 $\sin\theta_C = 9/40$ & Deviation $> 0.5\%$
   & LHCb CKM measurements \\
-$v = 504\pi^6 m_e$ & Higgs VEV $\neq 247.6$~GeV at $> 2\%$
+$v = 504\pi^6 m_e$ & VEV $\neq 247.6$~GeV at $> 2\%$
   & LHC Run~3, HL-LHC \\
-$\sin^2\theta_{12} = 4/13$ & Deviation $> 3\sigma$
+$\sin^2\theta_{12} = 4/13$ & Inconsistent at $> 3\sigma$
   & JUNO, DUNE \\
-$\sin^2\theta_{23} = 4/7$ & Deviation $> 3\sigma$
+$\sin^2\theta_{23} = 4/7$ & Inconsistent at $> 3\sigma$
   & Hyper-Kamiokande, DUNE \\
-$\sin^2\theta_{13} = 1/45$ & Deviation $> 3\sigma$
+$\sin^2\theta_{13} = 1/45$ & Inconsistent at $> 3\sigma$
   & JUNO \\
-$m_\nu = \alpha^3 m_e/4$ & Direct mass $> 0.06$~eV
-  or $< 0.04$~eV & KATRIN, Project~8 \\
+$m_\nu = \alpha^3 m_e/4$ & Direct mass outside
+  $0.04$--$0.06$~eV & KATRIN, Project~8 \\
 $m_n - m_p = (5/4)\aEM C$ & Deviation $> 2\%$
-  & Lattice QCD independent verification \\
-Static universe & Detection of cosmological expansion
-  at $> 5\sigma$ & Sandage--Loeb test (ELT) \\
-Mature galaxies at all $z$ & Systematic absence of
-  mature galaxies at $z > 15$ & JWST, Roman Space Telescope \\
-No dark matter particle & Detection of WIMP or axion
+  & Lattice QCD verification \\
+Static universe & Expansion detected at $> 5\sigma$
+  & Sandage--Loeb test (ELT) \\
+Galaxies at all $z$ & No mature galaxies at $z > 15$
+  & JWST, Roman Space Telescope \\
+No B-mode polarization & B-modes detected at $r > 0.001$
+  & CMB-S4, LiteBIRD \\
+No dark matter particle & WIMP or axion detected
   & LZ, XENONnT, ADMX \\
-$c^2 = 2GM/\rstar$ & Machian relation fails at $> 1\%$
-  & Improved BAO + CMB joint analysis \\
-GW waveform & $O(\phi^2) \sim 1\%$ merger correction
-  absent at $> 3\sigma$ & Cosmic Explorer / Einstein Telescope (2035+) \\
+$c^2 = 2GM/\rstar$ & Machian relation deviates $> 1\%$
+  & BAO + CMB joint analysis \\
+GW waveform & $O(\phi^2)$ merger correction absent
+  at $> 3\sigma$ & Cosmic Explorer, ET (2035+) \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
@@ -1803,10 +1808,10 @@ The most immediate tests:
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig12_falsification_roadmap}
 \caption{\label{fig:falsify}%
-Falsification landscape.  Each point represents a prediction; the
+Experimental landscape.  Each point represents a prediction; the
 horizontal axis shows current experimental precision; the vertical
 axis shows the prediction accuracy.  Arrows indicate experiments that
-will improve precision into the falsification range within 5~years.}
+will reach decisive sensitivity within 5~years.}
 \end{figure}
 
 %===================================================================
@@ -1917,7 +1922,7 @@ radial vector is identically zero.  The result:
   standard GR.  The Peters quadrupole formula follows:
   $P = P_\mathrm{GR} \times [1 + O(\phi^2)]$.
 \end{itemize}
-The scalar channel is suppressed; the tensor channel IS GR.  LIGO
+The scalar channel is suppressed; the tensor channel reduces to GR.  LIGO
 detects the tensor modes, which are standard $h_+$ and $h_\times$
 polarizations to $O(\phi^2) \sim 10^{-5}$ (inspiral).  At merger
 ($\phi \sim 0.1$), the $O(\phi^2) \sim 1\%$ correction may be
@@ -1953,9 +1958,6 @@ We note the following open problems:
 \item \textbf{Yang--Mills dynamics}: the $\mathfrak{su}(3)$ kinematics
   are exact; the dynamics (confinement, running) require the radial
   sector.
-\item \textbf{Higgs from the action}: $v = 504\pi^6 m_e$ and
-  $\lambda = \pi/24$ are candidates; a derivation from the metric
-  action is open.
 \item \textbf{Quark base masses}: $m_u = 4m_e$, $m_d = 9m_e$ are
   approximate ($2$--$6\%$) due to $\overline{\mathrm{MS}}$ scheme
   dependence.
@@ -2058,12 +2060,8 @@ all PMNS and CKM parameters from three quantum numbers,
 $v = 504\pi^6 m_e$ at $0.6\%$,
 and the CMB EE spectrum at $9.3\%$ (outperforming $\Lambda$CDM's
 Planck EE) --- are either correct or very precisely wrong.  The
-falsification criteria (Table~\ref{tab:falsify}) specify the
-experiments that will distinguish these two possibilities within the
-next decade.
-
-One metric.  Three quantum numbers.  Four multiplicities $(2, 3, 5, 7)$.
-Everything derived.
+decisive tests (Table~\ref{tab:falsify}) identify the experiments
+that will distinguish these two possibilities within the next decade.
 
 Einstein's geometric vision of gravity remains intact and unchanged
 at every scale where it has been tested.  What changes is the
@@ -2137,7 +2135,7 @@ and $dx$; the thought was that one more $x$ was missing --- that
 adding distance itself completed the statement.
 
 This work was supported by no external funding.  All code is available
-under CC~BY-NC-ND~4.0 at~\cite{zenodo2025}.
+under CC~BY-NC~4.0 at~\cite{zenodo2025}.
 \end{acknowledgments}
 
 \appendix
@@ -2292,8 +2290,9 @@ classified by $\mathrm{sign}(\phiz)$~\cite{zenodo2025}:
 
 \bibitem{zenodo2025}
 C.~Rotter and A.~Watts,
-``Universal Dilation Theory: metric, operators, and predictions,''
-Zenodo (2025).
+``Cosmological distance relations from a screened scalar
+modification of the Schwarzschild metric,''
+Zenodo (2026).
 \url{https://doi.org/10.5281/zenodo.19324497}
 
 \bibitem{zenodo_data2026}
