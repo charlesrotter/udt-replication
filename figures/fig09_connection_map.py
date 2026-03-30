@@ -54,9 +54,9 @@ CB_PURPLE = '#CC79A7'
 CB_CYAN = '#56B4E9'
 
 # === Create figure ===
-fig, ax = plt.subplots(figsize=(7.0, 6.0))
+fig, ax = plt.subplots(figsize=(7.0, 6.8))
 ax.set_xlim(-5.8, 5.8)
-ax.set_ylim(-5.8, 4.5)
+ax.set_ylim(-6.5, 4.5)
 ax.set_aspect('equal')
 ax.axis('off')
 
@@ -143,18 +143,18 @@ draw_edge(ax, 1.5, -1.1, 1.5, -2.2, '', CB_BLUE, 0.7)
 draw_edge(ax, 3.8, -1.1, 3.2, -2.2, '', CB_GREEN, 0.7)
 draw_edge(ax, 4.2, -1.1, 4.7, -2.2, '', CB_GREEN, 0.7)
 
-# === Bottom: CMB from cosmo + angular ===
-draw_node(ax, 0, -4.4, r'CMB:  $\phi(r_*) = \ln(1\!+\!z_{\rm CMB}) = 7.004$',
-          size=2.0, color='#FFFDE7', ec='0.5', fontsize=7)
+# === Bottom: CMB from cosmo + angular (wider box, well below leaves) ===
+draw_node(ax, 0, -4.8, r'CMB:  $\phi(r_*) = \ln(1\!+\!z_{\rm CMB}) = 7.004$',
+          size=2.5, color='#FFFDE7', ec='0.5', fontsize=7.5)
 
-draw_edge(ax, -1.5, -3.4, -0.8, -3.9, '', '0.6', 0.5)
-draw_edge(ax, 0.0, -3.4, 0.0, -3.9, '', '0.6', 0.5)
+draw_edge(ax, -1.5, -3.4, -0.8, -4.2, '', '0.6', 0.5)
+draw_edge(ax, 0.0, -3.4, 0.0, -4.2, '', '0.6', 0.5)
 
-# === Count annotations ===
-ax.text(0, -5.4, r'1 metric $\,\to\,$ 0 free parameters $\,\to\,$ '
-        r'masses, $\alpha$, PMNS, CMB, BAO, hierarchy',
+# === Count annotations (two lines) ===
+ax.text(0, -6.0, r'1 metric  $\to$  0 free parameters'
+        '\n' r'$\to$  masses, $\alpha$, PMNS, CMB, BAO, hierarchy',
         ha='center', va='center', fontsize=7.5, fontweight='bold',
-        color='0.3')
+        color='0.3', linespacing=1.4)
 
 fig.tight_layout()
 
