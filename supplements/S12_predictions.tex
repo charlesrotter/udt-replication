@@ -76,25 +76,82 @@ $m_\mu/m_\pi$ & $5\pi^2/63$ & 0.783 & 0.783 \\
 \bottomrule
 \end{longtable}
 
+The tau lepton from Koide $Z_3$ closure (session 2026-03-25):
+\begin{equation}
+  m_\tau^{\mathrm{Koide}} = 1777.0~\text{MeV}
+  \qquad(\text{PDG: }1776.9,\ +0.007\%)\,.
+\end{equation}
+Brannen parametrization: $A = \sqrt{2j+1} = \sqrt{2}$,
+$\theta = (2j+1)/(2\ell+1)^2 = 2/9$.
+
 %----------------------------------------------------------------------
-\section{Fine structure constant}
+\section{Fine structure constant (three-level chain)}
 \label{sec:alpha}
 %----------------------------------------------------------------------
 
-\begin{prediction}
-\begin{equation}
-  \frac{1}{\alpha_\mathrm{EM}} = \frac{36\pi}{I_2},
-\end{equation}
-where $I_2 = \int_0^{r_*} e^{2\phi(r)}\,dr$ and
-$36 = (2j+1)^2(2l+1)^2 = \binom{9}{2}$.
-\end{prediction}
+\begin{enumerate}
+  \item Algebraic bridge: $1/\alpha_0 = 36\pi/I_2 = 137.43$ ($+0.29\%$).
+  \item Computed ODE: $\alpha_0 = \mathcal{S}^2 E_1^2 I_2/(2\pi) = 1/137.14$ ($+0.074\%$).
+  \item One-loop: $\alpha = \alpha_0(1 + \alpha_0/\pi^2) = 1/137.036$ ($+0.0004\%$).
+\end{enumerate}
 
-\noindent\textbf{Status:} The formula is structurally exact. The numerical
-value depends on $I_2$, computed from the vacuum $\phi$ profile.\\
-\textbf{PDG:} $1/\alpha = 137.036$.\\
-\textbf{Falsification:} If the formula $36\pi/I_2$ with the locked
-parameters $(\phi_0, \mu, r_*)$ gives $1/\alpha$ outside the range
-$[135, 139]$, the derivation chain is falsified.
+\noindent\textbf{Critical:} Level~3 uses $\alpha_0$ from Level~2
+(computed ODE), not Level~1 (algebraic). See Supplement~S5.
+
+Hydrogen binding: $E_H = \frac{1}{2}\alpha^2 m_e = 13.606$~eV ($-0.0006\%$).
+
+%----------------------------------------------------------------------
+\section{Weinberg angle and coupling hierarchy (new)}
+\label{sec:weinberg}
+%----------------------------------------------------------------------
+
+$\sin^2\theta_W = 3/13 = 0.2308$ (exp: $0.2312$, $-0.19\%$).
+$\alpha_s(M_Z) = 0.1178$ (exp: $0.1179$, $-0.07\%$).
+See Supplement~S16.
+
+%----------------------------------------------------------------------
+\section{CKM matrix (new)}
+\label{sec:ckm}
+%----------------------------------------------------------------------
+
+$\sin\theta_C = 9/40 = 0.2250$ ($-0.13\%$).
+$A = \cos(\pi/5) = 0.8090$ ($-0.24\%$).
+$\delta_\mathrm{CKM} = \arctan(9/4) = 66.0^\circ$ ($0.1\sigma$).
+$\theta_\mathrm{QCD} = 0$ (exact).
+See Supplement~S13.
+
+%----------------------------------------------------------------------
+\section{Quark masses and charges (new)}
+\label{sec:quarks}
+%----------------------------------------------------------------------
+
+$N_c = (2\ell+1) = 3$. $Q_d = -1/3$, $Q_u = +2/3$.
+Four inter-generation mass ratios sub-$2\%$:
+$m_s/m_d = 2\pi^2$, $m_c/m_u = 6\pi^4$,
+$m_b/m_s = 9\pi^2/2$, $m_t/m_c = 14\pi^2$.
+See Supplement~S14.
+
+%----------------------------------------------------------------------
+\section{Higgs sector (new)}
+\label{sec:higgs}
+%----------------------------------------------------------------------
+
+$v = 504\pi^6 m_e = 247.6$~GeV ($+0.6\%$).
+$\lambda = \pi/24$, $m_H = 126.7$~GeV ($+1.1\%$).
+Note: candidate status (not yet derived from metric action).
+See Supplement~S15.
+
+%----------------------------------------------------------------------
+\section{Nuclear force (new)}
+\label{sec:nuclear}
+%----------------------------------------------------------------------
+
+$g_A = 4/\pi$ ($-0.23\%$), $f_\pi = 180\,m_e$ ($-0.25\%$),
+$g_{\pi NN} = 2\pi^4/15$ ($+0.06\%$),
+$g^2/(4\pi) = \pi^7/225$ ($-0.6\%$).
+$R_p = \hbar c/(C\varphi_\mathrm{gold}) = 0.865$~fm ($-1.1\%$).
+Scalar sector contributes zero ($\alpha_\mathrm{phys} \sim 10^{-40}$).
+See Supplement~S16.
 
 %----------------------------------------------------------------------
 \section{Proton--neutron mass splitting}

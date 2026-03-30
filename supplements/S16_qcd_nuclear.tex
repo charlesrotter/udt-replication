@@ -1,0 +1,217 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{S16.\arabic{equation}}
+
+\title{Supplement S16: QCD as Angular Geometry and the \\
+Derived Nuclear Force \\
+\large Supporting Manuscript \S19}
+\author{UDT Collaboration}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The 8~tensor operators on the $\ell = 1$ subspace of $S^2$ close as
+the Lie algebra $\mathfrak{su}(3)$ with Casimir $C_2 = (4/3)I_3$,
+verified to $10^{-16}$.  This renders the gauge principle scaffolding.
+Four nuclear coupling constants --- $g_A = 4/\pi$ ($-0.23\%$),
+$f_\pi = 180\,m_e$ ($-0.25\%$), $g_{\pi NN} = 2\pi^4/15$ ($+0.06\%$),
+$g^2/(4\pi) = \pi^7/225$ ($-0.6\%$) --- follow from
+$(j, \ell, |\kappa_\mathrm{max}|) = (1/2, 1, 3)$ and $m_e$.  The
+one-pion exchange potential gives $V(1.5~\text{fm}) = -41$~MeV; the
+scalar $\phi$ sector contributes zero ($\alpha_\mathrm{phys} \sim
+10^{-40}$).  The proton charge radius $R_p = \hbar c/(C\varphi_\mathrm{gold})
+= 0.865$~fm ($-1.1\%$) sits between the muonic and electronic puzzle
+values.  Verified by \texttt{analysis/22\_su3\_closure.py} and
+\texttt{analysis/23\_nuclear\_couplings.py}.
+\end{abstract}
+
+\tableofcontents
+
+%----------------------------------------------------------------------
+\section{The $\mathfrak{su}(3)$ algebra from $S^2$}
+\label{sec:su3}
+%----------------------------------------------------------------------
+
+The Dirac equation on the metric decomposes angularly into spinor
+harmonics $\Omega_\kappa^{m_j}(\theta, \varphi)$.  At $\ell = 1$,
+the angular space is 3-dimensional, supporting:
+\begin{itemize}
+  \item 3~rank-1 operators (angular momentum components $L_i$),
+  \item 5~rank-2 operators (quadrupole-type couplings),
+\end{itemize}
+for a total of $8 = (2\ell+1)^2 - 1$ traceless Hermitian operators.
+
+\begin{theorem}[su(3) closure]
+The 8~traceless Hermitian operators on the $\ell = 1$ subspace satisfy
+\begin{equation}
+  [T_a, T_b] = i\,f_{abc}\,T_c\,,
+  \qquad C_2 = \sum_{a=1}^8 T_a^2 = \frac{4}{3}\,I_3\,,
+\end{equation}
+with the standard $\mathfrak{su}(3)$ structure constants $f_{abc}$.
+\end{theorem}
+
+This is verified numerically to residual $< 1.1 \times 10^{-16}$
+(machine precision).
+
+\subsection{Geometric protection}
+
+The angular metric $g_{\theta\theta} = r^2$ carries no $\phi$
+dependence.  The $\mathfrak{su}(3)$ algebra is therefore
+\emph{geometrically protected} from the dilation field: it closes
+identically regardless of $\phi(r)$.  This is why QCD is
+asymptotically free --- at short distances, the angular algebra
+dominates; the radial $\phi$ dynamics cannot modify it.
+
+\subsection{The gauge principle as scaffolding}
+
+The Standard Model \emph{postulates} $\mathrm{SU}(3) \times
+\mathrm{SU}(2) \times \mathrm{U}(1)$ as the gauge group and constructs
+the theory from gauge invariance.  In UDT, the same group structure
+arises from the metric's angular decomposition:
+\begin{align}
+  \mathrm{SU}(3) &: \text{rank-1 + rank-2 on } \ell = 1\,,\\
+  \mathrm{SU}(2) &: \text{rank-1 on } j = 1/2\,,\\
+  \mathrm{U}(1) &: \text{Coulomb from } g_{tt}g_{rr} = -c^2\,.
+\end{align}
+The gauge principle is not wrong --- it is redundant.  The metric
+provides everything the gauge postulate was designed to ensure.
+
+%----------------------------------------------------------------------
+\section{Nuclear coupling constants}
+\label{sec:nuclear}
+%----------------------------------------------------------------------
+
+Four nuclear quantities form a closed algebraic chain:
+
+\subsection{Axial coupling $g_A$}
+
+\begin{equation}\label{eq:gA}
+  g_A = \frac{(2j+1)^2}{\pi} = \frac{4}{\pi} = 1.2732
+  \qquad(\text{exp: }1.2762,\ {-0.23\%})\,.
+\end{equation}
+The numerator $(2j+1)^2 = 4$ is the spin bilinear dimension.  The
+denominator $\pi$ is the angular circumference.
+
+\textbf{Deep derivation:}  Including the SU(6) quark model factor
+$(N_c + 2)/3 = 5/3$:
+\begin{equation}
+  g_A = \frac{(N_c+2)(2j+1)^2}{(2|\kappa_\mathrm{max}|-1)\pi}
+  = \frac{5 \times 4}{5\pi} = \frac{4}{\pi}\,.
+\end{equation}
+The cancellation $(N_c + 2) = (2\ell + 3) = (2|\kappa_\mathrm{max}|-1) = 5$
+is specific to the Diophantine triple $(1/2, 1, 3)$.
+
+\subsection{Pion decay constant $f_\pi$}
+
+\begin{equation}\label{eq:fpi}
+  f_\pi = \binom{9}{2}(2|\kappa_\mathrm{max}|-1)\,m_e
+  = 36 \times 5 \times m_e = 180\,m_e = 91.98~\text{MeV}\,,
+\end{equation}
+compared to $92.21$~MeV ($-0.25\%$).  The factor $36 = \binom{9}{2}$
+is the same antisymmetric coupling count as in $1/\alpha_\mathrm{EM}$;
+$5 = 2|\kappa_\mathrm{max}|-1$ is the angular content.
+
+The ratio $f_\pi/m_\pi$ is algebraic:
+\begin{equation}
+  \frac{f_\pi}{m_\pi}
+  = \frac{(2\ell+1)(2|\kappa_\mathrm{max}|-1)}{(2|\kappa_\mathrm{max}|+1)\pi}
+  = \frac{15}{7\pi}\,.
+\end{equation}
+
+\subsection{Pion--nucleon coupling (Goldberger--Treiman)}
+
+The Goldberger--Treiman relation with all derived inputs:
+\begin{equation}\label{eq:gpiNN}
+  g_{\pi NN} = \frac{g_A\,m_N}{f_\pi}
+  = \frac{(4/\pi) \times 6\pi^5\,m_e}{180\,m_e}
+  = \frac{24\pi^4}{180} = \frac{2\pi^4}{15} = 12.99\,,
+\end{equation}
+compared to $\sim\!12.98$ ($+0.06\%$).  The relation is used with
+\emph{physical} (not bare) quantities --- no renormalization bridge
+is needed.
+
+\subsection{Nuclear coupling constant}
+
+\begin{equation}\label{eq:g2}
+  \frac{g^2_{\pi NN}}{4\pi}
+  = \frac{(2\pi^4/15)^2}{4\pi}
+  = \frac{\pi^7}{225} = 13.42\,,
+\end{equation}
+compared to $\sim\!13.5$ ($-0.6\%$).  The power $\pi^7$ has exponent
+$7 = 2|\kappa_\mathrm{max}| + 1$ (the closure number, the same 7 as
+CMB peaks).  The denominator $225 = 15^2 = [(2\ell+1)(2|\kappa_\mathrm{max}|-1)]^2$.
+
+%----------------------------------------------------------------------
+\section{The one-pion exchange potential}
+\label{sec:opep}
+%----------------------------------------------------------------------
+
+The OPEP with derived coupling gives the deuteron-channel (${}^3S_1$)
+central potential:
+\begin{equation}
+  V_\mathrm{OPEP}(r) = -\frac{g^2_{\pi NN}}{4\pi}
+  \frac{m_\pi^2}{12\,m_N^2}\,\frac{e^{-m_\pi r/(\hbar c)}}{r/(\hbar c)}\,.
+\end{equation}
+
+\begin{center}
+\begin{tabular}{rc}
+\toprule
+$r$ [fm] & $V$ [MeV] \\
+\midrule
+1.0 & $-87$ \\
+1.5 & $-41$ \\
+2.0 & $-22$ \\
+3.0 & $-7.4$ \\
+5.0 & $-1.1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Adding $\omega$-meson exchange ($m_\omega = 784.4$~MeV, the
+$\kappa = -1$, $n = 2$ eigenvalue at $+0.22\%$) produces the full
+shape: repulsive core ($r < 0.7$~fm), attractive well
+($0.7 < r < 3$~fm), and Yukawa tail ($r > 3$~fm).
+
+\subsection{Scalar sector: zero contribution}
+
+The scalar $\phi$ backreaction through $G_N$ gives
+$\alpha_\mathrm{phys} \sim 10^{-40}$.  The nuclear force comes
+\emph{entirely} from the angular sector (pion exchange), consistent
+with the identification of the nuclear force as a QCD residual.
+
+%----------------------------------------------------------------------
+\section{Proton charge radius}
+\label{sec:rp}
+%----------------------------------------------------------------------
+
+The charge radius is the geometric ratio of baryon to meson cavity:
+\begin{equation}\label{eq:rp}
+  R_p = \frac{\hbar c}{C\,\varphi_\mathrm{gold}}
+  = \frac{r_{*b}}{r_*} \times \frac{\hbar c}{C}
+  = 0.865~\text{fm}\,,
+\end{equation}
+compared to CODATA $0.8751$~fm ($-1.1\%$).  This sits between the
+muonic hydrogen value ($0.841$~fm) and the electronic value
+($0.877$~fm).
+
+%----------------------------------------------------------------------
+\section{Verification}
+%----------------------------------------------------------------------
+
+The $\mathfrak{su}(3)$ closure is verified by
+\texttt{analysis/22\_su3\_closure.py}; all nuclear couplings by
+\texttt{analysis/23\_nuclear\_couplings.py}.
+
+Outputs: \texttt{data/generated/22\_su3\_closure.json},
+\texttt{data/generated/23\_nuclear\_couplings.json}.
+
+\end{document}

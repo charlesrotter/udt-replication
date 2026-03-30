@@ -41,3 +41,9 @@ manuscript/*.synctex.gz
 supplements/*.aux
 supplements/*.log
 supplements/*.out
+texput.log
+manuscript/manuscriptNotes.bib
+
+# Raw / downloaded data files
+manuscript/figures/*_raw.*
+data/external/*.zip

@@ -54,6 +54,17 @@ def angular_mass_formulas():
     m_mu = 20 * np.pi**3 / 3 * M_E   # (2j+1)^2*(2|kmax|-1)/(2l+1) * pi^{2l+1} * m_e
     m_p = 6 * np.pi**5 * M_E          # (2j+1)(2l+1) * pi^{2|kmax|-1} * m_e
 
+    # Tau from Koide Z3 closure: sqrt(m_k) = M(1 + sqrt(2) cos(2/9 + 2*pi*k/3))
+    # k=0->tau, k=1->e, k=2->mu.  Anchor to m_e (k=1).
+    A_br = np.sqrt(MULT_2J1)  # sqrt(2j+1) = sqrt(2)
+    theta_br = MULT_2J1 / MULT_2L1**2  # (2j+1)/(2l+1)^2 = 2/9
+    factor_e = 1 + A_br * np.cos(theta_br + 2*np.pi/3)  # k=1 -> electron
+    factor_tau = 1 + A_br * np.cos(theta_br)             # k=0 -> tau
+    factor_mu = 1 + A_br * np.cos(theta_br + 4*np.pi/3)  # k=2 -> muon
+    M_koide = np.sqrt(M_E) / factor_e
+    m_tau = (M_koide * factor_tau)**2
+    m_mu_koide = (M_koide * factor_mu)**2
+
     return {
         'electron': {'predicted': M_E, 'pdg': PDG_MASSES['e'],
                      'error_pct': 0.0, 'formula': 'anchor'},
@@ -66,6 +77,12 @@ def angular_mass_formulas():
         'proton': {'predicted': m_p, 'pdg': PDG_MASSES['p'],
                    'error_pct': (m_p - PDG_MASSES['p']) / PDG_MASSES['p'] * 100,
                    'formula': '6*pi^5 * m_e'},
+        'tau': {'predicted': m_tau, 'pdg': PDG_MASSES['tau'],
+                'error_pct': (m_tau - PDG_MASSES['tau']) / PDG_MASSES['tau'] * 100,
+                'formula': 'Koide Z3 (A=sqrt(2), theta=2/9)'},
+        'muon_koide': {'predicted': m_mu_koide, 'pdg': PDG_MASSES['mu'],
+                       'error_pct': (m_mu_koide - PDG_MASSES['mu']) / PDG_MASSES['mu'] * 100,
+                       'formula': 'Koide Z3 cross-check'},
     }
 
 

@@ -49,7 +49,10 @@ T_CMB = 2.725                        # CMB temperature (K)
 T_STARLIGHT = 3000.0                 # recombination surface temperature (K)
 
 # Calibration constant: C = 4*pi^2 * m_e * r*
-C_CALIB = 4 * np.pi**2 * M_E * R_STAR   # = 140.95 MeV
+C_CALIB = 4 * np.pi**2 * M_E * R_STAR   # = 140.96 MeV
+
+# Baryon sub-cavity
+R_STAR_B = R_STAR / PHI_GOLD             # = 4.3185
 
 # Fine structure constant (derived)
 # 1/alpha = 36*pi/I_2 where I_2 = integral(e^{2phi} dr) (computed, not algebraic)

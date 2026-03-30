@@ -1,0 +1,176 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{S15.\arabic{equation}}
+
+\title{Supplement S15: The Higgs Mechanism as Angular Capacity \\
+\large Supporting Manuscript \S18}
+\author{UDT Collaboration}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We derive the Higgs vacuum expectation value
+$v = 504\pi^6 m_e = 247.6$~GeV ($+0.6\%$), the self-coupling
+$\lambda = \pi/24$ ($+0.7\%$), and the Higgs boson mass
+$m_H = 126.7$~GeV ($+1.1\%$) from the angular quantum numbers.  The
+VEV is the total angular capacity of the metric's eigenvalue structure.
+The Yukawa couplings are capacity fractions.  Spontaneous symmetry
+breaking is the Diophantine selection itself.  Verified by
+\texttt{analysis/21\_higgs\_sector.py}.
+\end{abstract}
+
+\tableofcontents
+
+%----------------------------------------------------------------------
+\section{The Standard Model Higgs}
+%----------------------------------------------------------------------
+
+In the Standard Model, the Higgs mechanism introduces:
+\begin{itemize}
+  \item A vacuum expectation value $v = 246.22$~GeV (measured, not derived).
+  \item A quartic self-coupling $\lambda \approx 0.13$ (measured).
+  \item Twelve Yukawa couplings $y_f$ (measured, not derived).
+  \item A Mexican hat potential $V(\Phi) = -\mu^2|\Phi|^2 + \lambda|\Phi|^4$.
+\end{itemize}
+The entire electroweak symmetry breaking mechanism --- how the $W$ and
+$Z$ bosons acquire mass, how fermions acquire mass --- rests on these
+$14+$ free parameters.  The Standard Model explains none of them.
+
+%----------------------------------------------------------------------
+\section{The VEV as total angular capacity}
+%----------------------------------------------------------------------
+
+The Higgs VEV is the maximum mass the metric cavity's angular structure
+can support --- the total capacity of the three-index coupling space:
+\begin{equation}\label{eq:vev}
+  v = (2j+1)^3(2\ell+1)^2(2|\kappa_\mathrm{max}|+1)\,\pi^6\,m_e
+  = 504\,\pi^6\,m_e\,.
+\end{equation}
+
+The multiplicity $504$ decomposes as:
+\begin{equation}
+  504 = 8 \times 9 \times 7
+  = (2j+1)^3 \times (2\ell+1)^2 \times (2|\kappa_\mathrm{max}|+1)\,.
+\end{equation}
+
+\begin{itemize}
+  \item $(2j+1)^3 = 8$: spin-$1/2$ at a three-field vertex
+    ($2^3$, three Dirac fields meet).
+  \item $(2\ell+1)^2 = 9$: orbital exchange squared ($\ell = 1$,
+    the same factor as in $1/\alpha$ and $f_\pi$).
+  \item $(2|\kappa_\mathrm{max}|+1) = 7$: the closure orbit
+    (the same number as CMB peaks).
+\end{itemize}
+
+The power $\pi^6$ is the maximum angular power: the full
+$S^2$ integration carried to all six angular coupling channels.
+
+\textbf{Result:} $v = 504\pi^6 \times 0.51100~\text{MeV} = 247.6$~GeV,
+compared to $246.22$~GeV ($+0.6\%$).
+
+%----------------------------------------------------------------------
+\section{Self-coupling and boson mass}
+%----------------------------------------------------------------------
+
+The Higgs self-coupling is:
+\begin{equation}\label{eq:lambda}
+  \lambda = \frac{\pi}{24}\,,
+  \qquad 24 = (2j+1)^3(2\ell+1) = 8 \times 3\,.
+\end{equation}
+Numerically $\lambda = 0.1309$; the LHC measurement gives
+$\approx 0.13$ ($+0.7\%$).
+
+The Higgs boson mass follows from the standard relation:
+\begin{equation}\label{eq:mH}
+  m_H = v\sqrt{2\lambda} = v\sqrt{\frac{\pi}{12}}
+  = 126.7~\text{GeV}\,,
+\end{equation}
+compared to $125.25$~GeV ($+1.1\%$).
+
+\subsection{The top quark relation}
+
+The ratio of the VEV to the top quark mass:
+\begin{equation}
+  \frac{v}{m_t} = \frac{(2\ell+1)}{(2j+1)} = \frac{3}{2}\,,
+\end{equation}
+predicting $m_t = v/(3/2) = 164.1$~GeV.  The experimental value
+$172.7$~GeV gives $v/m_t = 1.426$, about $5\%$ from $3/2 = 1.5$.
+This reflects the approximate nature of the absolute quark mass
+formulas (the \emph{ratios} are sub-$2\%$).
+
+%----------------------------------------------------------------------
+\section{Yukawa couplings as capacity fractions}
+%----------------------------------------------------------------------
+
+In the Standard Model, the Yukawa coupling of each fermion $f$ is
+$y_f = \sqrt{2}\,m_f/v$ --- a free parameter for each of the
+12~fermion masses.  In UDT, every $m_f$ is derived from
+$(j, \ell, |\kappa_\mathrm{max}|)$ and $m_e$, and $v$ is derived from
+the same quantum numbers.  The Yukawa couplings are therefore
+\emph{ratios of derived quantities}:
+\begin{equation}
+  y_f = \frac{\sqrt{2}\,m_f}{v}
+  = \frac{\sqrt{2}\,(\text{angular/eigenvalue formula for }m_f)}%
+         {504\,\pi^6\,m_e}\,.
+\end{equation}
+
+Examples:
+\begin{align}
+  y_\pi &= \frac{\sqrt{2} \times 84\pi}{504\pi^6}
+  = \frac{\sqrt{2}}{6\pi^5}\,, \\
+  y_p &= \frac{\sqrt{2} \times 6\pi^5}{504\pi^6}
+  = \frac{\sqrt{2}}{84\pi}\,.
+\end{align}
+
+The Yukawa couplings are not fundamental.  They are geometric ratios,
+all already derived.
+
+%----------------------------------------------------------------------
+\section{Symmetry breaking as Diophantine selection}
+%----------------------------------------------------------------------
+
+In the Standard Model, spontaneous symmetry breaking is a dynamical
+process: the Higgs potential has a continuous family of degenerate
+minima (the ``Mexican hat''), and the field randomly selects one.
+Nobody explains why that specific minimum or that specific potential
+shape.
+
+In UDT, the symmetry breaking is \emph{geometric selection}.  The
+Diophantine identity
+\begin{equation}
+  (2j+1)^2(2\ell+1)(2|\kappa_\mathrm{max}|+1)
+  = \binom{2\ell + 2|\kappa_\mathrm{max}| + 1}{2\ell + 1}
+\end{equation}
+has a \emph{unique} solution for spin-$1/2$ fermions on $S^2$:
+$(j, \ell, |\kappa_\mathrm{max}|) = (1/2, 1, 3)$.  That uniqueness
+IS the breaking of symmetry.  There is only one consistent angular
+structure.  The universe did not randomly pick a vacuum --- it is the
+only one that exists.
+
+%----------------------------------------------------------------------
+\section{Honesty note}
+%----------------------------------------------------------------------
+
+The derivations $v = 504\pi^6 m_e$ and $\lambda = \pi/24$ are
+candidates: the multiplicities and $\pi$-powers are consistent with
+the quantum number structure, but a derivation from the metric action
+principle (showing that these specific combinations minimize an
+action functional) is open.  The results are reported at the
+candidate level.
+
+%----------------------------------------------------------------------
+\section{Verification}
+%----------------------------------------------------------------------
+
+All results verified by \texttt{analysis/21\_higgs\_sector.py}.
+Output: \texttt{data/generated/21\_higgs\_sector.json}.
+
+\end{document}

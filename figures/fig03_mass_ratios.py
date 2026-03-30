@@ -4,8 +4,7 @@
 """
 fig03 -- Angular sector mass ratios: m_predicted / m_observed.
 
-Loads: lib/constants.py, lib/angular_integrals.py
-Plots ratio m_pred/m_obs for electron, pion, muon, proton.
+Includes electron (anchor), pion, muon, proton, and tau (Koide Z3).
 Horizontal line at 1.0 (perfect prediction).
 
 Saves: manuscript/figures/fig03_mass_ratios.{pdf,png}
@@ -50,69 +49,65 @@ CB_PURPLE = '#CC79A7'
 # === Compute mass ratios ===
 masses = angular_mass_formulas()
 
-particles = ['electron', 'pion', 'muon', 'proton']
-labels = [r'$e$', r'$\pi^0$', r'$\mu$', r'$p$']
+particles = ['electron', 'pion', 'muon', 'proton', 'tau']
+labels = [r'$e$', r'$\pi^0$', r'$\mu$', r'$p$', r'$\tau$']
 formulas = [
-    r'$m_e$ (anchor)',
-    r'$C(9,3)\,\pi\, m_e$',
+    r'anchor',
+    r'$84\pi\, m_e$',
     r'$\frac{20\pi^3}{3}\, m_e$',
     r'$6\pi^5\, m_e$',
+    r'Koide $Z_3$',
 ]
+colors = [CB_BLUE, CB_ORANGE, CB_GREEN, CB_RED, CB_PURPLE]
 
 ratios = []
-pdg_vals = []
-pred_vals = []
 for p in particles:
     m = masses[p]
     ratios.append(m['predicted'] / m['pdg'])
-    pdg_vals.append(m['pdg'])
-    pred_vals.append(m['predicted'])
 
 ratios = np.array(ratios)
 errors_pct = (ratios - 1.0) * 100
 
-# PDG uncertainties are negligibly small on this scale
-# (sub-ppm for e, ~0.0003% for pion, etc.)
-pdg_frac_err = np.array([1e-8, 0.003e-2, 2.3e-8, 1.2e-8])
-
 # === Create figure ===
-fig, ax = plt.subplots(figsize=(3.4, 2.8))
+fig, ax = plt.subplots(figsize=(3.8, 3.0))
 
 x = np.arange(len(particles))
 
 # Perfect prediction line
 ax.axhline(1.0, color='0.7', linewidth=0.8, linestyle='--', zorder=1)
 
-# 1% band
-ax.axhspan(0.99, 1.01, color='#E8F5E9', alpha=0.6, zorder=0,
-            label=r'$\pm 1\%$ band')
+# 0.1% band
+ax.axhspan(0.999, 1.001, color='#E8F5E9', alpha=0.6, zorder=0,
+            label=r'$\pm 0.1\%$ band')
 
 # Data points
-ax.bar(x, ratios - 1.0, bottom=1.0, width=0.5,
-       color=[CB_BLUE, CB_ORANGE, CB_GREEN, CB_RED],
+ax.bar(x, ratios - 1.0, bottom=1.0, width=0.55,
+       color=colors,
        edgecolor='0.3', linewidth=0.5, zorder=3)
 
 # Add error text on each bar
 for i, (r, ep) in enumerate(zip(ratios, errors_pct)):
-    y_off = 0.003 if r >= 1.0 else -0.003
+    y_off = 0.0004 if r >= 1.0 else -0.0004
     va = 'bottom' if r >= 1.0 else 'top'
-    ax.text(i, r + y_off, f'{ep:+.2f}%', ha='center', va=va, fontsize=7,
+    ax.text(i, r + y_off, f'{ep:+.3f}%', ha='center', va=va, fontsize=6.5,
             fontweight='bold')
 
-# Formula annotations
+# Formula annotations below
 for i, f in enumerate(formulas):
-    ax.text(i, 0.955, f, ha='center', va='top', fontsize=6.5,
+    ax.text(i, 0.9965, f, ha='center', va='top', fontsize=5.5,
             style='italic', rotation=0)
 
 ax.set_xticks(x)
 ax.set_xticklabels(labels, fontsize=10)
 ax.set_ylabel(r'$m_{\rm pred} \,/\, m_{\rm PDG}$')
-ax.set_ylim(0.95, 1.05)
+ax.set_ylim(0.996, 1.004)
 ax.yaxis.set_minor_locator(AutoMinorLocator())
 ax.legend(loc='upper right', frameon=True, fancybox=False,
-          edgecolor='0.7', framealpha=0.9, fontsize=7)
+          edgecolor='0.7', framealpha=0.9, fontsize=6.5)
 
-ax.set_title('Angular sector mass predictions', fontsize=10, pad=8)
+ax.set_title('Angular sector mass predictions\n'
+             r'$(j,\,\ell,\,|\kappa_{\max}|) = (1/2,\,1,\,3)$',
+             fontsize=9, pad=6)
 
 fig.tight_layout()
 
