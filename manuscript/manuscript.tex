@@ -33,7 +33,7 @@
 \title{Cosmological distance relations from a screened scalar\\
 modification of the Schwarzschild metric}
 
-\author{Charles~Rotter}
+\author{Charles~Rotter\thanks{Corresponding author: c.rotter@udtphysics.com}}
 \email{c.rotter@udtphysics.com}
 \affiliation{Independent Researcher}
 
@@ -1262,6 +1262,12 @@ has a unique solution for spin-$1/2$ fermions on $S^2$.  That
 uniqueness \emph{is} the breaking of symmetry.  The universe did not
 randomly pick a vacuum --- it is the only one that exists.
 
+\emph{Caveat:} The formulas $v = 504\pi^6 m_e$ and $\lambda = \pi/24$
+are candidates: the multiplicities and $\pi$-powers are consistent
+with the quantum number structure, but a derivation from the metric
+action principle (showing that these specific combinations minimize
+an action functional) remains open.
+
 %===================================================================
 \section{QCD and the Nuclear Force}\label{sec:nuclear}
 %===================================================================
@@ -1439,11 +1445,16 @@ instruments with independent reduction methods do not.
 
 A zero-parameter model that \emph{improves} with cleaner data is
 behaving as a correct model should.  A wrong model would get worse.
-This inverts the na\"ive objection ``UDT is $3\times$ worse than
-$\Lambda$CDM on TT'' into evidence that $\Lambda$CDM may be
-contaminating its own validation data.  The decisive test will come
-from CMB-S4 and Simons Observatory, which will provide the cleanest
-ground-based measurements to date.
+
+This observation yields a falsifiable prediction: if the
+contamination hypothesis is correct, then CMB-S4 and Simons
+Observatory --- which will have independent pipelines and
+significantly higher sensitivity than either Planck or current
+ground-based experiments --- should show UDT's TT~RMS dropping below
+$10\%$ while $\Lambda$CDM's fit holds constant or degrades slightly
+as pipeline-injected structure is removed.  If instead UDT's RMS
+\emph{worsens} on CMB-S4 data, the contamination hypothesis is
+falsified and the residual gap with $\Lambda$CDM is physical.
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig10_cmb_spectrum}
@@ -1472,15 +1483,16 @@ redshifts, with no systematic trend toward ``youth'' at high~$z$.}
 \end{quote}
 The JWST observations of massive galaxies at $z > 10$
 --- widely described as ``impossibly early'' in the $\Lambda$CDM
-framework~\cite{Labbe2023,Boylan2023} --- are consistent with this
+framework~\cite{Labbe2023,Boylan2023} --- are qualitatively consistent with this
 prediction.  The ``impossible early galaxies'' are galaxies seen
 through a deeper part of the $\phi$ gradient.
 
 This prediction was inherent in the metric from its publication
-and predates the JWST data.  It is qualitative (the galaxy population
-statistics have not been quantitatively modeled), but the qualitative
-content --- mature galaxies at all redshifts --- is confirmed by JWST
-observations and is in tension with $\Lambda$CDM expectations.
+and predates the JWST data.  It is qualitative --- no quantitative
+galaxy population model exists within the framework --- but the
+qualitative content (mature galaxies at all redshifts) is
+qualitatively consistent with JWST observations and is in tension
+with $\Lambda$CDM expectations.
 
 %===================================================================
 \section{Rotation Curves}\label{sec:rotcurves}
@@ -1510,9 +1522,12 @@ In a static universe with no age constraint, galaxies accumulate dead
 stellar remnants (white dwarfs, neutron stars, black holes) over
 100--1000~Gyr.  Supernova kicks naturally form extended halos.  A
 one-parameter ($T_{\mathrm{age}}$) model applied to 175~SPARC
-galaxies~\cite{SPARC2016} achieves 96\%~improvement over
-baryons-only for massive galaxies, within $1.76\times$ of NFW dark
-matter halos with half the free parameters~\cite{zenodo2025}.
+galaxies~\cite{SPARC2016} achieves 96\%~reduction in $\chi^2$
+relative to baryons-only for massive galaxies
+($M_{\mathrm{bar}} > 10^{10}\,M_\odot$), within $1.76\times$ the
+$\chi^2$ of NFW dark matter halos with half the free
+parameters~(reproducible via
+\texttt{analysis/16\_sparc\_remnants.py}~\cite{zenodo2025}).
 
 This mechanism requires no new fields, no modified geodesics, and no
 dark matter --- only standard stellar evolution on longer timescales
@@ -1845,11 +1860,18 @@ radial distance where $\phi(\rstar) = \ln(1+z_{\mathrm{CMB}}) = 7.004$.
 This is a legitimate general-relativistic solution.  The Birkhoff-like
 structure of the spherically symmetric Einstein equations
 (Sec.~\ref{sec:metric}) admits both static and dynamic solutions; we
-work with the static branch.  Whether the universe is expanding or
-static is an observational question, and we note that the Sandage--Loeb
-test~\cite{Sandage1962,Loeb1998} --- a model-independent measurement
-of cosmic drift --- has not yet been performed at the required
-sensitivity.
+work with the static branch.  The static geometry is not in conflict
+with the observed propagation of gravitational waves at $c$ to within
+$10^{-15}$~\cite{GW170817}: gravitational waves are weak-field
+perturbations of the metric, and in the weak-field limit
+$|\phi| \sim 10^{-7}$ UDT reduces exactly to GR
+(Sec.~\ref{sec:gr-reduction}), which predicts wave propagation at
+$c$; the infinite baseline speed is a property of the static geometric
+structure, not of propagating perturbations.  Whether the universe is
+expanding or static is an observational question, and we note that the
+Sandage--Loeb test~\cite{Sandage1962,Loeb1998} --- a model-independent
+measurement of cosmic drift --- has not yet been performed at the
+required sensitivity.
 
 \subsection{The role of $\phi$}
 
@@ -2290,6 +2312,10 @@ Nat.\ Astron.\ \textbf{7}, 731 (2023).
 \bibitem{Lenz1951}
 F.~Lenz,
 Phys.\ Rev.\ \textbf{82}, 554 (1951).
+
+\bibitem{GW170817}
+B.~P.~Abbott \textit{et al.} (LIGO/Virgo and Fermi/INTEGRAL),
+Astrophys.\ J.\ Lett.\ \textbf{848}, L13 (2017).
 
 \end{thebibliography}
 
