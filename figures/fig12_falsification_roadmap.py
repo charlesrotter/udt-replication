@@ -26,19 +26,24 @@ from matplotlib.patches import FancyBboxPatch
 from matplotlib.ticker import MultipleLocator
 
 # === Style setup ===
-plt.style.use('default')
 plt.rcParams.update({
     'font.family': 'serif',
-    'font.serif': ['Times New Roman', 'DejaVu Serif', 'Computer Modern Roman'],
+    'font.serif': ['CMU Serif', 'DejaVu Serif'],
     'mathtext.fontset': 'cm',
-    'font.size': 10,
-    'axes.labelsize': 10,
+    'font.size': 9,
+    'axes.labelsize': 9,
     'xtick.labelsize': 8,
     'ytick.labelsize': 8,
-    'legend.fontsize': 7,
-    'figure.dpi': 150,
+    'axes.linewidth': 0.6,
+    'xtick.major.width': 0.5,
+    'ytick.major.width': 0.5,
+    'xtick.minor.width': 0.3,
+    'ytick.minor.width': 0.3,
+    'xtick.direction': 'in',
+    'ytick.direction': 'in',
+    'xtick.top': True,
+    'ytick.right': True,
     'savefig.dpi': 300,
-    'axes.linewidth': 0.8,
 })
 
 # Color categories

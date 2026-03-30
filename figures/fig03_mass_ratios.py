@@ -1,20 +1,16 @@
 #!/usr/bin/env python3
-# Generates: Figure 3 in manuscript section 9
-# Predicted vs observed mass ratios for angular sector particles
 """
-fig03 -- Angular sector mass ratios: m_predicted / m_observed.
+fig03 -- Angular sector mass predictions: deviation from experiment.
 
-Includes electron (anchor), pion, muon, proton, and tau (Koide Z3).
-Horizontal line at 1.0 (perfect prediction).
+Five particles from (j, l, |kappa_max|) = (1/2, 1, 3) and m_e.
+Horizontal lollipop plot showing (m_pred - m_PDG) / m_PDG in percent.
 
 Saves: manuscript/figures/fig03_mass_ratios.{pdf,png}
 """
-import os
-import sys
+import os, sys
 import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-
 from lib.constants import M_E, PDG_MASSES
 from lib.angular_integrals import angular_mass_formulas
 from lib.utils import savefig
@@ -22,93 +18,100 @@ from lib.utils import savefig
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from matplotlib.ticker import AutoMinorLocator
 
-# === Style setup ===
-plt.style.use('default')
+# === Publication style ===
 plt.rcParams.update({
     'font.family': 'serif',
-    'font.serif': ['Times New Roman', 'DejaVu Serif', 'Computer Modern Roman'],
+    'font.serif': ['CMU Serif', 'DejaVu Serif'],
     'mathtext.fontset': 'cm',
-    'font.size': 10,
-    'axes.labelsize': 10,
+    'font.size': 9,
+    'axes.labelsize': 9,
     'xtick.labelsize': 8,
-    'ytick.labelsize': 8,
-    'legend.fontsize': 8,
-    'figure.dpi': 150,
+    'ytick.labelsize': 9,
+    'axes.linewidth': 0.6,
+    'xtick.major.width': 0.5,
+    'xtick.minor.width': 0.3,
+    'xtick.direction': 'in',
+    'ytick.direction': 'in',
+    'xtick.top': True,
     'savefig.dpi': 300,
-    'axes.linewidth': 0.8,
 })
 
-CB_BLUE = '#0072B2'
+# Okabe-Ito colorblind-safe
+CB_BLUE   = '#0072B2'
 CB_ORANGE = '#E69F00'
-CB_GREEN = '#009E73'
-CB_RED = '#D55E00'
+CB_GREEN  = '#009E73'
+CB_RED    = '#D55E00'
 CB_PURPLE = '#CC79A7'
 
-# === Compute mass ratios ===
+# === Compute ===
 masses = angular_mass_formulas()
 
-particles = ['electron', 'pion', 'muon', 'proton', 'tau']
-labels = [r'$e$', r'$\pi^0$', r'$\mu$', r'$p$', r'$\tau$']
-formulas = [
-    r'anchor',
-    r'$84\pi\, m_e$',
-    r'$\frac{20\pi^3}{3}\, m_e$',
-    r'$6\pi^5\, m_e$',
-    r'Koide $Z_3$',
+# Bottom to top
+particles = ['tau', 'proton', 'muon', 'pion', 'electron']
+ylabels = [
+    r'$\tau$' + '\n' + r'{\fontsize{6}{6}\selectfont Koide}',
+    r'$p$' + '\n' + r'$6\pi^5 m_e$',
+    r'$\mu$',
+    r'$\pi^0$' + '\n' + r'$84\pi m_e$',
+    r'$e$' + '\n' + r'anchor',
 ]
-colors = [CB_BLUE, CB_ORANGE, CB_GREEN, CB_RED, CB_PURPLE]
+# Use simple labels + separate formula text
+particle_labels = [r'$\tau$', r'$p$', r'$\mu$', r'$\pi^0$', r'$e$']
+formula_labels = [
+    r'Koide $Z_3$',
+    r'$6\pi^5 m_e$',
+    r'$\frac{20}{3}\pi^3 m_e$',
+    r'$84\pi\, m_e$',
+    'anchor',
+]
+colors = [CB_PURPLE, CB_RED, CB_GREEN, CB_ORANGE, CB_BLUE]
 
-ratios = []
+errors_pct = []
 for p in particles:
     m = masses[p]
-    ratios.append(m['predicted'] / m['pdg'])
-
-ratios = np.array(ratios)
-errors_pct = (ratios - 1.0) * 100
+    errors_pct.append((m['predicted'] / m['pdg'] - 1.0) * 100)
 
 # === Create figure ===
-fig, ax = plt.subplots(figsize=(3.8, 3.0))
+fig, ax = plt.subplots(figsize=(3.4, 2.8))
 
-x = np.arange(len(particles))
+y = np.arange(len(particles))
 
-# Perfect prediction line
-ax.axhline(1.0, color='0.7', linewidth=0.8, linestyle='--', zorder=1)
+# ±0.1% band
+ax.axvspan(-0.1, 0.1, color='#E8F4E8', alpha=0.6, zorder=0)
+ax.axvline(0, color='0.55', linewidth=0.5, zorder=1)
 
-# 0.1% band
-ax.axhspan(0.999, 1.001, color='#E8F5E9', alpha=0.6, zorder=0,
-            label=r'$\pm 0.1\%$ band')
+# Lollipop: thin line + marker
+for i, (err, col) in enumerate(zip(errors_pct, colors)):
+    ax.plot([0, err], [i, i], '-', color=col, linewidth=0.9, zorder=3,
+            solid_capstyle='round')
+    ax.plot(err, i, 'o', color=col, markersize=6.5, markeredgecolor='0.15',
+            markeredgewidth=0.5, zorder=5)
 
-# Data points
-ax.bar(x, ratios - 1.0, bottom=1.0, width=0.55,
-       color=colors,
-       edgecolor='0.3', linewidth=0.5, zorder=3)
+# Error + formula annotations above each row
+for i, (err, form) in enumerate(zip(errors_pct, formula_labels)):
+    # Error percentage: offset above marker
+    ax.text(err, i + 0.32, f'{err:+.3f}%', fontsize=6.5,
+            ha='center', va='bottom', color='0.15', fontweight='bold')
+    # Formula: right-aligned near right edge
+    ax.text(0.97, i, form, fontsize=6, ha='right', va='center',
+            color='0.45', transform=ax.get_yaxis_transform())
 
-# Add error text on each bar
-for i, (r, ep) in enumerate(zip(ratios, errors_pct)):
-    y_off = 0.0004 if r >= 1.0 else -0.0004
-    va = 'bottom' if r >= 1.0 else 'top'
-    ax.text(i, r + y_off, f'{ep:+.3f}%', ha='center', va=va, fontsize=6.5,
-            fontweight='bold')
+ax.set_yticks(y)
+ax.set_yticklabels(particle_labels)
+ax.set_xlabel(r'$(m_{\rm pred} - m_{\rm PDG})\,/\,m_{\rm PDG}$ (%)')
+ax.set_xlim(-0.13, 0.13)
+ax.set_ylim(-0.6, len(particles) - 0.3)
 
-# Formula annotations below
-for i, f in enumerate(formulas):
-    ax.text(i, 0.9965, f, ha='center', va='top', fontsize=5.5,
-            style='italic', rotation=0)
+# ±0.1% label
+ax.text(0.098, len(particles) - 0.45, r'$\pm 0.1\%$', fontsize=5.5,
+        ha='right', va='top', color='#388E3C', alpha=0.8)
 
-ax.set_xticks(x)
-ax.set_xticklabels(labels, fontsize=10)
-ax.set_ylabel(r'$m_{\rm pred} \,/\, m_{\rm PDG}$')
-ax.set_ylim(0.996, 1.004)
-ax.yaxis.set_minor_locator(AutoMinorLocator())
-ax.legend(loc='upper right', frameon=True, fancybox=False,
-          edgecolor='0.7', framealpha=0.9, fontsize=6.5)
+# Title
+ax.set_title(r'Angular sector:  $(j,\,\ell,\,|\kappa_{\max}|) = (1/2,\,1,\,3)$',
+             fontsize=8.5, pad=6)
 
-ax.set_title('Angular sector mass predictions\n'
-             r'$(j,\,\ell,\,|\kappa_{\max}|) = (1/2,\,1,\,3)$',
-             fontsize=9, pad=6)
-
+ax.tick_params(axis='y', length=0)
 fig.tight_layout()
 
 # === Save ===

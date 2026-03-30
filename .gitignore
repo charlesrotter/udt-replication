@@ -47,3 +47,10 @@ manuscript/manuscriptNotes.bib
 # Raw / downloaded data files
 manuscript/figures/*_raw.*
 data/external/*.zip
+data/external/*.dat
+data/external/*.cov
+data/external/act/
+data/external/planck/
+data/external/spt3g/
+data/external/wmap/
+data/external/SPARC/

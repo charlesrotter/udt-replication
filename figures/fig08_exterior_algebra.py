@@ -25,21 +25,32 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch, Arc
 
 # === Style setup ===
-plt.style.use('default')
 plt.rcParams.update({
     'font.family': 'serif',
-    'font.serif': ['Times New Roman', 'DejaVu Serif', 'Computer Modern Roman'],
+    'font.serif': ['CMU Serif', 'DejaVu Serif'],
     'mathtext.fontset': 'cm',
-    'font.size': 10,
-    'figure.dpi': 150,
+    'font.size': 9,
+    'axes.labelsize': 9,
+    'xtick.labelsize': 8,
+    'ytick.labelsize': 8,
+    'axes.linewidth': 0.6,
+    'xtick.major.width': 0.5,
+    'ytick.major.width': 0.5,
+    'xtick.minor.width': 0.3,
+    'ytick.minor.width': 0.3,
+    'xtick.direction': 'in',
+    'ytick.direction': 'in',
+    'xtick.top': True,
+    'ytick.right': True,
     'savefig.dpi': 300,
 })
 
-CB_BLUE = '#0072B2'
+CB_BLUE   = '#0072B2'
 CB_ORANGE = '#E69F00'
-CB_GREEN = '#009E73'
-CB_RED = '#D55E00'
+CB_GREEN  = '#009E73'
+CB_RED    = '#D55E00'
 CB_PURPLE = '#CC79A7'
+CB_CYAN   = '#56B4E9'
 
 n = 9  # base space dimension
 
