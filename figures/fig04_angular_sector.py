@@ -74,14 +74,14 @@ qn_box = FancyBboxPatch((1.5, 8.8), 7, 1.3, boxstyle="round,pad=0.2",
 ax.add_patch(qn_box)
 ax.text(5, 9.75, r'Unique solution: $j=\frac{1}{2},\; l=1,\; |\kappa_{\max}|=3$',
         ha='center', va='center', fontsize=9, fontweight='bold')
-ax.text(5, 9.2, r'Multiplicities: $2j\!+\!1=2,\;\; 2l\!+\!1=3,\;\;'
-        r' 2|\kappa_{\max}|\!-\!1=5,\;\; 2|\kappa_{\max}|\!+\!1=7$',
-        ha='center', va='center', fontsize=7)
+ax.text(5, 9.15, r'$(2j\!+\!1,\; 2l\!+\!1,\; 2|\kappa_{\max}|\!-\!1,\; 2|\kappa_{\max}|\!+\!1)'
+        r' = (2,\,3,\,5,\,7)$',
+        ha='center', va='center', fontsize=6)
 
 # --- Arrow from QN to particles ---
 ax.annotate('', xy=(5, 7.8), xytext=(5, 8.7),
             arrowprops=dict(arrowstyle='->', color='0.4', lw=1.2))
-ax.text(5, 8.25, 'mass formulas', ha='center', va='center', fontsize=7,
+ax.text(3.2, 8.25, 'mass formulas', ha='center', va='center', fontsize=7,
         style='italic', color='0.4')
 
 # --- Four particle boxes ---

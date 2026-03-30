@@ -54,9 +54,9 @@ CB_PURPLE = '#CC79A7'
 CB_CYAN = '#56B4E9'
 
 # === Create figure ===
-fig, ax = plt.subplots(figsize=(7.0, 5.5))
-ax.set_xlim(-5.5, 5.5)
-ax.set_ylim(-4.5, 4.5)
+fig, ax = plt.subplots(figsize=(7.0, 6.0))
+ax.set_xlim(-5.8, 5.8)
+ax.set_ylim(-5.8, 4.5)
 ax.set_aspect('equal')
 ax.axis('off')
 
@@ -115,52 +115,43 @@ draw_node(ax, 4.0, -0.5, 'Mass formulas\n' + r'$m_e,\pi,\mu,p$',
 draw_edge(ax, 2.0, 0.6, 1.5, 0.1, r'$I_2$', CB_BLUE, 1.0)
 draw_edge(ax, 3.0, 0.6, 3.8, 0.1, r'$(j,l,|\kappa|)$', CB_GREEN, 1.0)
 
-# === Third level: leaf predictions (spread wider, smaller nodes) ===
-leaf_y = -2.6
+# === Third level: leaf predictions ===
+leaf_y = -2.8
 leaf_fs = 6
 
-# From microphysics
-draw_node(ax, -4.8, leaf_y, 'Masses\n' + r'$E_n \!\times\! C$',
-          size=0.7, color='white', fontsize=leaf_fs)
-draw_node(ax, -3.0, leaf_y, 'Hierarchy\n' + r'$10^{40}$',
-          size=0.7, color='white', fontsize=leaf_fs)
+# Spread 7 leaves across full width with even spacing
+leaf_x = [-4.6, -3.0, -1.5, 0.0, 1.5, 3.2, 4.8]
+leaf_text = [
+    'Masses\n' + r'$E_n \!\times\! C$',
+    'Hierarchy\n' + r'$10^{40}$',
+    'SNe\n0.164 mag',
+    'BAO\n3.2%',
+    r'$\nu$ mass' + '\n' + r'$\alpha^3 m_e/4$',
+    'PMNS\nmixing',
+    r'$\Lambda^k$' + '\nalgebra',
+]
 
-draw_edge(ax, -4.2, -1.1, -4.6, -2.0, '', CB_RED, 0.7)
-draw_edge(ax, -3.8, -1.1, -3.2, -2.0, '', CB_RED, 0.7)
+for x, txt in zip(leaf_x, leaf_text):
+    draw_node(ax, x, leaf_y, txt, size=0.6, color='white', fontsize=leaf_fs)
 
-# From cosmology
-draw_node(ax, -1.5, leaf_y, 'SNe\n0.164 mag',
-          size=0.65, color='white', fontsize=leaf_fs)
-draw_node(ax, 0.1, leaf_y, 'BAO\n3.2%',
-          size=0.55, color='white', fontsize=leaf_fs)
-
-draw_edge(ax, -1.0, -1.1, -1.4, -2.0, '', CB_PURPLE, 0.7)
-draw_edge(ax, -0.8, -1.1, 0.0, -2.0, '', CB_PURPLE, 0.7)
-
-# From alpha
-draw_node(ax, 1.5, leaf_y, r'$\nu$ mass' + '\n' + r'$\alpha^3 m_e/4$',
-          size=0.7, color='white', fontsize=leaf_fs)
-
-draw_edge(ax, 1.5, -1.1, 1.5, -2.0, '', CB_BLUE, 0.7)
-
-# From mass formulas
-draw_node(ax, 3.2, leaf_y, 'PMNS\nmixing',
-          size=0.65, color='white', fontsize=leaf_fs)
-draw_node(ax, 4.8, leaf_y, r'$\Lambda^k$' + '\nalgebra',
-          size=0.6, color='white', fontsize=leaf_fs)
-
-draw_edge(ax, 3.8, -1.1, 3.2, -2.0, '', CB_GREEN, 0.7)
-draw_edge(ax, 4.2, -1.1, 4.6, -2.0, '', CB_GREEN, 0.7)
+# Edges from level 2 to level 3
+draw_edge(ax, -4.2, -1.1, -4.5, -2.2, '', CB_RED, 0.7)
+draw_edge(ax, -3.8, -1.1, -3.1, -2.2, '', CB_RED, 0.7)
+draw_edge(ax, -1.0, -1.1, -1.5, -2.2, '', CB_PURPLE, 0.7)
+draw_edge(ax, -0.8, -1.1, -0.1, -2.2, '', CB_PURPLE, 0.7)
+draw_edge(ax, 1.5, -1.1, 1.5, -2.2, '', CB_BLUE, 0.7)
+draw_edge(ax, 3.8, -1.1, 3.2, -2.2, '', CB_GREEN, 0.7)
+draw_edge(ax, 4.2, -1.1, 4.7, -2.2, '', CB_GREEN, 0.7)
 
 # === Bottom: CMB from cosmo + angular ===
-draw_node(ax, -0.5, -3.9, r'CMB:  $\phi(r_*) = \ln(1\!+\!z_{\rm CMB}) = 7.004$',
+draw_node(ax, 0, -4.4, r'CMB:  $\phi(r_*) = \ln(1\!+\!z_{\rm CMB}) = 7.004$',
           size=2.0, color='#FFFDE7', ec='0.5', fontsize=7)
 
-draw_edge(ax, -1.5, -3.2, -1.0, -3.4, '', '0.6', 0.5)
-draw_edge(ax, 0.1, -3.2, -0.2, -3.4, '', '0.6', 0.5)
+draw_edge(ax, -1.5, -3.4, -0.8, -3.9, '', '0.6', 0.5)
+draw_edge(ax, 0.0, -3.4, 0.0, -3.9, '', '0.6', 0.5)
 
 # === Count annotations ===
-ax.text(0, -4.4, r'1 metric $\,\to\,$ 0 free parameters $\,\to\,$ '
+ax.text(0, -5.4, r'1 metric $\,\to\,$ 0 free parameters $\,\to\,$ '
         r'masses, $\alpha$, PMNS, CMB, BAO, hierarchy',
         ha='center', va='center', fontsize=7.5, fontweight='bold',
         color='0.3')

@@ -79,16 +79,16 @@ for y, v, c in zip(bar_y, bar_vals, bar_colors):
     else:
         ax.text(1.0, y, '0 (NO)', va='center', fontsize=7.5, color='0.5')
 
-# Formula box
-ax.text(0.97, 0.05,
+# Formula box — in the whitespace above m1
+ax.text(0.97, 0.88,
         r'$m_\nu = \frac{\alpha^3 m_e}{4}$' + f' = {m_nu_meV:.1f} meV'
         + f'\n' + r'$\sqrt{\Delta m^2_{\rm atm}}$' + f' = {m3:.1f} meV ({err_pct:+.1f}%)',
-        transform=ax.transAxes, fontsize=7, ha='right', va='bottom',
+        transform=ax.transAxes, fontsize=7, ha='right', va='top',
         bbox=dict(boxstyle='round,pad=0.3', facecolor='#FFF3E0',
                   edgecolor='0.6', alpha=0.95, linewidth=0.4))
 
-# Bounds as text annotations (no clipping lines)
-ax.text(0.97, 0.97, 'KATRIN: $< 450$ meV\nPlanck: $\\Sigma < 120$ meV',
+# Bounds as text annotations — below formula box
+ax.text(0.97, 0.65, 'KATRIN: $< 450$ meV\nPlanck: $\\Sigma < 120$ meV',
         transform=ax.transAxes, fontsize=6, ha='right', va='top',
         color='0.5')
 
