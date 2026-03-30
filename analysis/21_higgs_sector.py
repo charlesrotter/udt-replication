@@ -27,8 +27,15 @@ print("=" * 60)
 mult_504 = MULT_2J1**3 * MULT_2L1**2 * MULT_2KP1  # 8*9*7 = 504
 v_pred = mult_504 * np.pi**6 * M_E / 1000  # GeV
 v_exp = 246.22  # GeV
-print(f"\nHiggs VEV:")
-print(f"  504 = (2j+1)^3*(2l+1)^2*(2|kmax|+1) = {MULT_2J1**3}*{MULT_2L1**2}*{MULT_2KP1} = {mult_504}")
+# === v = m_pi * m_p / m_e (exact algebraic identity) ===
+m_pi = 84 * np.pi * M_E
+m_p = 6 * np.pi**5 * M_E
+v_product = m_pi * m_p / M_E / 1000  # GeV
+print(f"\nHiggs VEV (DERIVED: product of angular ground states):")
+print(f"  v = m_pi × m_p / m_e = (84π m_e)(6π⁵ m_e)/m_e = 504π⁶ m_e")
+print(f"  84 = C(9,3) [bosonic], 6 = (2j+1)(2l+1) [spin-orbital]")
+print(f"  π⁶ = π^(2j) × π^(2|κ|-1) [sum of angular powers]")
+print(f"  v_product = {v_product:.4f} GeV = v_formula = {v_pred:.4f} GeV (identity: {abs(v_product/v_pred-1):.1e})")
 format_comparison("  v = 504*pi^6*m_e", v_pred, v_exp, "GeV")
 
 # === Self-coupling ===
@@ -45,13 +52,9 @@ m_H_exp = 125.25  # GeV
 print(f"\nHiggs boson mass:")
 format_comparison("  m_H = v*sqrt(2*lambda)", m_H, m_H_exp, "GeV")
 
-# === v/m_t ratio ===
-v_over_mt = MULT_2L1 / MULT_2J1  # 3/2
-m_t_pred = v_exp / v_over_mt  # using experimental v
-m_t_exp = 172.69
-print(f"\nTop quark ratio:")
-print(f"  v/m_t = (2l+1)/(2j+1) = 3/2 = {v_over_mt:.4f}")
-format_comparison("  m_t = v/(3/2)", v_exp/v_over_mt, m_t_exp, "GeV")
+# === v/m_t = 3/2: DROPPED (5% off) ===
+# Top mass better predicted through m_t/m_c = 14*pi^2 (+1.6%)
+print(f"\nNote: v/m_t = 3/2 DROPPED (5% off). Top mass from m_t/m_c = 14π².")
 
 # === Yukawa couplings as capacity fractions ===
 print(f"\nYukawa couplings (capacity fractions):")

@@ -67,14 +67,27 @@ c12 = np.sqrt(1 - sin_C**2)
 s12 = sin_C
 s23 = theta_23_ckm
 c23 = np.sqrt(1 - s23**2)
-# s13 from Wolfenstein: s13 ~ A*lambda^3*(rho^2+eta^2)^{1/2} ~ 0.0036
-# Use |V_ub| = A*lambda^3 ~ 0.811 * 0.2250^3 ~ 0.00924... but exp is 0.00361
-# Better: R_b = |V_ub|/(|V_cb|) = 2/5 (from STARTUP)
-R_b = 2.0/5.0
-V_cb = A_wolf * lam**2  # ~ 0.0410
-V_ub = R_b * V_cb  # ~ 0.0164... but exp V_ub ~ 0.00361
-# Actually let me just compute J directly from the full CKM
-s13 = 0.00361  # use experimental V_ub for this
+# === Wolfenstein rho_bar and eta_bar (2026-03-30) ===
+# rho_bar = 1/(2*pi) — angular normalization per radian
+# eta_bar = (9/4) * rho_bar = 9/(8*pi) — from tan(delta) = 9/4
+rho_bar = 1.0 / (2 * np.pi)
+eta_bar = (9.0/4.0) * rho_bar  # = 9/(8*pi)
+R_b = np.sqrt(rho_bar**2 + eta_bar**2)  # = sqrt(97)/(8*pi)
+
+rho_exp = 0.159
+rho_sig = 0.010
+eta_exp = 0.348
+eta_sig = 0.010
+
+print(f"\nWolfenstein rho_bar and eta_bar:")
+format_comparison("  rho_bar = 1/(2*pi)", rho_bar, rho_exp)
+print(f"  Tension: {sigma_tension(rho_bar, rho_exp, rho_sig):.2f} sigma")
+format_comparison("  eta_bar = 9/(8*pi)", eta_bar, eta_exp)
+print(f"  Tension: {sigma_tension(eta_bar, eta_exp, eta_sig):.2f} sigma")
+print(f"  R_b = sqrt(97)/(8*pi) = {R_b:.6f}")
+
+# === Jarlskog invariant ===
+s13 = A_wolf * lam**3 * R_b  # |V_ub| = A*lambda^3*R_b
 c13 = np.sqrt(1 - s13**2)
 J_ckm = c12 * c23 * c13**2 * s12 * s23 * s13 * np.sin(delta_ckm)
 J_ckm_exp = 3.00e-5
@@ -99,6 +112,13 @@ results = {
     'delta_CKM_sigma': float(tens),
     'tan_delta': 9.0/4.0,
     'tan_delta_meaning': 'alpha_s/alpha_EM = (2l+1)^2/(2j+1)^2',
+    'rho_bar': float(rho_bar),
+    'rho_bar_exp': rho_exp,
+    'rho_bar_sigma': float(sigma_tension(rho_bar, rho_exp, rho_sig)),
+    'eta_bar': float(eta_bar),
+    'eta_bar_exp': eta_exp,
+    'eta_bar_sigma': float(sigma_tension(eta_bar, eta_exp, eta_sig)),
+    'R_b': float(R_b),
     'theta_QCD': 0,
     'theta_QCD_note': 'exact zero from reality of S^2 algebra',
     'J_CKM': float(J_ckm),
