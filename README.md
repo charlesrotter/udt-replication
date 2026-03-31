@@ -45,7 +45,7 @@ pip install -r requirements.txt
 # Download observational data from Zenodo (~101 MB)
 bash download_data.sh
 
-# Run full replication (~60 min GPU, ~5 hrs CPU)
+# Run full replication (~10 min GPU, ~60 hrs CPU-only)
 bash run_all.sh
 
 # Or run individual analyses
@@ -64,7 +64,7 @@ python3 analysis/02_eigenvalues.py
 
 ### GPU Acceleration
 
-Scripts 02, 08, and 10 use GPU acceleration for eigenvalue scanning if a CUDA-capable GPU is available. All include automatic CPU fallback:
+Scripts 02, 06, 14, and 17 use GPU acceleration for Dirac eigenvalue scanning via `lib/dirac_formT.py`. All include automatic CPU fallback, but GPU is strongly recommended — the eigenvalue scans dominate runtime.
 
 ```python
 import torch
@@ -73,15 +73,21 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 ### Runtime Estimates
 
+Benchmarked on Tesla V100-PCIE-32GB with N_GRID=100,000 and n_scan=50,000.
+
 | Component | GPU (V100) | CPU (single core) |
 |-----------|-----------|-------------------|
-| Vacuum profile (01) | 5 sec | 30 sec |
-| All eigenvalues (02) | 2 min | 30 min |
-| Source integrals (03) | 3 min | 40 min |
-| Cosmological fits (12-16) | 1 min | 5 min |
-| Derived quantities (17-23) | 1 min | 1 min |
-| Figure generation | 2 min | 2 min |
-| **Total** | **~15 min** | **~2 hrs** |
+| Vacuum profile (01) | 1 sec | 1 sec |
+| Dirac eigenvalues (02) | 3 min 40 sec | ~25 hrs* |
+| Source integrals (03) | 11 sec | 11 sec |
+| Particle masses (06) | 3 min 30 sec | ~25 hrs* |
+| CMB peaks (14) | 35 sec | ~4 hrs* |
+| Nuclear potential (17) | 1 min 20 sec | ~8 hrs* |
+| Other analysis (04-05, 07-13, 15-16, 18-23) | 2 sec | 2 sec |
+| Figure generation (12 scripts) | 10 sec | 10 sec |
+| **Total** | **~10 min** | **~60 hrs*** |
+
+*CPU times for eigenvalue scripts estimated from single-shoot benchmark (0.3 sec per ODE integration × number of scan points). GPU parallelizes all scan points simultaneously; CPU falls back to serial shooting. **GPU is effectively required for full replication.**
 
 ## Repository Structure
 
@@ -92,7 +98,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 ├── run_all.sh                   # Master replication script (23 steps)
 ├── download_data.sh             # Fetch datasets from Zenodo
 ├── manuscript/
-│   ├── manuscript.tex           # LaTeX primary (22 pages, v1.0)
+│   ├── manuscript.tex           # LaTeX primary (22 pages, v1.1)
 │   ├── manuscript.pdf           # Compiled PDF
 │   └── figures/                 # 13 figures (.pdf, .png)
 ├── data/
@@ -103,6 +109,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 │   ├── vacuum_phi.py            # Vacuum φ ODE solver
 │   ├── dirac_formT.py           # Dirac Form-T eigenvalue solver (GPU)
 │   ├── angular_integrals.py     # S² coupling integrals, mass formulas
+│   ├── scalar_perturbation.py   # Scalar perturbation modes
+│   ├── vector_perturbation.py   # Vector perturbation modes
 │   └── utils.py                 # I/O, comparison, plotting utilities
 ├── analysis/                    # 23 analysis scripts
 │   ├── 01_vacuum_profile.py     # Solve vacuum φ, compute I₂
