@@ -91,6 +91,14 @@ R_p_exp = 0.8751  # CODATA fm
 print(f"\nProton charge radius:")
 format_comparison("  R_p = hbar*c/(C*phi_gold)", R_p, R_p_exp, "fm")
 
+# === Deuteron binding energy ===
+# B_d = source^2 * E1^2 * (2j+1)/(2|kmax|+1) * C = C/63
+B_d = C_CALIB / (MULT_2L1**2 * MULT_2KP1)
+B_d_exp = 2.2244  # MeV
+print(f"\nDeuteron binding energy:")
+print(f"  B_d = C/((2l+1)^2 * (2|kmax|+1)) = C/63")
+format_comparison("  B_d", B_d, B_d_exp, "MeV")
+
 results = {
     'g_A': float(g_A),
     'g_A_exp': g_A_exp,
@@ -108,5 +116,9 @@ results = {
     'R_p_fm': float(R_p),
     'R_p_exp_fm': R_p_exp,
     'R_p_pct': float(pct_error(R_p, R_p_exp)),
+    'B_d_MeV': float(B_d),
+    'B_d_exp_MeV': B_d_exp,
+    'B_d_pct': float(pct_error(B_d, B_d_exp)),
+    'B_d_formula': 'C / ((2l+1)^2 * (2|kmax|+1)) = C/63',
 }
 save_results('23_nuclear_couplings.json', results)
