@@ -93,7 +93,7 @@ def distance_modulus(d_L_Gpc):
 
 # === Load Pantheon+ data or use representative points ===
 
-pantheon_dir = os.path.join(os.path.dirname(__file__), '..', 'data', 'external', 'pantheon_plus')
+pantheon_dir = os.path.join(os.path.dirname(__file__), '..', 'data', 'external')
 pantheon_file = os.path.join(pantheon_dir, 'Pantheon+SH0ES.dat')
 
 use_external = False
@@ -104,10 +104,10 @@ mu_err = None
 if os.path.isfile(pantheon_file):
     try:
         import pandas as pd
-        df = pd.read_csv(pantheon_file, delim_whitespace=True, comment='#')
+        df = pd.read_csv(pantheon_file, sep=r'\s+', comment='#')
         z_data = df['zHD'].values
-        mu_data = df['MU'].values
-        mu_err = df['MU_ERR'].values if 'MU_ERR' in df.columns else np.ones_like(z_data) * 0.15
+        mu_data = df['m_b_corr'].values       # corrected apparent magnitudes
+        mu_err = df['m_b_corr_err_DIAG'].values
         use_external = True
         print(f"  Loaded {len(z_data)} Pantheon+ data points")
     except Exception as e:
@@ -137,11 +137,22 @@ mu_data_valid = mu_data[valid]
 mu_err_valid = mu_err[valid]
 d_L_valid = d_L_pred[valid]
 
+# === Fit M offset (apparent mag = distance modulus + M) ===
+# When using Pantheon+ m_b_corr, M_offset absorbs the absolute magnitude.
+# This is NOT a free physics parameter — it is a calibration offset.
+from scipy.optimize import minimize_scalar
+def rms_at_M(M):
+    res = mu_pred_valid - (mu_data_valid - M)
+    return np.sqrt(np.mean(res**2))
+M_fit = minimize_scalar(rms_at_M, bounds=(-25, -10), method='bounded').x
+mu_data_valid = mu_data_valid - M_fit  # convert to distance modulus
+print(f"  M offset: {M_fit:.4f}")
+
 # === Fit statistics ===
 residuals = mu_pred_valid - mu_data_valid
 rms_mag = np.sqrt(np.mean(residuals**2))
 chi2 = np.sum((residuals / mu_err_valid)**2)
-chi2_dof = chi2 / max(1, len(residuals) - 0)  # 0 free parameters
+chi2_dof = chi2 / max(1, len(residuals) - 0)  # 0 free physics parameters
 n_points = len(residuals)
 
 # === Also compute on a fine grid for output ===

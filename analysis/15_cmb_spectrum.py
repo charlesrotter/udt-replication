@@ -148,7 +148,7 @@ ell_grid = np.arange(2, 2501)
 D_model_raw = D_ell_model(ell_grid)
 
 # === Load Planck data or create representative ===
-planck_dir = os.path.join(os.path.dirname(__file__), '..', 'data', 'external', 'planck_2018')
+planck_dir = os.path.join(os.path.dirname(__file__), '..', 'data', 'external', 'planck')
 planck_file = os.path.join(planck_dir, 'COM_PowerSpect_CMB-TT-binned_R3.01.txt')
 
 use_external = False

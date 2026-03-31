@@ -1,6 +1,6 @@
 #!/bin/bash
 # UDT Full Replication — reproduces every number in the manuscript
-# Expected runtime: ~60 min on GPU (V100), ~5 hrs on CPU
+# Expected runtime: ~10 min on GPU (V100), ~60 hrs on CPU
 # Requirements: Python 3.10+, NumPy, SciPy, PyTorch (CUDA optional), Matplotlib
 #
 # Authors: Charles Rotter and Anthony Watts

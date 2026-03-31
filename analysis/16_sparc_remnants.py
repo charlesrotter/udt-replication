@@ -64,7 +64,7 @@ def v_nfw_squared(r_kpc, v200_km_s, r_s_kpc):
 # NGC 6503 -- a well-studied SPARC galaxy with clear rotation curve
 # Data from de Blok+ 2008 / Begeman+ 1991 / SPARC (Lelli+ 2016)
 
-sparc_dir = os.path.join(os.path.dirname(__file__), '..', 'data', 'external', 'sparc')
+sparc_dir = os.path.join(os.path.dirname(__file__), '..', 'data', 'external', 'SPARC', 'Rotmod_LTG')
 sparc_file = os.path.join(sparc_dir, 'NGC6503_rotmod.dat')
 
 use_external = False

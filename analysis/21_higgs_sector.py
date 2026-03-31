@@ -74,6 +74,5 @@ results = {
     'm_H_GeV': float(m_H),
     'm_H_exp_GeV': m_H_exp,
     'm_H_pct': float(pct_error(m_H, m_H_exp)),
-    'v_over_mt': float(v_over_mt),
 }
 save_results('21_higgs_sector.json', results)

@@ -29,8 +29,8 @@ vac = load_results('01_vacuum_profile.json')
 I_2 = vac['I_2']
 
 src = load_results('03_sources.json')
-source_km1 = src['sources']['km1'][0]['source']
-E1_km1 = src['sources']['km1'][0]['E']
+source_km1 = src['sources']['-1'][0]['source']
+E1_km1 = src['sources']['-1'][0]['E']
 
 print("=" * 60)
 print("FINE STRUCTURE CONSTANT: THREE-LEVEL CHAIN")

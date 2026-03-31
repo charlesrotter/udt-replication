@@ -56,7 +56,7 @@ CB_CYAN   = '#56B4E9'
 
 # === Load real SPARC data ===
 data_path = os.path.join(os.path.dirname(__file__), '..',
-                         'data', 'external', 'sparc', 'Rotmod_LTG',
+                         'data', 'external', 'SPARC', 'Rotmod_LTG',
                          'NGC2403_rotmod.dat')
 data = np.loadtxt(data_path)
 # Columns: Rad(kpc) Vobs(km/s) errV Vgas Vdisk Vbul SBdisk SBbul
