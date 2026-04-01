@@ -1,6 +1,6 @@
 # Unified Dilation Theory — Replication Repository
 
-**Version 1.0** | **Authors:** Charles Rotter (corresponding, c.rotter@udtphysics.com) and Anthony Watts
+**Version 1.2** | **Authors:** Charles Rotter (corresponding, c.rotter@udtphysics.com) and Anthony Watts
 
 **Paper:** *Cosmological distance relations from a screened scalar modification of the Schwarzschild metric*
 
@@ -28,7 +28,7 @@ where $\phi(r)$ satisfies a nonlinear screened Klein-Gordon equation, produces *
 - **Deuteron binding**: $B_d = C/63 = 2.238$ MeV (+0.59%), algebraic from bridge identity
 - **Neutrino mass** $m_\nu = \alpha^3 m_e/4 = 0.049$ eV (-0.8%)
 - **CMB three-spectrum** (TT/TE/EE): EE at 9.3% outperforms $\Lambda$CDM Planck EE (12.6%), zero parameters vs six
-- **SNe Ia** at 0.164 mag RMS (real Pantheon+ data, 1590 SNe), **BAO** at 3.2% RMS
+- **SNe Ia** at 0.164 mag RMS (real Pantheon+ data, 1590 SNe), **BAO** $D_M/r_d$ at 3.8% RMS
 - **Gravitational waves**: speed = $c$ exactly (GW170817), breathing-mode polarization (LIGO O5 prediction)
 - **Light elements**: $Y(\text{He-4}) = \sqrt{5}-2 = 0.236$ (geometric floor, +stellar → 0.245), D/H $= \alpha/(9\pi^3)$ (+3.5%), Li-7 problem structurally resolved
 - **Binding energies**: $B_d = C/63$ (+0.6%), $B({}^3\text{He}) = C/18$ (+1.5%), $B({}^4\text{He}) = C/5$ (-0.4%), $B(\text{Li-7}) = C \times 5/18$ (-0.2%)
@@ -102,7 +102,7 @@ Benchmarked on Tesla V100-PCIE-32GB with N_GRID=100,000 and n_scan=50,000.
 ├── run_all.sh                   # Master replication script (25 steps)
 ├── download_data.sh             # Fetch datasets from Zenodo
 ├── manuscript/
-│   ├── manuscript.tex           # LaTeX primary (22 pages, v1.1)
+│   ├── manuscript.tex           # LaTeX primary (v1.2, April 2 2026)
 │   ├── manuscript.pdf           # Compiled PDF
 │   └── figures/                 # 13 figures (.pdf, .png)
 ├── data/
