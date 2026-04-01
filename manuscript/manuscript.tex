@@ -966,6 +966,21 @@ The mass spectrum divides into three sectors, all from the same metric:
 The two domains together account for 17~particle masses with a single
 calibration constant~$C$.
 
+\paragraph{Completeness note.}  The eigenvalue spectrum on each domain
+contains states that do not match any observed particle within the
+assigned sector.  For example, the sub-cavity ground state
+($\kappa = -1$, $E_1 = 2.23$) gives 314~MeV --- between the pion and
+proton, not matching any known baryon.  Several full-cavity eigenvalue
+assignments produce deviations exceeding $40\%$
+(\texttt{analysis/06\_particle\_masses.py} in the companion
+repository~\cite{zenodo2025}).  Tables~IV--V present the best
+identifications, not the complete spectrum.  The complete eigenvalue
+output for all $\kappa$ channels at the locked parameters is
+available in the companion repository for independent verification.
+The angular-sector masses ($e$, $\mu$, $p$, $\pi$, $\tau$) have no
+unmatched states --- they are the complete solution of the quadratic
+selection rule (Sec.~\ref{sec:angular}).
+
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig05_mass_ladder}
 \caption{\label{fig:hadrons}%
@@ -1888,7 +1903,11 @@ The peak height envelope follows the algebraic formula:
 where $7/2 = (2\kmax+1)/2$, $169/63 = 13^2/(9 \times 7)$, and
 $6/13 = 2\sin^2\!\theta_W$.  The Weinberg angle is the pair-damping
 rate: the same parameter that governs electroweak mixing governs the
-CMB even/odd asymmetry.
+CMB even/odd asymmetry.  Every coefficient in the transfer function
+traces to products of the multiplicities $(2, 3, 5, 7)$; the complete
+derivation chain and an honest assessment of which functional forms
+are derived versus empirically identified are given in
+Supplement~S21.
 
 \subsection{Results across five experiments}
 
@@ -1919,6 +1938,19 @@ Table~\ref{tab:cmb} reveals a striking pattern.  The EE spectrum on
 SPT-3G D1~\cite{SPT3GD1} at $9.3\%$ RMS \emph{outperforms} the $\Lambda$CDM fit to
 Planck EE data ($12.6\%$) --- with zero free parameters compared to
 six.
+
+\subsection{Statistical limitations}
+
+The CMB comparisons in this work use fractional RMS residuals, not
+full covariance-matrix likelihood analyses.  RMS is not equivalent to
+a $\chi^2$ computed from Planck's published covariance matrices, and
+direct statistical comparison with $\Lambda$CDM's six-parameter
+likelihood fits is therefore not possible within this framework.  The
+RMS values are presented as indicative measures of fit quality, not as
+formal goodness-of-fit statistics.  A proper likelihood analysis using
+raw Planck data products and independent pipeline reduction is beyond
+the scope of this work but is identified as a high-priority goal for
+future analysis.
 
 \subsection{Pipeline dependence and a falsifiable prediction}
 
@@ -2528,6 +2560,29 @@ peak ratios; in UDT the peak ratios are set by the Weinberg angle).}
 A theory with 50+ predictions must specify the measurements that
 would decisively test it.  Table~\ref{tab:falsify} lists the
 sharpest tests with named experiments and thresholds.
+
+\paragraph{Blind predictions.}  The following quantities were derived
+from the metric \emph{before} comparison with data and were not used
+in any parameter-locking step:
+\begin{itemize}
+\item $\delta_{\rm CP}^{\rm PMNS} = \pi + \arcsin(4/13) = 197.9°$
+  (within $0.04\sigma$ of NuFIT~5.2)
+\item $\Delta m^2_{21} = 6.98 \times 10^{-5}$~eV$^2$ (between
+  solar-only and reactor values; testable by JUNO)
+\item $Y(\text{He-4}) = \sqrt{5}-2 = 0.236$ (geometric floor from
+  sub-cavity volume fraction)
+\item D/H $= \alpha/(9\pi^3) = 2.62 \times 10^{-5}$ ($+3.5\%$ vs
+  Cooke et al.\ 2018)
+\item Li-7 naturally low (no primordial overproduction; structurally
+  resolves the cosmological lithium problem)
+\item Breathing-mode GW polarization (testable by LIGO O5,
+  5-detector network)
+\item Redshift drift $dz/dt = 0$ (testable by ELT Sandage--Loeb)
+\end{itemize}
+These predictions are distinct from the quantities used to lock the
+framework parameters ($\phiz$, $\mu^2$, $\rstar$) and from the
+calibration anchor ($m_e$).  They constitute genuine out-of-sample
+tests.
 
 % VERIFIED: project design
 \begin{table*}[t]

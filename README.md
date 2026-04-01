@@ -143,7 +143,7 @@ Benchmarked on Tesla V100-PCIE-32GB with N_GRID=100,000 and n_scan=50,000.
 │   ├── 24_bbn_weak_rates.py    # BBN weak rates, τ_n, detailed balance, M_W, M_Z
 │   └── 25_he4_subcavity.py     # He-4 sub-cavity, Y_em = √5−2, recycling fixed point
 ├── figures/                     # 12 figure generation scripts
-└── supplements/                 # 20 supplementary documents (LaTeX)
+└── supplements/                 # 21 supplementary documents (LaTeX)
     ├── S1–S12                   # Original supplements
     ├── S13_ckm_derivation.tex   # CKM from vertex partition
     ├── S14_quark_charges.tex    # Color, charges, mass ratios
@@ -152,7 +152,8 @@ Benchmarked on Tesla V100-PCIE-32GB with N_GRID=100,000 and n_scan=50,000.
     ├── S17_cmb_three_spectrum.tex # Kaleidoscope Principle, 5 experiments
     ├── S18_neutrino_hodge.tex   # Neutrino mass from Hodge duality
     ├── S19_mixing_unification.tex # PMNS-CKM from partition rank
-    └── S20_rstar_derivation.tex # Cavity size and φ₀ attractor
+    ├── S20_rstar_derivation.tex # Cavity size and φ₀ attractor
+    └── S21_cmb_coefficient_derivations.tex # CMB coefficients from quantum numbers
 ```
 
 ## Locked Parameters
