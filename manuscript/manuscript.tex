@@ -40,7 +40,7 @@ modification of the Schwarzschild metric}
 \author{Anthony~Watts}
 \affiliation{Independent Researcher}
 
-\date{Version 1.1 --- \today}
+\date{Version 1.2 --- April 2, 2026}
 
 \begin{abstract}
 We investigate the geodesic structure of the static, spherically
@@ -663,7 +663,10 @@ The origin of each:
 \item $\rstar = (2\kmax + 1) - \mathrm{source}^2/(2\kmax - 1)
   = 7 - 1/80$: the eigenvalue-consistent cavity size, where
   $\mathrm{source} = 1/4$ is the ground-state Dirac source integral
-  (Sec.~\ref{sec:alpha}).
+  (Sec.~\ref{sec:alpha}).  The locked $\phiz$ is the unique value at
+  which the eigenvalue ratios match physical particles; an eigenvalue
+  scan across 50 values of $\phiz$ confirms no other solution exists
+  (Supplement~S20).
 \end{itemize}
 One calibration sets the mass scale:
 % VERIFIED: CG §17.4
@@ -1233,7 +1236,7 @@ $7.42 \times 10^{-5}$ (current global fit) --- a decisive test.
 \caption{\label{fig:neutrino}%
 Neutrino mass derivation.  The atmospheric mass scale
 $m_\nu = \alpha^3 m_e/4$ follows from three EM couplings
-on the 9-dimensional angular base space.  The solar mass
+on the 9-dimensional angular base space (Supplement~S18).  The solar mass
 $m_1 = 5\alpha^3 m_e/(84\sqrt{2})$ sits between reactor and
 solar-only measurements of $\Delta m^2_{21}$.}
 \end{figure}
@@ -1326,6 +1329,11 @@ in the lepton sector, is
 \end{equation}
 Six PMNS parameters --- three angles plus $\delta_{\rm CP}$ plus two
 mass-squared differences --- all from $(j, \ell, \kmax) = (1/2, 1, 3)$.
+The PMNS angles arise from \emph{bilinear} (two-field) partitions of
+the quantum numbers, producing large angles; the CKM angles
+(Sec.~\ref{sec:ckm}) arise from \emph{vertex} (three-field)
+partitions, producing small angles.  The PMNS--CKM hierarchy is a
+geometric consequence of partition rank (Supplement~S19).
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig07_pmns_contours}
@@ -2176,21 +2184,186 @@ singularity.  The center is regular ($\phi(0) = \phiz$), and the
 ``singularity'' is at the boundary surface $r_c$.  There is no
 causal disconnection.
 
-\subsection{Matter dissolution and recycling}
+\subsection{Matter dissolution}
 
 A particle cavity ($\phiz < 0$) approaching a black hole
 ($\phiz > 0$) experiences a locally increasing $\phi$.  When the
 effective $\phiz$ crosses zero, the eigenvalue spectrum ceases to
 exist (Sec.~\ref{sec:mass}): the particle dissolves.  This occurs
-\emph{outside} the horizon, providing a natural mechanism for matter
-recycling.
+\emph{outside} the horizon, releasing the particle's energy into the
+scalar field as a perturbation $\delta\phi$.
 
-In a static universe, this recycling mechanism provides the dynamical
-cycle: matter forms in the particle branch, accumulates, collapses,
-dissolves at the $\phi = 0$ surface, and re-emerges as new particle
-cavities.  There is no beginning, no heat death, and no need for
-initial conditions.  The universe may be static, infinite, and
-eternal.
+\subsection{Scalar propagation}
+
+The perturbation satisfies the massive Klein--Gordon equation
+$\Box_g\delta\phi = \mu^2\delta\phi$ (the same equation used in the
+gravitational wave analysis, Sec.~\ref{sec:gr-reduction}).  For
+hadronic dissolution (proton mass $= 6\pi^5 m_e = 938$~MeV $= 6.66$
+in natural units), the energy exceeds the maximum propagation barrier
+($\mu\,e^{|\phi_{\min}|} = 5.01$ at the deepest point of the cavity
+profile).  The perturbation propagates classically --- no tunneling is
+required.  At cosmological distances, the screening mass
+$\mug = 0.247$~Gpc$^{-1}$ gives a Yukawa range of $\sim 4$~Gpc.
+
+Every black hole in the universe continuously dissolves infalling
+matter.  The superposition of scalar perturbations from
+$\sim 10^{11}$ galaxies' worth of black holes creates a roughly
+uniform, isotropic scalar energy bath.
+
+\subsection{Scalar-Dirac coupling}
+
+The coupling between scalar perturbations and Dirac bound states
+follows from the Form-T equations without additional postulates.  The
+scalar field $\phi$ appears in the Dirac system through $\phi'(r)$
+(spin-orbit) and $e^{2\phi}$ (energy coupling).  A perturbation
+$\delta\phi$ creates an effective interaction through three Dirac
+bilinears --- the same three that produce the nuclear force
+(Sec.~\ref{sec:nuclear}):
+\begin{center}
+\begin{tabular}{lcc}
+\hline
+Bilinear & Integral & Nuclear analog \\
+\hline
+$G^2 - F^2$ & $0.250 \approx 1/4$ & Pion exchange \\
+$G^2 + F^2$ & $0.264$ (dominant) & Sigma exchange \\
+$GF$ & $-0.042$ & Omega exchange \\
+\hline
+\end{tabular}
+\end{center}
+The scalar density $G^2\!+\!F^2$ dominates, with an integral nearly
+independent of $\kappa$ ($\approx 0.26$ across all six channels).  The
+coupling is $O(1)$ ($dE_1/d\phiz = -6.0$) and is not suppressed by
+the micro/cosmo hierarchy: the incoming cosmological-wavelength scalar
+wave is effectively constant across the micro cavity.
+
+\subsection{Re-emergence composition}
+
+The composition at re-emergence is a property of the ground state, not
+of the formation mechanism.  Three independent arguments establish
+this:
+
+\begin{enumerate}
+\item The sub-cavity $[0, r_b]$ with $r_b = \rstar/\vgold$ supports
+  only $\kappa = \pm 1$ modes (verified numerically), accommodating
+  exactly $(2j+1)^2 = 4$ nucleons in the unique $J=0$, $T=0$
+  configuration (He-4).  This structure is a geometric property of
+  the locked~$\phiz$.
+
+\item He-4 is the thermodynamic ground state --- $28.2$~MeV lower in
+  energy than four free nucleons ($B = C/5$,
+  Sec.~\ref{sec:nuclear}).
+
+\item The volume fraction $(r_b/\rstar)^3 = 1/\vgold^3 = \sqrt{5}-2$
+  is an exact algebraic identity of the golden ratio partition,
+  independent of any formation pathway.
+\end{enumerate}
+
+Whether the cavity forms by reformation from $\phi = 0$, excitation by
+incoming scalar energy, or pair production from a $\phi$-pulse, the
+equilibrium composition is the same:
+\begin{equation}\label{eq:composition}
+  Y(\text{He-4}) = \sqrt{5}-2 = 0.2361,\quad
+  X(\text{H}) = 3-\sqrt{5} = 0.7639\,.
+\end{equation}
+
+\subsection{The $\phiz$ attractor}
+
+An eigenvalue scan across 50 values of $\phiz$ from $-0.01$ to
+$-0.81$ (all six $\kappa$ channels, 30 modes each) reveals that bound
+states exist at \emph{every} negative $\phiz$ --- but the eigenvalue
+\emph{ratios} match physical particles only at the locked value
+$\phiz = -\cos(\pi/5)$.  At $\phiz = -0.01$, all eigenvalues are
+bunched within a factor of~2 (no distinct particle identities).  At
+the locked value, the ratios spread to $1:5.6:7.3:8.9$, matching the
+meson spectrum.  The locked $\phiz$ is the unique fixed point of the
+matter spectrum: coherent, stable matter cannot exist at any other
+cavity depth.
+
+\subsection{The self-sustaining cycle}
+
+The complete recycling chain:
+\begin{equation*}
+  \text{scalar energy}
+  \xrightarrow{\text{coupling}}
+  \text{matter}
+  \xrightarrow{\text{stars}}
+  \text{BHs}
+  \xrightarrow{\phi \to 0}
+  \text{scalar energy}
+\end{equation*}
+forms a closed loop in an eternal universe.  Total mass is fixed by
+Machian closure ($c^2 = 2GM/\rstar$, Sec.~\ref{sec:universe}).
+Composition is fixed by cavity geometry [Eq.~\eqref{eq:composition}].
+The cycle time --- how fast the loop runs --- is self-consistently
+determined and does not affect any observable.  In a static, eternal
+universe, there is no beginning, no heat death, and no need for
+initial conditions.  The universe recycles matter through its own
+geometry.
+
+%===================================================================
+\section{Light Element Abundances}\label{sec:bbn}
+%===================================================================
+
+The observed primordial light element abundances --- $Y(\text{He-4})
+\approx 0.245$, D/H~$\approx 2.5 \times 10^{-5}$, and
+Li-7/H~$\approx 1.6 \times 10^{-10}$ --- are standardly derived from
+Big Bang Nucleosynthesis, which requires a hot primordial epoch.  The
+UDT framework derives all three from the metric geometry without
+importing the expansion history.
+
+\paragraph{Helium-4.}  When matter re-emerges, the sub-cavity
+$[0, r_b]$ fills first with the unique $J=0$, $T=0$ four-nucleon
+configuration (He-4).  The re-emergence floor is the sub-cavity
+volume fraction [Eq.~\eqref{eq:composition}]:
+$Y_{\rm em} = \sqrt{5}-2 = 0.2361$.  Stellar hydrogen burning
+across recycling cycles adds $\Delta_{\rm stellar} \approx 0.009$
+($3.6\%$), producing the fixed-point attractor $Y^* \approx 0.245$,
+consistent with observation.  The He-4 uniformity across all
+environments reflects the attractor nature of $Y^*$ --- set by the
+same geometric and stellar physics everywhere --- rather than a single
+primordial cooking event.
+
+The He-4 binding follows from angular closure:
+$B(\text{He-4}) = C/(2\kmax-1) = C/5 = 28.19$~MeV
+(PDG: $28.30$, $-0.37\%$).  Three additional binding energies:
+$B_d = C/63$ ($+0.61\%$, Sec.~\ref{sec:nuclear}),
+$B({}^3\text{He}) = C/18$ ($+1.47\%$),
+$B(\text{Li-7}) = C \times 5/18$ ($-0.22\%$).
+
+\paragraph{Deuterium.}  At re-emergence, $n\!+\!p$ pairs not captured
+into He-4 have probability set by one EM vertex in the $\ell\!=\!1$
+sector to form deuterons, suppressed by the orbital phase space
+$(2\ell+1)^2 = 9$ and angular measure $\pi^{2\ell+1} = \pi^3$:
+\begin{equation}\label{eq:DH}
+  \frac{D}{H} = \frac{\aEM}{9\pi^3} = 2.62 \times 10^{-5}
+  \qquad(\text{obs: }2.53 \times 10^{-5},\ {+3.5\%})\,.
+\end{equation}
+The same $\pi^3$ factor appears in the muon mass ratio
+$m_\mu/m_e = 20\pi^3/3$, confirming the shared $\ell=1$ angular
+structure.  The observed sightline variation in D/H
+($2.0$--$3.0 \times 10^{-5}$) is consistent with the
+environment-dependent re-emergence branching fraction in UDT, whereas
+standard BBN predicts a universal primordial value.
+
+\paragraph{Lithium-7.}  Standard BBN overpredicts Li-7/H by a factor
+of $\sim 3$ --- the cosmological lithium problem.  In UDT there is no
+primordial Li-7 production.  Li-7 exists only in
+spallation-destruction steady state, with the destruction rate
+exceeding production by $\sim 10^4$ at stellar interior temperatures.
+The steady-state Li-7/H is naturally suppressed below the BBN
+prediction, consistent with observation.  The lithium problem is
+structurally resolved: it disappears because there is no hot
+primordial epoch to overproduce Li-7.  The binding
+$B(\text{Li-7}) = C \times 5/18 = 39.16$~MeV (PDG: $39.24$,
+$-0.22\%$) follows the same angular closure structure.
+
+The three mechanisms --- geometric (He-4), electromagnetic (D/H), and
+kinetic (Li-7) --- operate from different sectors of the same metric
+and together account for all three standard BBN observables without
+importing the expansion history.  For further details, including weak
+rate physics ($\tau_n = 954$~s, detailed balance exact), electroweak
+constants from the metric ($G_F$, $M_W$, $M_Z$), and the recycling
+fixed-point analysis, see Supplements~S18--S20.
 
 %===================================================================
 \section{Mass and Radius of the Observable Universe}\label{sec:universe}
