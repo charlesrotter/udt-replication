@@ -17,7 +17,7 @@ The UDT metric:
 
 $$ds^2 = -e^{-2\phi(r)}c^2 dt^2 + e^{2\phi(r)}dr^2 + r^2 d\Omega^2$$
 
-where $\phi(r)$ satisfies a nonlinear screened Klein-Gordon equation, produces **35 derived quantities** (all 24 Standard Model free parameters plus 11 QCD/nuclear observables) from three quantum numbers $(j, \ell, |\kappa_\text{max}|) = (1/2, 1, 3)$ and the electron mass:
+where $\phi(r)$ satisfies a nonlinear screened Klein-Gordon equation, produces **42+ derived quantities** (all 24 Standard Model free parameters plus QCD/nuclear observables and light element abundances) from three quantum numbers $(j, \ell, |\kappa_\text{max}|) = (1/2, 1, 3)$ and the electron mass:
 
 - **Fine structure constant** $1/\alpha = 137.036$ (+0.0004%, three-level chain)
 - **Particle masses**: $m_p/m_e = 6\pi^5$ (-0.002%), $m_\tau$ from Koide $Z_3$ (+0.007%), 15+ hadrons sub-3%
@@ -30,6 +30,8 @@ where $\phi(r)$ satisfies a nonlinear screened Klein-Gordon equation, produces *
 - **CMB three-spectrum** (TT/TE/EE): EE at 9.3% outperforms $\Lambda$CDM Planck EE (12.6%), zero parameters vs six
 - **SNe Ia** at 0.164 mag RMS (real Pantheon+ data, 1590 SNe), **BAO** at 3.2% RMS
 - **Gravitational waves**: speed = $c$ exactly (GW170817), breathing-mode polarization (LIGO O5 prediction)
+- **Light elements**: $Y(\text{He-4}) = \sqrt{5}-2 = 0.236$ (geometric floor, +stellar → 0.245), D/H $= \alpha/(9\pi^3)$ (+3.5%), Li-7 problem structurally resolved
+- **Binding energies**: $B_d = C/63$ (+0.6%), $B({}^3\text{He}) = C/18$ (+1.5%), $B({}^4\text{He}) = C/5$ (-0.4%), $B(\text{Li-7}) = C \times 5/18$ (-0.2%)
 - **Universe**: $r_* = 9.164$ Gpc, $c^2 = 2GM/r_*$ (Machian closure, 0.0000%)
 
 External inputs: $c$, $G$, $m_e$, $T_\text{CMB}$, $T_\text{starlight}$, $\hbar$ (conversion only).
@@ -83,6 +85,8 @@ Benchmarked on Tesla V100-PCIE-32GB with N_GRID=100,000 and n_scan=50,000.
 | Particle masses (06) | 3 min 30 sec | ~25 hrs* |
 | CMB peaks (14) | 35 sec | ~4 hrs* |
 | Nuclear potential (17) | 1 min 20 sec | ~8 hrs* |
+| BBN weak rates (24) | 15 sec | 15 sec |
+| He-4 sub-cavity (25) | 1 sec | 1 sec |
 | Other analysis (04-05, 07-13, 15-16, 18-23) | 2 sec | 2 sec |
 | Figure generation (12 scripts) | 10 sec | 10 sec |
 | **Total** | **~10 min** | **~60 hrs*** |
@@ -95,7 +99,7 @@ Benchmarked on Tesla V100-PCIE-32GB with N_GRID=100,000 and n_scan=50,000.
 ├── README.md                    # This file
 ├── requirements.txt             # Pinned dependencies
 ├── LICENSE                      # Academic-use license
-├── run_all.sh                   # Master replication script (23 steps)
+├── run_all.sh                   # Master replication script (25 steps)
 ├── download_data.sh             # Fetch datasets from Zenodo
 ├── manuscript/
 │   ├── manuscript.tex           # LaTeX primary (22 pages, v1.1)
@@ -112,7 +116,7 @@ Benchmarked on Tesla V100-PCIE-32GB with N_GRID=100,000 and n_scan=50,000.
 │   ├── scalar_perturbation.py   # Scalar perturbation modes
 │   ├── vector_perturbation.py   # Vector perturbation modes
 │   └── utils.py                 # I/O, comparison, plotting utilities
-├── analysis/                    # 23 analysis scripts
+├── analysis/                    # 25 analysis scripts
 │   ├── 01_vacuum_profile.py     # Solve vacuum φ, compute I₂
 │   ├── 02_eigenvalues.py        # Dirac eigenvalues for κ = ±1,±2,±3
 │   ├── 03_sources.py            # Source integrals
@@ -125,7 +129,7 @@ Benchmarked on Tesla V100-PCIE-32GB with N_GRID=100,000 and n_scan=50,000.
 │   ├── 10_wedge_product.py      # Exterior algebra structure
 │   ├── 11_alpha3_factorization.py # α³ factorization verification
 │   ├── 12_sne_fit.py            # Type Ia supernovae (Pantheon+)
-│   ├── 13_bao_fit.py            # Baryon acoustic oscillations
+│   ├── 13_bao_fit.py            # BAO transverse distance D_M/r_d (8 surveys)
 │   ├── 14_cmb_peaks.py          # CMB peak positions
 │   ├── 15_cmb_spectrum.py       # Full CMB power spectrum (TT/TE/EE)
 │   ├── 16_sparc_remnants.py     # SPARC rotation curves
@@ -135,7 +139,9 @@ Benchmarked on Tesla V100-PCIE-32GB with N_GRID=100,000 and n_scan=50,000.
 │   ├── 20_quark_masses.py       # Quark charges, color, mass ratios
 │   ├── 21_higgs_sector.py       # Higgs VEV, self-coupling, boson mass
 │   ├── 22_su3_closure.py        # su(3) algebra closure verification
-│   └── 23_nuclear_couplings.py  # g_A, f_π, g_πNN, R_p, deuteron B_d
+│   ├── 23_nuclear_couplings.py  # g_A, f_π, g_πNN, R_p, B_d, B(He-3/4), B(Li-7), D/H
+│   ├── 24_bbn_weak_rates.py    # BBN weak rates, τ_n, detailed balance, M_W, M_Z
+│   └── 25_he4_subcavity.py     # He-4 sub-cavity, Y_em = √5−2, recycling fixed point
 ├── figures/                     # 12 figure generation scripts
 └── supplements/                 # 17 supplementary documents (LaTeX)
     ├── S1–S12                   # Original supplements

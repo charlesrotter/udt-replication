@@ -99,6 +99,50 @@ print(f"\nDeuteron binding energy:")
 print(f"  B_d = C/((2l+1)^2 * (2|kmax|+1)) = C/63")
 format_comparison("  B_d", B_d, B_d_exp, "MeV")
 
+# === Light element binding energies ===
+BHe3 = C_CALIB / (MULT_2L1**2 * MULT_2J1)   # C/18
+BHe3_exp = 7.718
+BHe4 = C_CALIB / MULT_2KM1                   # C/5
+BHe4_exp = 28.296
+BLi7 = C_CALIB * MULT_2KM1 / (MULT_2L1**2 * MULT_2J1)  # C*5/18
+BLi7_exp = 39.244
+
+print(f"\nLight element binding energies:")
+print(f"  B(He3) = C/((2l+1)^2*(2j+1)) = C/18")
+format_comparison("  B(He3)", BHe3, BHe3_exp, "MeV")
+print(f"  B(He4) = C/(2|kmax|-1) = C/5")
+format_comparison("  B(He4)", BHe4, BHe4_exp, "MeV")
+print(f"  B(Li7) = C*(2|kmax|-1)/((2l+1)^2*(2j+1)) = C*5/18")
+format_comparison("  B(Li7)", BLi7, BLi7_exp, "MeV")
+
+# === Deuterium abundance: D/H = alpha/(9*pi^3) ===
+alpha_em = 1.0 / 137.036  # UDT corrected value
+DH_udt = alpha_em / (MULT_2L1**2 * np.pi**(2*1+1))  # alpha/(9*pi^3)
+DH_exp = 2.527e-5  # Cooke+ 2018
+print(f"\nDeuterium abundance (EM branching fraction):")
+print(f"  D/H = alpha_EM / ((2l+1)^2 * pi^(2l+1)) = alpha/(9*pi^3)")
+print(f"  9 = (2l+1)^2,  pi^3 = pi^(2l+1) [same pi^3 as m_mu/m_e = 20*pi^3/3]")
+format_comparison("  D/H", DH_udt, DH_exp)
+
+# === He-4 re-emergence fraction ===
+Y_em = 1.0 / PHI_GOLD**3  # = sqrt(5)-2
+Y_em_exact = np.sqrt(5) - 2
+Y_obs = 0.245
+print(f"\nHe-4 re-emergence fraction:")
+print(f"  Y_em = (r_b/r*)^3 = 1/phi_gold^3 = sqrt(5)-2")
+print(f"  Y_em = {Y_em:.10f}")
+print(f"  sqrt(5)-2 = {Y_em_exact:.10f}")
+print(f"  Identity check: {abs(Y_em - Y_em_exact) < 1e-15}")
+format_comparison("  Y_em", Y_em, Y_obs)
+
+# === Etherington relation verification ===
+# D_L = r*e^phi, D_A = r => D_L/D_A = e^phi = 1+z (exact algebraic identity)
+print(f"\nEtherington reciprocity (algebraic):")
+print(f"  D_L = r*e^phi(r),  D_A = r  =>  D_L/D_A = e^phi = 1+z")
+print(f"  Time dilation: delta_tau_arr/delta_tau_em = e^phi(r) = 1+z")
+print(f"  Tolman: S_bol ~ (1+z)^-4  [area + arrival rate + energy]")
+print(f"  Identity: exact (follows from metric structure, no computation needed)")
+
 results = {
     'g_A': float(g_A),
     'g_A_exp': g_A_exp,
@@ -120,5 +164,22 @@ results = {
     'B_d_exp_MeV': B_d_exp,
     'B_d_pct': float(pct_error(B_d, B_d_exp)),
     'B_d_formula': 'C / ((2l+1)^2 * (2|kmax|+1)) = C/63',
+    'B_He3_MeV': float(BHe3),
+    'B_He3_exp_MeV': BHe3_exp,
+    'B_He3_pct': float(pct_error(BHe3, BHe3_exp)),
+    'B_He4_MeV': float(BHe4),
+    'B_He4_exp_MeV': BHe4_exp,
+    'B_He4_pct': float(pct_error(BHe4, BHe4_exp)),
+    'B_Li7_MeV': float(BLi7),
+    'B_Li7_exp_MeV': BLi7_exp,
+    'B_Li7_pct': float(pct_error(BLi7, BLi7_exp)),
+    'DH_udt': float(DH_udt),
+    'DH_exp': DH_exp,
+    'DH_pct': float(pct_error(DH_udt, DH_exp)),
+    'DH_formula': 'alpha_EM / (9 * pi^3)',
+    'Y_em': float(Y_em),
+    'Y_em_exact': float(Y_em_exact),
+    'Y_obs': Y_obs,
+    'Y_em_pct': float(pct_error(Y_em, Y_obs)),
 }
 save_results('23_nuclear_couplings.json', results)
